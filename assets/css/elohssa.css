@@ -17,10 +17,13 @@
       width: auto!important;
   }
   .custom-navbar .navbar-collapse {
+      text-align: right;
+      margin-top: 0;
       clear: both;
       float: none;
   }
 }
+
 
 .background {
   width: 100%;
@@ -34,6 +37,15 @@
   background-size: 100%;
 }
 
-.you_img {
-  margin-top: 100px;
+.copy_img {
+  margin-top: 150px;
+}
+
+.top {
+  height: 1000px;
+}
+
+.cost {
+  color: red;
+  font-size: 20px;
 }
