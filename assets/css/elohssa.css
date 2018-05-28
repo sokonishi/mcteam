@@ -27,6 +27,7 @@
 header {
   position: fixed;
   background-color: #fff;
+  z-index: 1;
 }
 
 .background {
@@ -45,14 +46,26 @@ header {
   margin-top: 150px;
 }
 
-
+.card1, .card2, .card3 {
+  background-color: #fff;
+}
 
 .space {
   height: 600px;
 }
 
-.card {
+.card1 {
   background-color: #fff;
+}
+
+@media only screen and (min-width: 768„px){
+.card2 {
+  margin-top: 33%;
+}
+
+.card3 {
+  margin-top: 66%;
+}
 }
 
 .cost {
