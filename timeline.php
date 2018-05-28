@@ -26,7 +26,7 @@
     </div>
 
     <div class="container">
-      <div class="row space">
+      <div class="row space_timeline">
       </div>
     </div>
 
