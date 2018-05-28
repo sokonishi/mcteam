@@ -1,4 +1,4 @@
-@media (max-width:767px) { 
+/*@media (max-width:767px) { 
     .custom-navbar .navbar-right {
         float: right;
       padding-right: 15px;
@@ -22,7 +22,7 @@
       clear: both;
       float: none;
   }
-}
+}*/
 
 header {
   position: fixed;
@@ -42,6 +42,8 @@ header {
   background-size: 100%;
 }
 
+
+/*timeline.php*/
 .copy_img {
   margin-top: 150px;
 }
@@ -50,13 +52,14 @@ header {
   background-color: #fff;
 }
 
-.space {
+.space_timeline {
   height: 600px;
 }
 
 .card1 {
   background-color: #fff;
 }
+
 
 @media only screen and (min-width: 768px){
 .card2 {
@@ -76,4 +79,38 @@ header {
 
 .timeline {
   background-color:;
+}
+
+/*mypage.php*/
+.space_mypage {
+  height: 120px;
+}
+
+.profile_card {
+  margin: 0 10%;
+  background-color: #fff
+}
+
+@media (min-width: 768px){
+.profile_card img {
+  margin: 50% 0;
+  border-radius: 50px;
+  height: 50px;
+  width: 50px;
+}}
+
+@media (max-width: 768px){
+.profile_card img {
+  margin: 20% 0;
+  border-radius: 50px;
+  height: 50px;
+  width: 50px;
+}}
+
+.btn {
+  cursor: pointer;
+}
+
+.purchase {
+  text-align: center;
 }
