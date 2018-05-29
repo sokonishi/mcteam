@@ -107,6 +107,29 @@ header {
   width: 50px;
 }}
 
+.mypage_nav {
+  display: table;
+
+}
+
+.nav_item {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.nav_item + .nav_item {
+  border-left: 1px solid #CCC;
+}
+
+.nav_item a {
+  display: block;
+  padding: 15px 0;
+  color: #666;
+  text-decoration: none;
+  font-size: 14px;
+}
+
 .btn {
   cursor: pointer;
 }

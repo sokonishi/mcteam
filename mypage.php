@@ -37,55 +37,17 @@
     </div>
 
     <div class="container">
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="card1">
-            <img src="img/item_img.png" style="width: 100%">
-            <h4>タイトル</h4>
-            <p>ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。</p>
-            <h4 class="cost">20,000円</h4>
-            <div class="purchase">
-              <button type="button" class="btn btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i> カートに入れる</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="card1">
-            <img src="img/item_img.png" style="width: 100%">
-            <h4>タイトル</h4>
-            <p>ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。</p>
-            <h4 class="cost">20,000円</h4>
-            <div class="purchase">
-              <button type="button" class="btn btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i> カートに入れる</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="card1">
-            <img src="img/item_img.png" style="width: 100%">
-            <h4>タイトル</h4>
-            <p>ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。</p>
-            <h4 class="cost">20,000円</h4>
-            <div class="purchase">
-              <button type="button" class="btn btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i> カートに入れる</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="card1">
-            <img src="img/item_img.png" style="width: 100%">
-            <h4>タイトル</h4>
-            <p>ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。</p>
-            <h4 class="cost">20,000円</h4>
-            <div class="purchase">
-              <button type="button" class="btn btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i> カートに入れる</button>
-            </div>
-          </div>
-        </div>
+      <div class="row col-xs-offset-5">
+        <ul class="mypage_nav">
+          <li class="nav_item active"><a href="#">投稿</a></li>
+          <li class="nav_item"><a href="#">お気に入り</a></li>
+        </ul>
       </div>
+    </div>
 
+    <div class="container">
       <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-4">
           <div class="card1">
             <img src="img/item_img.png" style="width: 100%">
             <h4>タイトル</h4>
@@ -94,43 +56,86 @@
             <div class="purchase">
               <button type="button" class="btn btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i> カートに入れる</button>
             </div>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="card1">
-            <img src="img/item_img.png" style="width: 100%">
-            <h4>タイトル</h4>
-            <p>ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。</p>
-            <h4 class="cost">20,000円</h4>
-            <div class="purchase">
-              <button type="button" class="btn btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i> カートに入れる</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="card1">
-            <img src="img/item_img.png" style="width: 100%">
-            <h4>タイトル</h4>
-            <p>ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。</p>
-            <h4 class="cost">20,000円</h4>
-            <div class="purchase">
-              <button type="button" class="btn btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i> カートに入れる</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="card1">
-            <img src="img/item_img.png" style="width: 100%">
-            <h4>タイトル</h4>
-            <p>ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。</p>
-            <h4 class="cost">20,000円</h4>
-            <div class="purchase">
-              <button type="button" class="btn btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i> カートに入れる</button>
-            </div>
-            <!-- /purchase -->
           </div>
           <!-- /card1 -->
         </div>
+        <div class="col-sm-4">
+          <div class="card1">
+            <img src="img/item_img.png" style="width: 100%">
+            <h4>タイトル</h4>
+            <p>ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。</p>
+            <h4 class="cost">20,000円</h4>
+            <div class="purchase">
+              <button type="button" class="btn btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i> カートに入れる</button>
+            </div>
+          </div>
+          <!-- /card1 -->
+        </div>
+        <div class="col-sm-4">
+          <div class="card1">
+            <img src="img/item_img.png" style="width: 100%">
+            <h4>タイトル</h4>
+            <p>ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。</p>
+            <h4 class="cost">20,000円</h4>
+            <div class="purchase">
+              <button type="button" class="btn btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i> カートに入れる</button>
+            </div>
+          </div>
+          <!-- /card1 -->
+        </div>
+      </div>
+    </div>
+    <!-- /container -->
+
+    <div class="container">
+      <div class="row col-xs-offset-5">
+        <ul class="mypage_nav">
+          <li class="nav_item"><a href="#">投稿</a></li>
+          <li class="nav_item"><a href="#">お気に入り</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="card1">
+            <img src="img/item_img.png" style="width: 100%">
+            <h4>タイトル</h4>
+            <p>ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。</p>
+            <h4 class="cost">20,000円</h4>
+            <div class="purchase">
+              <button type="button" class="btn btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i> カートに入れる</button>
+            </div>
+          </div>
+          <!-- /card1 -->
+        </div>
+        <div class="col-sm-4">
+          <div class="card1">
+            <img src="img/item_img.png" style="width: 100%">
+            <h4>タイトル</h4>
+            <p>ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。</p>
+            <h4 class="cost">20,000円</h4>
+            <div class="purchase">
+              <button type="button" class="btn btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i> カートに入れる</button>
+            </div>
+          </div>
+          <!-- /card1 -->
+        </div>
+        <div class="col-sm-4">
+          <div class="card1">
+            <img src="img/item_img.png" style="width: 100%">
+            <h4>タイトル</h4>
+            <p>ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。</p>
+            <h4 class="cost">20,000円</h4>
+            <div class="purchase">
+              <button type="button" class="btn btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i> カートに入れる</button>
+            </div>
+          </div>
+          <!-- /card1 -->
+        </div>
+
+
       </div>
       <!-- /row -->
     </div>
