@@ -114,7 +114,6 @@
     // PHPプログラム
 ?>
 
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -133,8 +132,13 @@
       <img src="../img/menu_bar.png" style="width: 5%; float: right;">
     </div>
   </header>
-
-  <div class="background">
+  
+  <div class="background_signup">
+    <div class="container">
+        <div class="row space_mypage">
+        </div><!-- /row -->
+      </div><!-- /container -->
+    
     <div class="container">
         <div class="row">
           <div class="col-xs-8 col-xs-offset-2">

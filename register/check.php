@@ -63,9 +63,10 @@
             <div class="col-xs-4">
               <img src="../user_profile_img/<?php echo htmlspecialchars($img_name); ?>" class="img-responsive img-tumbnail">
             </div>
+            
             <div class="col-xs-8">
               <div>
-                <span>名前</span>
+                <span>名前</span>      
                 <p class="lead"><?php echo htmlspecialchars($name); ?></p>
               </div>
               <div>
@@ -76,13 +77,12 @@
                 <span>パスワード</span>
                 <p class="lead">●●●●●●●●●●</p>
               </div>
-              
+    
                 <form method="POST" action="">
                   <a href="signup.php" class="btn" onclick="history.back()">&laquo;&nbsp;戻る</a>
                   <input type="hidden" name="action" value="submit">
                   <input type="submit" class="btn btn-primary" value="登録">
                 </form>
-
             </div>
           </div>
         </div>
