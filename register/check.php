@@ -1,3 +1,40 @@
+<?php
+    session_start();
+
+    if(!isset($_SESSION['register'])) {
+    //正規のルートから遷移していない場合
+      header("Location:signup.php");
+      exit();
+    }
+
+   // ①
+    $name = $_SESSION['register']['name'];
+    $email = $_SESSION['register']['email'];
+    $user_password = $_SESSION['register']['password'];
+    $img_name = $_SESSION['register']['img_name'];
+
+    // 登録ボタンが押された時の処理 = POSTがからじゃない
+
+    if(!empty($_POST)) {
+        // 1.DB実行
+        require('../dbconnect.php');
+
+        // 2.SQL文実行
+        $sql = 'INSERT INTO `users` SET `name`=?, `email`=?, `password`=?, `img_name`=?, `created`=NOW()';
+        $data = array($name, $email, password_hash($user_password, PASSWORD_DEFAULT), $img_name);
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute($data);
+
+        // 3. データベース切断
+         $dbh = null;
+
+        unset($_SESSION['register']);
+        //var_dump($_SESSION['register']);
+        header('Location: thanks.php');
+        exit();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -24,23 +61,28 @@
           <h2 class="text-center content_header">アカウント情報確認</h2>
           <div class="row">
             <div class="col-xs-4">
-              <img src=".img" class="img-responsive img-tumbnail">
+              <img src="../user_profile_img/<?php echo htmlspecialchars($img_name); ?>" class="img-responsive img-tumbnail">
             </div>
             <div class="col-xs-8">
               <div>
                 <span>名前</span>
-                <p class="lead">ユーザー名が入ります。</p>
+                <p class="lead"><?php echo htmlspecialchars($name); ?></p>
               </div>
               <div>
                 <span>メールアドレス</span>
-                <p class="lead">メールアドレスが入ります。</p>
+                <p class="lead"><?php echo htmlspecialchars($email); ?></p>
               </div>
               <div>
                 <span>パスワード</span>
                 <p class="lead">●●●●●●●●●●</p>
               </div>
-              <a href="signup.php" class="btn" onclick="history.back()">&laquo;&nbsp;戻る</a>
-              <input type="submit" class="btn btn-primary" value="登録">
+              
+                <form method="POST" action="">
+                  <a href="signup.php" class="btn" onclick="history.back()">&laquo;&nbsp;戻る</a>
+                  <input type="hidden" name="action" value="submit">
+                  <input type="submit" class="btn btn-primary" value="登録">
+                </form>
+
             </div>
           </div>
         </div>
