@@ -54,10 +54,15 @@
     </div>
   </header>
 
-  <div class="background">
+  <div class="background_signup">
+    <div class="container">
+      <div class="row space_mypage">
+      </div><!-- /row -->
+    </div><!-- /container -->
+
     <div class="container">
         <div class="row">
-          <div class="col-xs-8 col-xs-offset-2 thumbnail">
+          <div class="col-xs-8 col-xs-offset-2">
           <h2 class="text-center content_header">アカウント情報確認</h2>
           <div class="row">
             <div class="col-xs-4">
@@ -86,9 +91,9 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
+      </div><!-- /row -->
+    </div><!-- /container -->
+  </div><!-- /background_signup -->
 
   <script src="../assets/js/jquery-3.1.1.js"></script>
   <script src="../assets/js/jquery-migrate-1.4.1.js"></script>
