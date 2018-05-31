@@ -67,7 +67,7 @@ $sql = 'SELECT * FROM `feeds` ORDER BY `id` DESC';
           <div class="card<?php echo $feed_cnt; ?>">
             <a href="like.php?feed_id=<?php echo $feed["id"]; ?>" class="noline">
               <div class="card_item">
-                <img src="img/<?php echo $feed['img_name']; ?>" style="width: 100%">
+                <img src="user_profile_img/<?php echo $feed['img_name']; ?>" style="width: 100%">
                 <h4><?php echo $feed['title']; ?></h4>
                 <p><?php echo $feed['feed']; ?></p>
                 <button class="btn btn-default btn-xs"><i class="fa fa-thumbs-up" aria-hidden="true"></i>いいね！</button>
