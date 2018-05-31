@@ -3,13 +3,13 @@
     $errors = array();    //この配列の意味はエラーの種類
 
     if (!empty($_POST)) {   //POST送信があった時に以下を実行する
-        $theme = $_POST['input_theme'];
+        $title = $_POST['input_title'];
         $feed = $_POST['input_feed'];
         $price = $_POST['input_price'];
 
         // 内容の空チェック
-        if ($theme == '') {
-            $errors['theme'] = 'blank';
+        if ($title == '') {
+            $errors['title'] = 'blank';
         }
         elseif($feed == ''){
             $errors['feed'] = 'blank';
@@ -19,8 +19,8 @@
             $errors['price'] = 'blank';
         }
 
-          var_dump($_FILES,$_POST);
-          exit();
+          //var_dump($_FILES,$_POST);
+          //exit();
         //画像名を取得
         $file_name = $_FILES[
           'input_img_name']['name'];
@@ -63,7 +63,7 @@
             //$_SESSIONサーバーに保存されるスーパーグローバル変数
             //ログインしていることのユーザー情報などを保存しておくことが多い
 
-            $_SESSION['mcteam']['theme'] = $_POST['input_theme'];
+            $_SESSION['mcteam']['title'] = $_POST['input_title'];
             $_SESSION['mcteam']['feed'] = $_POST['input_feed'];
             $_SESSION['mcteam']['price'] = $_POST['input_price'];
             $_SESSION['mcteam']['img_name'] = $submit_file_name;
@@ -106,7 +106,7 @@
 
     <div class="container">
       <div class="row space_timeline">
-        <form method='POST' action='post.php'>
+        <form method='POST' action='post.php' enctype="multipart/form-data">
 
           <div class="form-group">
             <label for="img_name">写真</label>
@@ -121,7 +121,7 @@
 
           <div>
             <h3>題名</h3>
-            <input type="text" name="input_theme" placeholder="名前を入力してください" style="width:300px">
+            <input type="text" name="input_title" placeholder="名前を入力してください" style="width:300px">
           </div>
 
           <div>

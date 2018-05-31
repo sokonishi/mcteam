@@ -8,7 +8,7 @@
     }
 
    // ①
-    $theme = $_SESSION['mcteam']['theme'];
+    $title = $_SESSION['mcteam']['title'];
     $feed = $_SESSION['mcteam']['feed'];
     $price = $_SESSION['mcteam']['price'];
     $img_name = $_SESSION['mcteam']['img_name'];
@@ -17,11 +17,11 @@
 
     if(!empty($_POST)) {
         // 1.DB実行
-        require('../dbconnect.php');
+        require('dbconnect.php');
 
         // 2.SQL文実行
-        $sql = 'INSERT INTO `feeds` SET `feed`=?, `theme`=?, `price`=?, `img_name`=?, `created`=NOW()';
-        $data = array($feed, $theme, $price, $img_name);
+        $sql = 'INSERT INTO `feeds` SET `feed`=?, `title`=?, `price`=?, `img_name`=?, `created`=NOW()';
+        $data = array($feed, $title, $price, $img_name);
         $stmt = $dbh->prepare($sql);
         $stmt->execute($data);
 
@@ -49,8 +49,8 @@
 
   <header>
     <div class="header_logo">
-      <img src="../img/missyou_logo.png" style="width: 20%">
-      <img src="../img/menu_bar.png" style="width: 5%; float: right;">
+      <img src="img/missyou_logo.png" style="width: 20%">
+      <img src="img/menu_bar.png" style="width: 5%; float: right;">
     </div>
   </header>
 
@@ -66,25 +66,25 @@
           <h2 class="text-center content_header">アカウント情報確認</h2>
           <div class="row">
             <div class="col-xs-4">
-              <img src="../user_profile_img/<?php echo htmlspecialchars($img_name); ?>" class="img-responsive img-tumbnail">
+              <img src="user_profile_img/<?php echo htmlspecialchars($img_name); ?>" class="img-responsive img-tumbnail">
             </div>
             
             <div class="col-xs-8">
               <div>
-                <span>名前</span>      
-                <p class="lead"><?php echo htmlspecialchars($name); ?></p>
+                <span>題名</span>      
+                <p class="lead"><?php echo htmlspecialchars($title); ?></p>
               </div>
               <div>
-                <span>メールアドレス</span>
-                <p class="lead"><?php echo htmlspecialchars($email); ?></p>
+                <span>内容</span>
+                <p class="lead"><?php echo htmlspecialchars($feed); ?></p>
               </div>
               <div>
-                <span>パスワード</span>
-                <p class="lead">●●●●●●●●●●</p>
+                <span>価格</span>
+                <p class="lead"><?php echo htmlspecialchars($price); ?></p>
               </div>
     
                 <form method="POST" action="">
-                  <a href="signup.php" class="btn" onclick="history.back()">&laquo;&nbsp;戻る</a>
+                  <a href="post.php" class="btn" onclick="history.back()">&laquo;&nbsp;戻る</a>
                   <input type="hidden" name="action" value="submit">
                   <input type="submit" class="btn btn-primary" value="登録">
                 </form>
