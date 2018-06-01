@@ -7,8 +7,8 @@
   <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.css">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-  <link rel="stylesheet" type="text/css" href="assets/css/comment.css">
   <link rel="stylesheet" type="text/css" href="assets/css/elohssa.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/comment.css">
 </head>
 <body>
  <header>
@@ -31,7 +31,7 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-4 col-xs-12 post" style="position: fixed;" >
           <div class="card">
             <img src="img/3.png" style="width: 100%">
             <h4>タイトル</h4>
@@ -39,9 +39,10 @@
             <h4 class="cost">20,000円</h4>
           </div>
         </div>
+      </div>
 
-
-        <div class="col-sm-8 profile">
+      <div class="row">
+        <div class="col-sm-7 col-sm-offset-5 col-xs-12 profile">
           <div class="detail">
             <img src="img/profile.png" >
             <h4>toshiki0523</h4>
@@ -51,22 +52,7 @@
           </div>
         </div>
 
-        <div class="col-sm-8 comment">
-          <div class="detail">
-            <img src="img/konio.png" >
-            <h4>toshiki0523</h4>
-            <br>
-            <br>
-            <p>プロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィール</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-8 col-xs-offset-4 comment" style="margin-top: 0;">
+        <div class="col-sm-7 col-sm-offset-5 col-xs-12 comment">
           <div class="detail">
             <img src="img/konio.png" >
             <h4>toshiki0523</h4>
@@ -76,11 +62,26 @@
           </div>
         </div>
       </div>
+      
     </div>
 
     <div class="container">
       <div class="row">
-        <div class="col-sm-8 col-xs-offset-4 comment">
+        <div class="col-sm-7 col-sm-offset-5 col-xs-12 comment " ">
+          <div class="detail">
+            <img src="img/konio.png" >
+            <h4>toshiki0523</h4>
+            <br>
+            <br>
+            <p>プロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィール</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-7 col-sm-offset-5 col-xs-12 comment">
           <div class="detail">
             <img src="img/konio.png" >
             <h4>toshiki0523</h4>
