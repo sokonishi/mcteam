@@ -62,17 +62,22 @@ $sql = 'SELECT * FROM `feeds` ORDER BY `id` DESC';
       <?php foreach($feeds as $feed){ ?>
       <div class="row">
         <div class="col-sm-4">
+
+
           <div class="card<?php echo $feed_cnt; ?>">
-            <img src="user_profile_img/<?php echo $feed['img_name']; ?>" style="width: 100%">
-            <h4><?php echo $feed['title']; ?></h4>
-            <p><?php echo $feed['feed']; ?></p>
-            <a href="like.php?feed_id=<?php echo $feed["id"]; ?>">
-                      <button class="btn btn-default btn-xs"><i class="fa fa-thumbs-up" aria-hidden="true"></i>いいね！</button>
+            <a href="like.php?feed_id=<?php echo $feed["id"]; ?>" class="noline">
+              <div class="card_item">
+                <img src="user_profile_img/<?php echo $feed['img_name']; ?>" style="width: 100%">
+                <h4><?php echo $feed['title']; ?></h4>
+                <p><?php echo $feed['feed']; ?></p>
+                <button class="btn btn-default btn-xs"><i class="fa fa-thumbs-up" aria-hidden="true"></i>いいね！</button>
+                <span class="like_count">いいね数 : <?php echo $feed["like_cnt"]; ?></span>
+                <h4 class="cost"><?php echo $feed['price']; ?>円</h4>
+              </div><!-- /card_item -->
             </a>
-            <h4 class="cost"><?php echo $feed['price']; ?></h4>
-            <span class="like_count">いいね数 : <?php echo $feed["like_cnt"]; ?></span>
-          </div>
+          </div><!-- /card -->
         </div>
+
         <?php
               if ($feed_cnt > 2) {
                   $feed_cnt = 1;
