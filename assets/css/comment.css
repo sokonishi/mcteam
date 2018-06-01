@@ -1,0 +1,36 @@
+.profile{
+	background-color: white;
+}
+
+.profile img{
+	width: 200px;
+	border-radius: 50%;
+    height: 200px;
+    display:inline;
+    	float: left;
+}
+
+.profile h4{
+	float: left;
+}
+
+.profile p{
+	
+}
+
+.comment{
+	background-color: white;
+	margin-top: 50px;
+}
+
+.comment img{
+	width: 200px;
+	border-radius: 50%;
+    height: 200px;
+    display:inline;
+    	float: left;
+}
+
+.comment h4{
+	float: left;
+}
