@@ -60,7 +60,7 @@ header {
   margin-top: 150px;
 }
 
-.card1, .card_item {
+.card_item {
   background-color: #fff;
 }
 
@@ -80,6 +80,10 @@ header {
 
 
 @media only screen and (min-width: 768px){
+.card1 {
+  margin-top: 0;
+}
+
 .card2 {
   margin-top: 33%;
 }
