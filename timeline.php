@@ -37,7 +37,9 @@ $sql = 'SELECT * FROM `feeds` ORDER BY `id` DESC';
   <link rel="stylesheet" type="text/css" href="assets/css/elohssa.css">
 </head>
 <body>
-  <?php require('partial/css_link.php'); ?>
+
+  <?php require('header.php'); ?>
+
 
   <div class="background">
     <div class="container">
