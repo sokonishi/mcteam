@@ -9,12 +9,7 @@
   <link rel="stylesheet" type="text/css" href="assets/css/elohssa.css">
 </head>
 <body>
- <header>
-  <div class="header_logo">
-    <img src="img/missyou_logo.png" style="width: 20%">
-    <img src="img/menu_bar.png" style="width: 5%; float: right;">
-  </div>
- </header>
+  <?php require('header.php'); ?>
 
   <div class="background">
     <div class="container">
