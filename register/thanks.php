@@ -26,7 +26,7 @@
 
           <div class="text-center">
             <p>登録完了しました</p>
-            <a href="signin.php" class="btn btn-danger">サインイン</a>
+            <a href="../signin.php" class="btn btn-danger">サインイン</a>
           </div>
         </div>
       </div><!-- /row -->

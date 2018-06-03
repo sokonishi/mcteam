@@ -60,7 +60,7 @@ header {
   margin-top: 150px;
 }
 
-.card1, .card2, .card3 {
+.card_item {
   background-color: #fff;
 }
 
@@ -68,12 +68,22 @@ header {
   height: 600px;
 }
 
-.card1 {
-  background-color: #fff;
+.noline {
+  text-decoration: none;
+  color: black;
+}
+
+.noline:hover {
+  color: black;
+  text-decoration: none;
 }
 
 
 @media only screen and (min-width: 768px){
+.card1 {
+  margin-top: 0;
+}
+
 .card2 {
   margin-top: 33%;
 }

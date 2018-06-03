@@ -1,0 +1,55 @@
+.post{
+
+}
+
+@media only screen and (max-width: 750px) {
+.post { position: static !important; }
+}
+
+.profile{
+	background-color: white;
+}
+
+@media only screen and (max-width: 750px) {
+.profile { margin-top: 50px !important; }
+}
+
+.profile img{
+	width: 200px;
+	border-radius: 50%;
+    height: 200px;
+    display:inline;
+    	float: left;
+}
+
+.profile h4{
+	float: left;
+}
+
+.profile p{
+	
+}
+
+/* パソコンで見たときは"pc"のclassがついた画像が表示される */
+.comment{
+	background-color: white;
+	margin-top: 50px;
+
+}
+
+/* スマートフォンで見たときは"sp"のclassがついた画像が表示される */
+@media only screen and (max-width: 750px) {
+.comment { margin-top: 50px !important; }
+}
+
+.comment img{
+	width: 200px;
+	border-radius: 50%;
+    height: 200px;
+    display:inline;
+    	float: left;
+}
+
+.comment h4{
+	float: left;
+}
