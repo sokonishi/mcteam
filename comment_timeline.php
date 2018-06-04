@@ -1,3 +1,23 @@
+<?php 
+  session_start();
+    require('dbconnect.php');
+
+  $feed_id = $_GET['feed_id'];
+
+  $sql = 'SELECT * FROM `feeds` WHERE `id`=?';
+  $data = array($feed_id);
+  $stmt = $dbh->prepare($sql);
+  $stmt->execute($data);
+
+  $record = $stmt->fetch(PDO::FETCH_ASSOC);
+
+  //echo '<pre>';
+  var_dump($feed_id);
+  //echo '<pre>';
+
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -33,10 +53,10 @@
       <div class="row">
         <div class="col-sm-4 col-xs-12 post" style="position: fixed;" >
           <div class="card">
-            <img src="img/3.png" style="width: 100%">
-            <h4>タイトル</h4>
-            <p>ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。</p>
-            <h4 class="cost">20,000円</h4>
+            <img src="user_profile_img/<?php echo $record['img_name'] ?>" style="width: 100%">
+            <h4><?php echo $record['title'] ?></h4>
+            <p><?php echo $record['feed'] ?></p>
+            <h4 class="cost"><?php echo $record['price'] ?>円</h4>
           </div>
         </div>
       </div>
