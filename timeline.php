@@ -64,14 +64,14 @@
       <div class="row col-xs-offset-10">
         <div class="copy_img top">
           <img src="img/copy.png" style="width: 50%">
-        </div>
-      </div>
-    </div>
+        </div><!-- /copy-img -->
+      </div><!-- /row -->
+    </div><!-- /container -->
 
     <div class="container">
       <div class="row space_timeline">
-      </div>
-    </div>
+      </div><!-- /row -->
+    </div><!-- /container -->
 
     <div class="container">
       <?php foreach($feeds as $feed){ ?>
@@ -80,6 +80,7 @@
 
 
           <div class="card<?php echo $feed_cnt; ?>">
+            <a href="comment_timeline.php?=<?php echo $feed["id"] ?>" class="noline">
               <div class="card_item">
                 <img src="user_profile_img/<?php echo $feed['img_name']; ?>" style="width: 100%">
                 <h4><?php echo $feed['title']; ?></h4>
@@ -111,9 +112,9 @@
               }
           }
         ?>
-      </div>
-    </div>
-  </div>
+      </div><!-- /row -->
+    </div><!-- /container -->
+  </div><!-- /background -->
 
 
   <script src="assets/js/jquery-3.1.1.js"></script>
