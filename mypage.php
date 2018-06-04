@@ -9,10 +9,10 @@
 
   $record = $stmt->fetch(PDO::FETCH_ASSOC);
 
-  $sql = 'SELECT * FROM `profiles` WHERE `user_id`=?';
-  $data = array($_SESSION['id']);
-  $stmt = $dbh->prepare($sql);
-  $stmt->execute($data);
+  // $sql = 'SELECT * FROM `profiles` WHERE `user_id`=?';
+  // $data = array($_SESSION['id']);
+  // $stmt = $dbh->prepare($sql);
+  // $stmt->execute($data);
 
   $rec_profile = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -35,16 +35,14 @@
     $like_stmt = $dbh->prepare($like_sql);
     $like_stmt->execute($like_data);
     $rec = $like_stmt->fetch(PDO::FETCH_ASSOC);
-
-    $feeds[] = $rec;
-    var_dump($rec);
-
-    if ($likes == false) {
+    // echo "<pre>";
+    // var_dump($rec);
+    // echo "</pre>";
+    if ($rec == false) {
       break;
     }
+    $feeds[] = $rec;
   }
-
-
  ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -71,10 +69,9 @@
           <div class="col-xs-3 col-md-2 col-lg-1">
             <img src="user_profile_img/<?php echo $record['img_name']; ?>">
           </div>
-            <h6>toshio0523</h6>
-            <p>投稿 : <?php echo $record_cnt["cnt"]; ?>件  フォロワー98人 フォロー中129件</p>
             <h6><?php echo $record['name']; ?></h6>
-            <p><?php echo $rec_profile['introduction']; ?></p>
+            <p>投稿 : <?php echo $record_cnt["cnt"]; ?>件  フォロワー98人 フォロー中129件</p>
+            <p><?php echo $record['introduction']; ?></p>
             <a href="post_profile.php">プロフィールを編集</a>
         </div>
       </div>
@@ -90,8 +87,8 @@
     </div>
 
     <div class="container">
-      <?php foreach($feeds as $feed){ ?>
       <div class="row">
+      <?php foreach($feeds as $feed){ ?>
         <div class="col-sm-4">
           <div class="card1">
             <img src="user_profile_img/<?php echo $feed["img_name"]; ?>" style="width: 100%">
