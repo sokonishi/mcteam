@@ -18,18 +18,13 @@
             <a class="nav-link" href="timeline.php">ホーム<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="mypage.php">マイページ</a>
+            <a class="nav-link disabled" href="mypage.php">マイページ</a>
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="post.php">投稿</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="signout.php" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">サインアウト</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="signout.php">サインアウト</a>
           </li>
         </ul>
 
