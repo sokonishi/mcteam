@@ -1,3 +1,51 @@
+<?php 
+  session_start();
+    require('dbconnect.php');
+
+  $sql = 'SELECT * FROM `users` WHERE `id`=?';
+  $data = array($_SESSION['id']);
+  $stmt = $dbh->prepare($sql);
+  $stmt->execute($data);
+
+  $record = $stmt->fetch(PDO::FETCH_ASSOC);
+
+  $sql = 'SELECT * FROM `profiles` WHERE `user_id`=?';
+  $data = array($_SESSION['id']);
+  $stmt = $dbh->prepare($sql);
+  $stmt->execute($data);
+
+  $rec_profile = $stmt->fetch(PDO::FETCH_ASSOC);
+
+  $sql_count = "SELECT COUNT(*) as `cnt` FROM `feeds` WHERE `user_id`=?";
+  $data_cnt = array($_SESSION['id']);
+  $stmt_count = $dbh->prepare($sql_count);
+  $stmt_count->execute($data_cnt);
+
+  $record_cnt = $stmt_count->fetch(PDO::FETCH_ASSOC);
+
+  $sql = 'SELECT * FROM `likes` WHERE `user_id`=?';
+  $data = array($_SESSION['id']);
+  $stmt = $dbh->prepare($sql);
+  $stmt->execute($data);
+  while (true) {
+    $likes = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $like_sql = 'SELECT * FROM `feeds` WHERE `id`=?';
+    $like_data = array($likes["feed_id"]);
+    $like_stmt = $dbh->prepare($like_sql);
+    $like_stmt->execute($like_data);
+    $rec = $like_stmt->fetch(PDO::FETCH_ASSOC);
+
+    $feeds[] = $rec;
+    var_dump($rec);
+
+    if ($likes == false) {
+      break;
+    }
+  }
+
+
+ ?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -21,12 +69,13 @@
       <div class="row">
         <div class="profile_card">
           <div class="col-xs-3 col-md-2 col-lg-1">
-            <img src="img/item_img.png">
+            <img src="user_profile_img/<?php echo $record['img_name']; ?>">
           </div>
             <h6>toshio0523</h6>
-            <p>投稿5件 フォロワー98人 フォロー中129件</p>
-            <h6>苗字　名前</h6>
-            <p>プロフィールが入ります。プロフィールが入ります。プロフィールが入ります。プロフィールが入ります。</p>
+            <p>投稿 : <?php echo $record_cnt["cnt"]; ?>件  フォロワー98人 フォロー中129件</p>
+            <h6><?php echo $record['name']; ?></h6>
+            <p><?php echo $rec_profile['introduction']; ?></p>
+            <a href="post_profile.php">プロフィールを編集</a>
         </div>
       </div>
     </div>
@@ -41,103 +90,25 @@
     </div>
 
     <div class="container">
+      <?php foreach($feeds as $feed){ ?>
       <div class="row">
         <div class="col-sm-4">
           <div class="card1">
-            <img src="img/item_img.png" style="width: 100%">
-            <h4>タイトル</h4>
-            <p>ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。</p>
-            <h4 class="cost">20,000円</h4>
+            <img src="user_profile_img/<?php echo $feed["img_name"]; ?>" style="width: 100%">
+            <h4><?php echo $feed["title"]; ?></h4>
+            <p><?php echo $feed["feed"]; ?></p>
+            <h4 class="cost"><?php echo $feed["price"] ?>円</h4>
             <div class="purchase">
               <button type="button" class="btn btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i> カートに入れる</button>
             </div>
           </div>
-          <!-- /card1 -->
         </div>
-        <div class="col-sm-4">
-          <div class="card1">
-            <img src="img/item_img.png" style="width: 100%">
-            <h4>タイトル</h4>
-            <p>ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。</p>
-            <h4 class="cost">20,000円</h4>
-            <div class="purchase">
-              <button type="button" class="btn btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i> カートに入れる</button>
-            </div>
-          </div>
-          <!-- /card1 -->
-        </div>
-        <div class="col-sm-4">
-          <div class="card1">
-            <img src="img/item_img.png" style="width: 100%">
-            <h4>タイトル</h4>
-            <p>ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。</p>
-            <h4 class="cost">20,000円</h4>
-            <div class="purchase">
-              <button type="button" class="btn btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i> カートに入れる</button>
-            </div>
-          </div>
-          <!-- /card1 -->
-        </div>
+        <?php } ?>
       </div>
     </div>
-    <!-- /container -->
-
-    <div class="container">
-      <div class="row col-xs-offset-5">
-        <ul class="mypage_nav">
-          <li class="nav_item"><a href="#">投稿</a></li>
-          <li class="nav_item"><a href="#">お気に入り</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-4">
-          <div class="card1">
-            <img src="img/item_img.png" style="width: 100%">
-            <h4>タイトル</h4>
-            <p>ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。</p>
-            <h4 class="cost">20,000円</h4>
-            <div class="purchase">
-              <button type="button" class="btn btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i> カートに入れる</button>
-            </div>
-          </div>
-          <!-- /card1 -->
-        </div>
-        <div class="col-sm-4">
-          <div class="card1">
-            <img src="img/item_img.png" style="width: 100%">
-            <h4>タイトル</h4>
-            <p>ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。</p>
-            <h4 class="cost">20,000円</h4>
-            <div class="purchase">
-              <button type="button" class="btn btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i> カートに入れる</button>
-            </div>
-          </div>
-          <!-- /card1 -->
-        </div>
-        <div class="col-sm-4">
-          <div class="card1">
-            <img src="img/item_img.png" style="width: 100%">
-            <h4>タイトル</h4>
-            <p>ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。</p>
-            <h4 class="cost">20,000円</h4>
-            <div class="purchase">
-              <button type="button" class="btn btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i> カートに入れる</button>
-            </div>
-          </div>
-          <!-- /card1 -->
-        </div>
-
-
-      </div>
-      <!-- /row -->
-    </div>
-    <!-- /container -->
   </div>
   <!-- /background -->
-  
+
 
   <script src="assets/js/jquery-3.1.1.js"></script>
   <script src="assets/js/jquery-migrate-1.4.1.js"></script>
