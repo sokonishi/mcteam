@@ -1,5 +1,6 @@
 <?php
     session_start();
+
     $errors = array();    //この配列の意味はエラーの種類
 
     if (!empty($_POST)) {   //POST送信があった時に以下を実行する
