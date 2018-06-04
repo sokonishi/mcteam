@@ -9,12 +9,7 @@
   <link rel="stylesheet" type="text/css" href="assets/css/elohssa.css">
 </head>
 <body>
- <header>
-  <div class="header_logo">
-    <img src="img/missyou_logo.png" style="width: 20%">
-    <img src="img/menu_bar.png" style="width: 5%; float: right;">
-  </div>
- </header>
+  <?php require('header.php'); ?>
 
   <div class="background">
 
@@ -32,15 +27,17 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-4">
-          <a href="comment_timeline.php" class="noline">
-          <h4>第１位</h4>
-          <div class="card1 card_item">
-              <img src="img/item_img.png" style="width: 100%">
-            <h4>タイトル</h4>
-            <p>ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。</p>
-            <h4 class="cost">20,000円</h4>
-          </div><!-- /card1 -->
-          </a>
+          <div class="card1">
+            <a href="comment_timeline.php" class="noline">
+              <h4>第1位</h4>
+              <div class="card_item">
+                <img src="img/item_img.png" style="width: 100%">
+                <h4>タイトル</h4>
+                <p>ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。</p>
+                <h4 class="cost">20,000円</h4>
+              </div><!-- /card_item -->
+            </a>
+          </div><!-- card1 -->
         </div>
 
         <div class="col-sm-4">
@@ -75,15 +72,17 @@
 
       <div class="row">
         <div class="col-sm-4">
-          <a href="comment_timeline.php" class="noline">
-            <h4>第4位</h4>
-            <div class="card1">
-              <img src="img/item_img.png" style="width: 100%">
-              <h4>タイトル</h4>
-              <p>ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。</p>
-              <h4 class="cost">20,000円</h4>
-            </div><!-- /card1 -->
-          </a>  
+          <div class="card1">
+            <a href="comment_timeline.php" class="noline">
+              <h4>第4位</h4>
+              <div class="card_item">
+                <img src="img/item_img.png" style="width: 100%">
+                <h4>タイトル</h4>
+                <p>ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。</p>
+                <h4 class="cost">20,000円</h4>
+              </div><!-- /card_item -->
+            </a>
+          </div><!-- card1 -->
         </div>
 
         <div class="col-sm-4">
@@ -119,15 +118,17 @@
 
       <div class="row">
         <div class="col-sm-4">
-          <a href="comment_timeline.php" class="noline">
-            <h4>第7位</h4>
-            <div class="card1">
-              <img src="img/item_img.png" style="width: 100%">
-              <h4>タイトル</h4>
-              <p>ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。</p>
-              <h4 class="cost">20,000円</h4>
-            </div><!-- /card1 -->
-          </a>
+          <div class="card1">
+            <a href="comment_timeline.php" class="noline">
+              <h4>第１位</h4>
+              <div class="card_item">
+                <img src="img/item_img.png" style="width: 100%">
+                <h4>タイトル</h4>
+                <p>ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。ここにストーリが入ります。</p>
+                <h4 class="cost">20,000円</h4>
+              </div><!-- /card_item -->
+            </a>
+          </div><!-- card1 -->
         </div>
 
         <div class="col-sm-4">
