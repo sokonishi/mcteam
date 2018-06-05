@@ -1,6 +1,7 @@
 <?php 
   session_start();
     require('dbconnect.php');
+    //var_dump($_SESSION);
 
   $feed_id = $_GET['feed_id'];
 
@@ -12,9 +13,24 @@
   $record = $stmt->fetch(PDO::FETCH_ASSOC);
 
   //echo '<pre>';
-  var_dump($feed_id);
+  //var_dump($feed_id);
   //echo '<pre>';
 
+  $users_sql = 'SELECT * FROM `users` WHERE `id`=?';
+  $users_data = array($_SESSION['id']);
+  $users_stmt = $dbh->prepare($users_sql);
+  $users_stmt->execute($users_data);
+
+  $users_record = $users_stmt->fetch(PDO::FETCH_ASSOC);
+
+  //var_dump($users_record);
+
+  $sql_count = "SELECT COUNT(*) as `cnt` FROM `feeds` WHERE `id`=?";
+  $data_cnt = array($feed_id);
+  $stmt_count = $dbh->prepare($sql_count);
+  $stmt_count->execute($data_cnt);
+
+  $record_cnt = $stmt_count->fetch(PDO::FETCH_ASSOC);
 
  ?>
 
@@ -64,11 +80,11 @@
       <div class="row">
         <div class="col-sm-7 col-sm-offset-5 col-xs-12 profile">
           <div class="detail">
-            <img src="img/profile.png" >
-            <h4>toshiki0523</h4>
+            <img src="user_profile_img/<?php echo $users_record['img_name'] ?>" >
+            <h4><?php echo $users_record['name'] ?></h4>
             <br>
-            <br>
-            <p>プロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィール</p>
+            <p>投稿 : <?php echo $record_cnt["cnt"]; ?>件  フォロワー98人 フォロー中129件</p>
+            <p><?php echo $users_record['introduction'] ?></p>
           </div>
         </div>
 
