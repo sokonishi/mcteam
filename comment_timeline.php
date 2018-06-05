@@ -15,6 +15,22 @@
   var_dump($feed_id);
   //echo '<pre>';
 
+  $users_sql = 'SELECT * FROM `users` WHERE `id`=?';
+  $users_data = array($_SESSION['id']);
+  $users_stmt = $dbh->prepare($users_sql);
+  $users_stmt->execute($users_data);
+
+  $users_record = $users_stmt->fetch(PDO::FETCH_ASSOC);
+
+  //var_dump($users_record);
+
+  $sql_count = "SELECT COUNT(*) as `cnt` FROM `feeds` WHERE `id`=?";
+  $data_cnt = array($feed_id);
+  $stmt_count = $dbh->prepare($sql_count);
+  $stmt_count->execute($data_cnt);
+
+  $record_cnt = $stmt_count->fetch(PDO::FETCH_ASSOC);
+
  ?>
 
 <!DOCTYPE html>
