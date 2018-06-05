@@ -15,7 +15,6 @@
   var_dump($feed_id);
   //echo '<pre>';
 
-
  ?>
 
 <!DOCTYPE html>
@@ -57,6 +56,15 @@
             <h4><?php echo $record['title'] ?></h4>
             <p><?php echo $record['feed'] ?></p>
             <h4 class="cost"><?php echo $record['price'] ?>円</h4>
+            <div id="fb-root"></div>
+            <script>(function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return;
+              js = d.createElement(s); js.id = id;
+              js.src = 'https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v3.0';
+              fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+            <div class="fb-share-button" data-href="#" data-layout="button" data-size="large" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">シェア</a></div>
           </div>
         </div>
       </div>
