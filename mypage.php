@@ -79,19 +79,19 @@
       <?php if (isset($feeds)) {
             foreach($feeds as $feed) { ?>
         <div class="col-sm-4">
-          <div class="card1">
-            <img src="user_profile_img/<?php echo $feed["img_name"]; ?>" style="width: 100%">
-            <h4><?php echo $feed["title"]; ?></h4>
-            <p><?php echo $feed["feed"]; ?></p>
-            <h4 class="cost"><?php echo $feed["price"] ?>円</h4>
-            <div class="purchase">
-              <button type="button" class="btn btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i> カートに入れる</button>
-            </div>
-          </div>
+          <a href="comment_timeline.php?feed_id=<?php echo $feed["id"] ?>" class="noline">
+            <div class="card1 card_item">
+              <img src="user_profile_img/<?php echo $feed["img_name"]; ?>" style="width: 100%">
+              <h4><?php echo $feed["title"]; ?></h4>
+              <p><?php echo $feed["feed"]; ?></p>
+              <h4 class="cost"><?php echo $feed["price"] ?>円</h4>
+              
+            </div><!-- /card1 -->
+          </a>
         </div>
         <?php }} ?>
-      </div>
-    </div>
+      </div><!-- /row -->
+    </div><!-- /container -->
   </div><!-- /background -->
 
 

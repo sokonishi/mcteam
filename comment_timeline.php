@@ -47,13 +47,7 @@
   <link rel="stylesheet" type="text/css" href="assets/css/comment.css">
 </head>
 <body>
- <header>
-  <div class="header_logo">
-    <img src="img/missyou_logo.png" style="width:20%">
-    <img src="img/menu_bar.png" style="width: 5%; float: right;">
-  </div>
-    
- </header>
+  <?php require('header.php'); ?>
 
   <div class="background">
     <div class="container">
@@ -68,11 +62,16 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-4 col-xs-12 post" style="position: fixed;" >
-          <div class="card">
+          <div class="card_item ">
             <img src="user_profile_img/<?php echo $record['img_name'] ?>" style="width: 100%">
             <h4><?php echo $record['title'] ?></h4>
             <p><?php echo $record['feed'] ?></p>
             <h4 class="cost"><?php echo $record['price'] ?>円</h4>
+            <div class="purchase">
+              <a href="purchase.php#" class="noline">
+                <button type="button" class="btn btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i> カートに入れる</button>
+              </a>
+              </div><!-- /purchase -->
             <div id="fb-root"></div>
             <script>(function(d, s, id) {
               var js, fjs = d.getElementsByTagName(s)[0];
@@ -82,9 +81,9 @@
               fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));</script>
             <div class="fb-share-button" data-href="#" data-layout="button" data-size="large" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">シェア</a></div>
-          </div>
+          </div><!-- /card_item -->
         </div>
-      </div>
+      </div><!-- /row -->
 
       <div class="row">
         <div class="col-sm-7 col-sm-offset-5 col-xs-12 profile">
@@ -94,7 +93,7 @@
             <br>
             <p>投稿 : <?php echo $record_cnt["cnt"]; ?>件  フォロワー98人 フォロー中129件</p>
             <p><?php echo $users_record['introduction'] ?></p>
-          </div>
+          </div><!-- /detail -->
         </div>
 
         <div class="col-sm-7 col-sm-offset-5 col-xs-12 comment">
@@ -104,11 +103,11 @@
             <br>
             <br>
             <p>プロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィール</p>
-          </div>
+          </div><!-- /ditail -->
         </div>
-      </div>
+      </div><!-- /row -->
       
-    </div>
+    </div><!-- /container -->
 
     <div class="container">
       <div class="row">
