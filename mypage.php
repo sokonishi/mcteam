@@ -9,11 +9,6 @@
 
   $record = $stmt->fetch(PDO::FETCH_ASSOC);
 
-  // $sql = 'SELECT * FROM `profiles` WHERE `user_id`=?';
-  // $data = array($_SESSION['id']);
-  // $stmt = $dbh->prepare($sql);
-  // $stmt->execute($data);
-
   $rec_profile = $stmt->fetch(PDO::FETCH_ASSOC);
 
   $sql_count = "SELECT COUNT(*) as `cnt` FROM `feeds` WHERE `user_id`=?";
@@ -23,25 +18,18 @@
 
   $record_cnt = $stmt_count->fetch(PDO::FETCH_ASSOC);
 
-  $sql = 'SELECT * FROM `likes` WHERE `user_id`=?';
+  $sql = 'SELECT `l`.*,`f`.* FROM `likes` AS `l` LEFT JOIN `feeds` AS `f` ON `l`.`feed_id`=`f`.`id` WHERE `l`.`user_id`=?';
+
   $data = array($_SESSION['id']);
   $stmt = $dbh->prepare($sql);
   $stmt->execute($data);
+
   while (true) {
     $likes = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    $like_sql = 'SELECT * FROM `feeds` WHERE `id`=?';
-    $like_data = array($likes["feed_id"]);
-    $like_stmt = $dbh->prepare($like_sql);
-    $like_stmt->execute($like_data);
-    $rec = $like_stmt->fetch(PDO::FETCH_ASSOC);
-    // echo "<pre>";
-    // var_dump($rec);
-    // echo "</pre>";
-    if ($rec == false) {
+    if ($likes == false) {
       break;
     }
-    $feeds[] = $rec;
+    $feeds[] = $likes;
   }
  ?>
 <!DOCTYPE html>
@@ -88,7 +76,8 @@
 
     <div class="container">
       <div class="row">
-      <?php foreach($feeds as $feed){ ?>
+      <?php if (isset($feeds)) {
+            foreach($feeds as $feed) { ?>
         <div class="col-sm-4">
           <div class="card1">
             <img src="user_profile_img/<?php echo $feed["img_name"]; ?>" style="width: 100%">
@@ -100,7 +89,7 @@
             </div>
           </div>
         </div>
-        <?php } ?>
+        <?php }} ?>
       </div>
     </div>
   </div>
