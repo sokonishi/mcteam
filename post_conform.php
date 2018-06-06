@@ -40,63 +40,51 @@
 <head>
     <meta charset="utf-8">
     <title>missyou</title>
-    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../assets/font-awesome/css/font-awesome.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/elohssa.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/elohssa.css">
 </head>
 <body>
 
-  <header>
-    <div class="header_logo">
-      <img src="img/missyou_logo.png" style="width: 20%">
-      <img src="img/menu_bar.png" style="width: 5%; float: right;">
-    </div>
-  </header>
+  <?php require('header.php'); ?>
 
-  <div class="background_signup">
+  <div class="background">
     <div class="container">
       <div class="row space_mypage">
       </div><!-- /row -->
     </div><!-- /container -->
 
-    <div class="container">
-        <div class="row">
-          <div class="col-xs-8 col-xs-offset-2">
-          <h2 class="text-center content_header">アカウント情報確認</h2>
-          <div class="row">
-            <div class="col-xs-4">
-              <img src="user_profile_img/<?php echo htmlspecialchars($img_name); ?>" class="img-responsive img-tumbnail">
-            </div>
-            
-            <div class="col-xs-8">
-              <div>
-                <span>題名</span>      
-                <p class="lead"><?php echo htmlspecialchars($title); ?></p>
-              </div>
-              <div>
-                <span>内容</span>
-                <p class="lead"><?php echo htmlspecialchars($feed); ?></p>
-              </div>
-              <div>
-                <span>価格</span>
-                <p class="lead"><?php echo htmlspecialchars($price); ?></p>
-              </div>
-    
-                <form method="POST" action="">
-                  <a href="post.php" class="btn" onclick="history.back()">&laquo;&nbsp;戻る</a>
-                  <input type="hidden" name="action" value="submit">
-                  <input type="submit" class="btn btn-primary" value="登録">
-                </form>
-            </div>
-          </div>
-        </div>
-      </div><!-- /row -->
-    </div><!-- /container -->
-  </div><!-- /background_signup -->
 
-  <script src="../assets/js/jquery-3.1.1.js"></script>
-  <script src="../assets/js/jquery-migrate-1.4.1.js"></script>
-  <script src="../assets/js/bootstrap.js"></script>
+          <h2 class="text-center content_header">投稿確認</h2>
+          <div class="container">
+            <div class="row col-xs-offset-4 col-xs-4">
+              <div class="card_item">
+                <img style="width: 100%" src="user_profile_img/<?php echo htmlspecialchars($img_name); ?>" class="img-responsive img-tumbnail">
+                <div>
+                  <h4 class="lead"><?php echo htmlspecialchars($title); ?></h4>
+                  <p class="lead"><?php echo htmlspecialchars($feed); ?></p>
+                  <h4 class="cost" style="color: red;"><?php echo htmlspecialchars($price); ?>円</h4>
+                </div>
+              </div><!-- /card_item -->
+            </div><!-- /row -->
+          </div><!-- /container -->
+          <div class="container">
+            <div class="row text-center" style="margin-top: 50px;">
+              <form method="POST" action="">
+                <a href="post.php" class="btn" onclick="history.back()">&laquo;&nbsp;戻る</a>
+                <input type="hidden" name="action" value="submit">
+                <input type="submit" class="btn btn-primary" value="登録">
+              </form>
+            </div><!-- /row -->
+          </div><!-- /container -->
+            
+
+      </div>
+
+
+  <script src="assets/js/jquery-3.1.1.js"></script>
+  <script src="assets/js/jquery-migrate-1.4.1.js"></script>
+  <script src="assets/js/bootstrap.js"></script>
 </body>
 </html>
