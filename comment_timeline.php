@@ -32,6 +32,48 @@
 
   $record_cnt = $stmt_count->fetch(PDO::FETCH_ASSOC);
 
+  $errors = array();
+
+  if (!empty($_POST)) {
+
+    $comment = $_POST['comment'];
+
+    if ($comment != '') {
+      $comment_sql = 'INSERT INTO `comments` SET `comment`=?, `feed_id`=?,`user_id`=?, `created`=NOW()';
+      $comment_data = array($comment, $feed_id, $_SESSION['id']);
+      $comment_stmt = $dbh->prepare($comment_sql);
+      $comment_stmt->execute($comment_data);
+
+      //------------重要--------------
+      header('Location: comment_timeline.php?feed_id='.$feed_id);
+      exit();
+      } else {
+        $errors['comment'] = 'blank';
+      }
+    }
+  //echo '<pre>';
+  //var_dump($users_record);
+  //echo '<pre>';
+
+  $post_sql = "SELECT `c`.*, `u`.`name` , `u`.`img_name` ,`u`.`introduction` FROM `comments` AS `c` LEFT JOIN `users` AS `u` ON `c`.`user_id` = `u`.`id` WHERE `feed_id` = ? ORDER BY `c`.`created` DESC";
+
+  $post_data = array($feed_id);
+  $post_stmt = $dbh->prepare($post_sql);
+  $post_stmt->execute($post_data);
+
+  $comments = array();
+  while (true) {
+    $post_record = $post_stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($post_record == false){
+      break;
+    } 
+    $comments[] = $post_record;
+  }
+  //echo '<pre>';
+  //var_dump($comments);
+  //echo '<pre>';
+  
  ?>
 
 <!DOCTYPE html>
@@ -90,45 +132,31 @@
 
         <div class="col-sm-7 col-sm-offset-5 col-xs-12 comment">
           <div class="detail">
-            <img src="img/konio.png" >
-            <h4>toshiki0523</h4>
+            <!-- headerと同様にactionに'Location: comment_timeline.php?feed_id='.$feed_idでも可能 -->
+              <form method="POST" action="">
+                <div class="form-group">
+                  <!-- textareaは改行しないでしめる -->
+                  <textarea name="comment" class="form-control" rows="2" placeholder="" style="font-size: 24px;"></textarea>
+                  <?php if(isset($errors['feed']) && $errors['feed'] == 'blank') { ?>
+                    <p class="alert alert-danger">何か入力してください</p>
+                  <?php } ?>
+                </div>
+                <input type="submit" value="コメント" class="btn btn-primary">
+              </form>
+
+            <?php foreach($comments as $comment) {?>
+            <img src="user_profile_img/<?php echo $comment['img_name'] ?>" >
+            <h4><?php echo $comment['name'] ?></h4>
             <br>
             <br>
-            <p>プロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィール</p>
+            <p><?php echo $comment['comment'] ?></p><br>
+            <?php } ?>
+
           </div>
         </div>
       </div>
       
     </div>
-
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-7 col-sm-offset-5 col-xs-12 comment " ">
-          <div class="detail">
-            <img src="img/konio.png" >
-            <h4>toshiki0523</h4>
-            <br>
-            <br>
-            <p>プロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィール</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-7 col-sm-offset-5 col-xs-12 comment">
-          <div class="detail">
-            <img src="img/konio.png" >
-            <h4>toshiki0523</h4>
-            <br>
-            <br>
-            <p>プロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィール</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
 
 
   <script src="assets/js/jquery-3.1.1.js"></script>
