@@ -66,35 +66,43 @@
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/elohssa.css">
   </head>
-  <body style="margin-top: 60px">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-8 col-xs-offset-2 thumbnail">
-          <h2 class="text-center content_header">サインイン</h2>
-          <form method="POST" action="" enctype="multipart/form-data">
-            <div class="form-group">
-              <label for="email">メールアドレス</label>
-              <input type="email" name="input_email" class="form-control" id="email" placeholder="example@gmail.com">
-               <?php if(isset($errors['email']) && $errors['email'] == 'blank') { ?>
-                <p class="text-danger">メールアドレスを入力してください</p>
-              <?php } ?>
-            </div>
-            <div class="form-group">
-              <label for="password">パスワード</label>
-              <input type="password" name="input_password" class="form-control" id="password" placeholder="4 ~ 16文字のパスワード">
-              <?php if(isset($errors['password']) && $errors['password'] == 'blank') { ?>
-                <p class="text-danger">パスワードを入力してください</p>
-              <?php } ?>
-              <?php if(isset($errors['signin']) && $errors['signin'] == 'failed') { ?>
-                <p class="text-danger">サインインに失敗しました</p>
-              <?php } ?>
-            </div>
-            <input type="submit" class="btn btn-info" value="サインイン">
-          </form>
-        </div>
-      </div>
-    </div>
+  <body>
+    <?php require('header.php'); ?>
+    <div class="background_signup">
+      <div class="container">
+        <div class="row space_mypage">
+        </div><!-- /row -->
+      </div><!-- /container -->
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-8 col-xs-offset-2">
+            <h2 class="text-center content_header">サインイン</h2>
+            <form method="POST" action="" enctype="multipart/form-data">
+              <div class="form-group">
+                <label for="email">メールアドレス</label>
+                <input type="email" name="input_email" class="form-control" id="email" placeholder="example@gmail.com">
+                <?php if(isset($errors['email']) && $errors['email'] == 'blank') { ?>
+                  <p class="text-danger">メールアドレスを入力してください</p>
+                <?php } ?>
+              </div><!-- /form-group -->
+              <div class="form-group">
+                <label for="password">パスワード</label>
+                <input type="password" name="input_password" class="form-control" id="password" placeholder="4 ~ 16文字のパスワード">
+                <?php if(isset($errors['password']) && $errors['password'] == 'blank') { ?>
+                  <p class="text-danger">パスワードを入力してください</p>
+                <?php } ?>
+                <?php if(isset($errors['signin']) && $errors['signin'] == 'failed') { ?>
+                  <p class="text-danger">サインインに失敗しました</p>
+                <?php } ?>
+              </div><!-- /form-group -->
+              <input type="submit" class="btn btn-info" value="サインイン">
+            </form>
+          </div>
+        </div><!-- /row -->
+      </div><!-- /container -->
+    </div><!-- /background_signup -->
     <script src="assets/js/jquery-3.1.1.js"></script>
     <script src="assets/js/jquery-migrate-1.4.1.js"></script>
     <script src="assets/js/bootstrap.js"></script>
