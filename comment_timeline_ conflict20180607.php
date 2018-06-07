@@ -140,22 +140,41 @@
 
         <div class="col-sm-7 col-sm-offset-5 col-xs-12 comment">
           <div class="detail">
+<<<<<<< HEAD
+            <img src="img/konio.png" >
+            <h4>toshiki0523</h4>
+            <br>
+            <br>
+            <p>プロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィールプロフィール</p>
+          </div><!-- /ditail -->
+        </div>
+      </div><!-- /row -->
+      
+    </div><!-- /container -->
 
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-7 col-sm-offset-5 col-xs-12 comment " ">
+          <div class="detail">
+            <img src="img/konio.png" >
+            <h4>toshiki0523</h4>
+=======
             <!-- headerと同様にactionに'Location: comment_timeline.php?feed_id='.$feed_idでも可能 -->
               <form method="POST" action="">
                 <div class="form-group">
                   <!-- textareaは改行しないでしめる -->
-                  <textarea name="comment" class="form-control" rows="2" placeholder="コメントを書いてください" style="font-size: 24px; margin-top: 50px "></textarea>
+                  <textarea name="comment" class="form-control" rows="2" placeholder="" style="font-size: 24px;"></textarea>
                   <?php if(isset($errors['feed']) && $errors['feed'] == 'blank') { ?>
                     <p class="alert alert-danger">何か入力してください</p>
                   <?php } ?>
                 </div>
-                <input type="submit" value="コメント" class="btn btn-primary" style="margin-bottom: 50px">
+                <input type="submit" value="コメント" class="btn btn-primary">
               </form>
 
             <?php foreach($comments as $comment) {?>
             <img src="user_profile_img/<?php echo $comment['img_name'] ?>" >
             <h4><?php echo $comment['name'] ?></h4>
+>>>>>>> master
             <br>
             <br>
             <p><?php echo $comment['comment'] ?></p><br>

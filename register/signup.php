@@ -1,7 +1,6 @@
 <?php
     session_start();
     $errors = array();    //この配列の意味はエラーの種類
-
     if (!empty($_POST)) {   //POST送信があった時に以下を実行する
         $name = $_POST['input_name'];
         $email = $_POST['input_email'];
@@ -9,7 +8,6 @@
         //strlenは文字数をカウントする、countは配列の数をカウント
         $count = strlen($password);
         $namecount = strlen($name);
-
         // ユーザー名の空チェック
         if ($name == '') {
             $errors['name'] = 'blank';
@@ -17,7 +15,6 @@
         elseif($namecount < 4){
             $errors['name'] = 'length';
         }
-
         if ($email == '') {
             $errors['email'] = 'blank';
         }
@@ -25,34 +22,27 @@
         else{
             // 1.DB接続
             require('../dbconnect.php');
-
             // 2.SQL
             $sql = 'SELECT COUNT(*) as `cnt` FROM `users` WHERE `email` = ?';
             $data = array($email);
             $stmt = $dbh->prepare($sql);
             $stmt->execute($data);
             //var_dump($sql);
-
             //3.DB切断
             $dbh = null;
-
             //4.取り出し
             $rec = $stmt->fetch(PDO::FETCH_ASSOC);
-
             if ( $rec['cnt'] > 0){  //メールアドレス数が0より大きい=すでに登録されている
               //アドレスが重複しているかどうか
               $errors['email'] = 'duplicate';
             }
-
         }
-
         if ($password == '') {
             $errors['password'] = 'blank';
         }
         elseif($count < 4 || $count > 16) {
             $errors['password'] = 'length';
         }
-
         //画像名を取得
         $file_name = $_FILES[
           'input_img_name']['name'];
@@ -64,7 +54,6 @@
             //比較するために取得した拡張子を小文字に変換する
             //var_dump($file_name);
             //exit();
-
             if( $file_type != '.jpg' && $file_type != '.png' && $file_type != '.gif' && $file_type != 'jpeg') {
               //エラーの時の処理
               $errors['img_name'] = 'type';
@@ -74,13 +63,10 @@
             //ファイルがないときの処理
             $errors['img_name']='blank';
           }
-
           //echo $file_name."<br>"
-
           //echo"<pre>";
           //var_dump($_FILES);
           //echo"</pre>";
-
           if(empty($errors)) {
             //エラーがなかった時の取得
             date_default_timezone_set('Asia/Manila');   //フィリピン時間に設定
@@ -91,26 +77,21 @@
             echo "<br>";
             echo $submit_file_name;
             //move_uploaded_file(テンポラリパス、保存したい場所、ファイル名)
-
             move_uploaded_file($_FILES['input_img_name']['tmp_name'], '../user_profile_img/'.$submit_file_name);
-
             //var_dump($_FILES);
             //exit();
             //$_SESSIONサーバーに保存されるスーパーグローバル変数
             //ログインしていることのユーザー情報などを保存しておくことが多い
-
             $_SESSION['register']['name'] = $_POST['input_name'];
             $_SESSION['register']['email'] = $_POST['input_email'];
             $_SESSION['register']['password'] = $_POST['input_password'];
             // 上記3つは$_SESSION['register'] =     $_POST;という書き方で1文にまとめることもできます
             $_SESSION['register']['img_name'] = $submit_file_name;
             //$_SESSION['register']['sonota'] = $
-
             header('Location: check.php');
             exit();
           }
     }
-
     // PHPプログラム
 ?>
 
