@@ -45,25 +45,25 @@
 <body>
   <?php require('header.php'); ?>
 
-  <div class="background">
+  <div class="background_signup">
     <div class="container">
       <div class="row space_mypage">
-      </div>
-    </div>
+      </div><!-- /row -->
+    </div><!-- /container -->
 
     <div class="container">
-      <div class="row">
-        <div class="profile_card">
+      <div class="row profile_card">
           <div class="col-xs-3 col-md-2 col-lg-1">
             <img src="user_profile_img/<?php echo $record['img_name']; ?>">
           </div>
+          <div class="col-xs-9 col-md-10 col-lg-11">
             <h6><?php echo $record['name']; ?></h6>
             <p>投稿 : <?php echo $record_cnt["cnt"]; ?>件  フォロワー98人 フォロー中129件</p>
             <p><?php echo $record['introduction']; ?></p>
             <a href="post_profile.php">プロフィールを編集</a>
-        </div>
-      </div>
-    </div>
+          </div>
+      </div><!-- /row -->
+    </div><!-- /container -->
 
     <div class="container">
       <div class="row col-xs-offset-5">
@@ -92,8 +92,7 @@
         <?php }} ?>
       </div>
     </div>
-  </div>
-  <!-- /background -->
+  </div><!-- /background -->
 
 
   <script src="assets/js/jquery-3.1.1.js"></script>

@@ -125,9 +125,10 @@
           <div>
               <h3>価格設定</h3>
               <input type="text" name="input_price" placeholder="価格設定" style="width: 300px">
+              <a class="noline" href="https://info.finance.yahoo.co.jp/fx/detail/?code=usdjpy" style="font-size: 15px;">円</a>
           </div>
           <br>
-          <input type="submit" value="submit">
+          <input type="submit" value="送信">
         </form>
       </div>
     </div>
