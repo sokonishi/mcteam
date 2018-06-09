@@ -115,21 +115,8 @@
             <a href="comment_timeline.php?feed_id=<?php echo $feed["id"] ?>" class="noline">
               <div class="card_item">
                 <img src="user_profile_img/<?php echo $feed['feed_img']; ?>" style="width: 100%">
-                <h4><?php echo $feed['title']; ?></h4>
-                
 
-                <?php if($feed["like_flag"] == 0){ ?>
-                <a href="like.php?feed_id=<?php echo $feed["id"]; ?>" class="noline">
-                    <button class="btn btn-default btn-xs"><i class="fa fa-thumbs-up" aria-hidden="true"></i>いいね！</button>
-                </a>
-                <?php } else { ?>
-                <a href="unlike.php?feed_id=<?php echo $feed["id"]; ?>">
-                  <button class="btn btn-default btn-xs"><i class="fa fa-thumbs-down" aria-hidden="true"></i>いいね！を取り消すボタン</button>
-                </a>
-                <?php } ?>
-                <span class="like_count">いいね数 : <?php echo $feed["like_cnt"]; ?></span>
 
-                <h4 class="cost"><?php echo $feed['price']; ?>円</h4>
 
               </div><!-- /card_item -->
             </a>
