@@ -57,6 +57,31 @@ header {
 }
 
 /*timeline.php*/
+.profile{
+  background-color: white;
+}
+
+@media only screen and (max-width: 750px) {
+.profile { margin-top: 50px !important; }
+}
+
+.profile img{
+  width: 200px;
+  border-radius: 50%;
+    height: 200px;
+    display:inline;
+      float: left;
+}
+
+.profile h4{
+  float: left;
+}
+
+.profile p{
+  
+}
+
+
 .copy_img {
   margin-top: 150px;
 }
@@ -66,7 +91,7 @@ header {
 }
 
 .space_timeline {
-  height: 600px;
+  height: 300px;
 }
 
 .noline {
@@ -79,20 +104,9 @@ header {
   text-decoration: none;
 }
 
-
-@media only screen and (min-width: 768px){
-.card1 {
-  margin-top: 0;
+.post-card{
 }
-
-.card2 {
-  margin-top: 33%;
-}
-
-.card3 {
-  margin-top: 66%;
-}
-}
+ 
 
 .cost {
   text-align: center;

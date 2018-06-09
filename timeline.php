@@ -4,6 +4,26 @@
 
     require('dbconnect.php');
 
+
+  $users_sql = 'SELECT * FROM `users` WHERE `id`=?';
+  $users_data = array($_SESSION['id']);
+  $users_stmt = $dbh->prepare($users_sql);
+  $users_stmt->execute($users_data);
+
+  $users_record = $users_stmt->fetch(PDO::FETCH_ASSOC);
+
+  //var_dump($users_record);
+ 
+  $sql_count = "SELECT COUNT(*) as `cnt` FROM `feeds` WHERE `user_id`=?";
+  $data_cnt = array($_SESSION['id']);
+  $stmt_count = $dbh->prepare($sql_count);
+  $stmt_count->execute($data_cnt);
+
+  $record_cnt = $stmt_count->fetch(PDO::FETCH_ASSOC);
+
+
+
+
     $sql = 'SELECT * FROM `feeds` ORDER BY `id` DESC';
             $data = array();
             $stmt = $dbh->prepare($sql);
@@ -42,7 +62,7 @@
 
                 $feeds[] = $record;
             }
-    $feed_cnt = 1;
+
  ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -73,45 +93,36 @@
       </div><!-- /row -->
     </div><!-- /container -->
 
+        <div class="row">
+          <div class="col-sm-offset-4 col-sm-4 col-sm-offset-4 col-xs-12 profile">
+            <div class="detail">
+              <img src="user_profile_img/<?php echo $users_record['img_name'] ?>" >
+              <h4><?php echo $users_record['name'] ?></h4>
+              <br>
+              <p>投稿 : <?php echo $record_cnt["cnt"]; ?>件  フォロワー98人 フォロー中129件</p>
+              <p><?php echo $users_record['introduction'] ?></p>
+            </div><!-- /detail -->
+          </div>
+        </div>
+
     <div class="container">
       <?php foreach($feeds as $feed){ ?>
-      <div class="row">
-        <div class="col-sm-4">
+      <div class="row post-card">
+        <div class="col-sm-4 col-xs-12">
 
 
-          <div class="card<?php echo $feed_cnt; ?>">
+          <div class="card">
             <a href="comment_timeline.php?feed_id=<?php echo $feed["id"] ?>" class="noline">
               <div class="card_item">
                 <img src="user_profile_img/<?php echo $feed['feed_img']; ?>" style="width: 100%">
-                <h4><?php echo $feed['title']; ?></h4>
-                <p><?php echo $feed['feed']; ?></p>
 
-                <?php if($feed["like_flag"] == 0){ ?>
-                <a href="like.php?feed_id=<?php echo $feed["id"]; ?>" class="noline">
-                    <button class="btn btn-default btn-xs"><i class="fa fa-thumbs-up" aria-hidden="true"></i>いいね！</button>
-                </a>
-                <?php } else { ?>
-                <a href="unlike.php?feed_id=<?php echo $feed["id"]; ?>">
-                  <button class="btn btn-default btn-xs"><i class="fa fa-thumbs-down" aria-hidden="true"></i>いいね！を取り消すボタン</button>
-                </a>
-                <?php } ?>
-                <span class="like_count">いいね数 : <?php echo $feed["like_cnt"]; ?></span>
 
-                <h4 class="cost"><?php echo $feed['price']; ?>円</h4>
 
               </div><!-- /card_item -->
             </a>
           </div><!-- /card -->
         </div>
-
-        <?php
-              if ($feed_cnt > 2) {
-                  $feed_cnt = 1;
-              } else {
-                  $feed_cnt++;
-              }
-          }
-        ?>
+        <?php }?>
       </div><!-- /row -->
     </div><!-- /container -->
   </div><!-- /background -->
