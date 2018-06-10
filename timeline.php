@@ -14,15 +14,12 @@
 
   //var_dump($users_record);
 
-  $sql_count = "SELECT COUNT(*) as `cnt` FROM `feeds` WHERE `user_id`=?";
+  $count_sql = "SELECT COUNT(*) as `cnt` FROM `feeds` WHERE `user_id`=?";
   $data_cnt = array($_SESSION['id']);
-  $stmt_count = $dbh->prepare($sql_count);
+  $stmt_count = $dbh->prepare($count_sql);
   $stmt_count->execute($data_cnt);
 
   $record_cnt = $stmt_count->fetch(PDO::FETCH_ASSOC);
-
-
-
 
     $sql = 'SELECT * FROM `feeds` ORDER BY `id` DESC';
             $data = array();
@@ -54,14 +51,32 @@
 
                 $like_flag = $like_flag_stmt->fetch(PDO::FETCH_ASSOC);
                 // var_dump($like_flag);
-                if ($like_flag["like_flag"] > 0) {
-                  $record["like_flag"] = 1;
-                } else {
-                  $record["like_flag"] = 0;
-                }
+                  if ($like_flag["like_flag"] > 0) {
+                    $record["like_flag"] = 1;
+                  } else {
+                    $record["like_flag"] = 0;
+                  }
+
+                  $view_sql = "SELECT COUNT(*) FROM `views` WHERE `feed_id`=?";
+                  $view_data = array($record["id"]);
+                  $view_stmt = $dbh->prepare($view_sql);
+                  $view_stmt->execute($view_data);
+
+                  while (true) {
+                    $view_record = $view_stmt->fetch(PDO::FETCH_ASSOC);
+
+                    if ($view_record == false) {
+                        break;
+                    }
+                    //var_dump($view_record);
+                    $record["view_count"] = $view_record;
+                  }
 
                 $feeds[] = $record;
             }
+//            echo'<pre>';
+//            var_dump($feeds);
+//            echo'<pre>';
 
  ?>
 <!DOCTYPE html>
@@ -116,12 +131,12 @@
           <div class="card">
 
             <a href="click_count.php?feed_id=<?php echo $feed["id"] ?>" class="noline">
-              <div class="card_item card_hover">                
+              <div class="card_item card_hover card_click">                
                 <img class="card_img" src="user_profile_img/<?php echo $feed['feed_img']; ?>" style="width: 100%">
                 <ul class="card_contents">
                   <li class="feed_title"><?php echo $feed["title"] ?></li>
                   <li><i class="fa fa-heart fa-lg"></i>  <?php echo $feed["like_cnt"] ?>件</li>
-                  <li><i class="fa fa-eye fa-lg"></i>  259件</li>
+                  <li><i class="fa fa-eye fa-lg"></i>  <?php echo $feed["view_count"]["COUNT(*)"] ?>件</li>
                 </ul>
               </div><!-- /card_item -->
             </a>
