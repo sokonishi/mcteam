@@ -20,7 +20,7 @@
         require('dbconnect.php');
 
         // 2.SQL文実行
-        $sql = 'INSERT INTO `feeds` SET `feed`=?, `title`=?, `price`=?, `img_name`=?, `user_id` = ?,`created`=NOW()';
+        $sql = 'INSERT INTO `feeds` SET `feed`=?, `title`=?, `price`=?, `feed_img`=?, `user_id` = ?,`created`=NOW()';
         $data = array($feed, $title, $price, $img_name, $_SESSION['id']);
         $stmt = $dbh->prepare($sql);
         $stmt->execute($data);
