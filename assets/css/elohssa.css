@@ -58,7 +58,7 @@ header {
 
 /*timeline.php*/
 .profile{
-  background-color: white;
+  /*背景透明にしてみた*/
 }
 
 @media only screen and (max-width: 750px) {
@@ -88,6 +88,23 @@ header {
 
 .card_item {
   background-color: #fff;
+  position: relative;
+}
+
+.card_item ul {
+  position: absolute;
+  top: 120px;
+  width: 100%;
+  list-style: none;
+}
+
+.card_contents {
+  display: none;
+}
+
+.card_active {
+  display: block;
+
 }
 
 .space_timeline {
@@ -174,4 +191,6 @@ header {
 .purchase {
   text-align: center;
 
-
+.detail{
+  background-color : red;
+}

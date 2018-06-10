@@ -73,6 +73,7 @@
   <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.css">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <link rel="stylesheet" type="text/css" href="assets/css/elohssa.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
 
@@ -94,10 +95,11 @@
     </div><!-- /container -->
 
         <div class="row">
-          <div class="col-sm-offset-4 col-sm-4 col-sm-offset-4 col-xs-12 profile">
+          <div class="col-sm-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 profile">
             <div class="detail">
               <img src="user_profile_img/<?php echo $users_record['img_name'] ?>" >
               <h4><?php echo $users_record['name'] ?></h4>
+              <br>
               <br>
               <p>投稿 : <?php echo $record_cnt["cnt"]; ?>件  フォロワー98人 フォロー中129件</p>
               <p><?php echo $users_record['introduction'] ?></p>
@@ -113,11 +115,13 @@
 
           <div class="card">
             <a href="comment_timeline.php?feed_id=<?php echo $feed["id"] ?>" class="noline">
-              <div class="card_item">
+              <div class="card_item card_hover">
                 <img src="user_profile_img/<?php echo $feed['feed_img']; ?>" style="width: 100%">
-
-
-
+                <ul class="card_contents">
+                  <li>題名</li>
+                  <li>いいね</li>
+                  <li>価格</li>
+                </ul>
               </div><!-- /card_item -->
             </a>
           </div><!-- /card -->
@@ -131,5 +135,6 @@
   <script src="assets/js/jquery-3.1.1.js"></script>
   <script src="assets/js/jquery-migrate-1.4.1.js"></script>
   <script src="assets/js/bootstrap.js"></script>
+  <script src="missyou.js"></script>
 </body>
 </html>
