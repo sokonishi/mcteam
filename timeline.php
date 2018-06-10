@@ -13,7 +13,7 @@
   $users_record = $users_stmt->fetch(PDO::FETCH_ASSOC);
 
   //var_dump($users_record);
- 
+
   $sql_count = "SELECT COUNT(*) as `cnt` FROM `feeds` WHERE `user_id`=?";
   $data_cnt = array($_SESSION['id']);
   $stmt_count = $dbh->prepare($sql_count);
@@ -112,7 +112,7 @@
 
 
           <div class="card">
-            <a href="comment_timeline.php?feed_id=<?php echo $feed["id"] ?>" class="noline">
+            <a href="click_count.php?feed_id=<?php echo $feed["id"] ?>" class="noline">
               <div class="card_item">
                 <img src="user_profile_img/<?php echo $feed['feed_img']; ?>" style="width: 100%">
 
