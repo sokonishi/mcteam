@@ -3,10 +3,12 @@ $(function(){
 
   $('.card_hover').hover(
     function(){
-      $(this).$('.card_contents').addClass('card_active');
+      $(this).find('.card_contents').addClass('card_active');
+      $(this).find('.card_img').addClass('card_active2')
     },
     function(){
-      $(this).$('.card_contents').removeClass('card_active');
+      $(this).find('.card_contents').removeClass('card_active');
+      $(this).find('.card_img').removeClass('card_active2');
     }
 
     )

@@ -116,13 +116,12 @@
           <div class="card">
 
             <a href="click_count.php?feed_id=<?php echo $feed["id"] ?>" class="noline">
-              <div class="card_item">
-
-                <img src="user_profile_img/<?php echo $feed['feed_img']; ?>" style="width: 100%">
+              <div class="card_item card_hover">                
+                <img class="card_img" src="user_profile_img/<?php echo $feed['feed_img']; ?>" style="width: 100%">
                 <ul class="card_contents">
-                  <li>題名</li>
-                  <li>いいね</li>
-                  <li>価格</li>
+                  <li class="feed_title"><?php echo $feed["title"] ?></li>
+                  <li><i class="fa fa-heart fa-lg"></i>  <?php echo $feed["like_cnt"] ?>件</li>
+                  <li><i class="fa fa-eye fa-lg"></i>  259件</li>
                 </ul>
               </div><!-- /card_item -->
             </a>
