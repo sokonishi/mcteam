@@ -123,6 +123,7 @@
         </div>
 
     <div class="container">
+
       <div class="row post-card">
       <?php foreach($feeds as $feed){ ?>
         <div class="col-md-4 col-xs-12">
