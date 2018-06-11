@@ -5,7 +5,7 @@
 
   $feed_id = $_GET['feed_id'];
 
-  $sql = 'SELECT * FROM `feeds` WHERE `id`=?';
+  $sql = 'SELECT `f`.*, `u`.`name`,`u`.`img_name`, `u`.`introduction` FROM `feeds` AS `f` LEFT JOIN `users` AS `u` ON `f`.`user_id` = `u`.`id` WHERE `f`.`id`=?';
   $data = array($feed_id);
   $stmt = $dbh->prepare($sql);
   $stmt->execute($data);
@@ -105,7 +105,7 @@
       <div class="row">
         <div class="col-sm-4 col-xs-12 post" style="position: fixed;" >
           <div class="card_item ">
-            <img src="user_profile_img/<?php echo $record['img_name'] ?>" style="width: 100%">
+            <img src="user_profile_img/<?php echo $record['feed_img'] ?>" style="width: 100%">
             <h4><?php echo $record['title'] ?></h4>
             <p><?php echo $record['feed'] ?></p>
             <h4 class="cost"><?php echo $record['price'] ?>円</h4>
@@ -130,11 +130,11 @@
       <div class="row">
         <div class="col-sm-7 col-sm-offset-5 col-xs-12 profile">
           <div class="detail">
-            <img src="user_profile_img/<?php echo $users_record['img_name'] ?>" >
-            <h4><?php echo $users_record['name'] ?></h4>
+            <img src="user_profile_img/<?php echo $record['img_name'] ?>" >
+            <h4><?php echo $record['name'] ?></h4>
             <br>
             <p>投稿 : <?php echo $record_cnt["cnt"]; ?>件  フォロワー98人 フォロー中129件</p>
-            <p><?php echo $users_record['introduction'] ?></p>
+            <p><?php echo $record['introduction'] ?></p>
           </div><!-- /detail -->
         </div>
 

@@ -1,9 +1,15 @@
-<?php 
+<?php
   session_start();
-    require('dbconnect.php');
+  if (isset($_GET["user_id"])) {
+    $user_id = $_GET["user_id"];
+  } else {
+    $user_id = $_SESSION["id"];
+  }
+
+  require('dbconnect.php');
 
   $sql = 'SELECT * FROM `users` WHERE `id`=?';
-  $data = array($_SESSION['id']);
+  $data = array($user_id);
   $stmt = $dbh->prepare($sql);
   $stmt->execute($data);
 
@@ -12,7 +18,7 @@
   $rec_profile = $stmt->fetch(PDO::FETCH_ASSOC);
 
   $sql_count = "SELECT COUNT(*) as `cnt` FROM `feeds` WHERE `user_id`=?";
-  $data_cnt = array($_SESSION['id']);
+  $data_cnt = array($user_id);
   $stmt_count = $dbh->prepare($sql_count);
   $stmt_count->execute($data_cnt);
 
@@ -20,7 +26,7 @@
 
   $sql = 'SELECT `l`.*,`f`.* FROM `likes` AS `l` LEFT JOIN `feeds` AS `f` ON `l`.`feed_id`=`f`.`id` WHERE `l`.`user_id`=?';
 
-  $data = array($_SESSION['id']);
+  $data = array($user_id);
   $stmt = $dbh->prepare($sql);
   $stmt->execute($data);
 
@@ -68,8 +74,8 @@
     <div class="container">
       <div class="row col-xs-offset-5">
         <ul class="mypage_nav">
-          <li class="nav_item active"><a href="#">投稿</a></li>
-          <li class="nav_item"><a href="#">お気に入り</a></li>
+          <li class="nav_item active"><a href="mypage.php">お気に入り</a></li>
+          <li class="nav_item"><a href="mypage_tweet.php?user_id=<?php echo $user_id; ?>">投稿</a></li>
         </ul>
       </div>
     </div>
@@ -81,7 +87,7 @@
         <div class="col-sm-4">
           <a href="comment_timeline.php?feed_id=<?php echo $feed["id"] ?>" class="noline">
             <div class="card1 card_item">
-              <img src="user_profile_img/<?php echo $feed["img_name"]; ?>" style="width: 100%">
+              <img src="user_profile_img/<?php echo $feed["feed_img"]; ?>" style="width: 100%">
               <h4><?php echo $feed["title"]; ?></h4>
               <p><?php echo $feed["feed"]; ?></p>
               <h4 class="cost"><?php echo $feed["price"] ?>円</h4>

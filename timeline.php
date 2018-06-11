@@ -4,6 +4,23 @@
 
     require('dbconnect.php');
 
+
+  $users_sql = 'SELECT * FROM `users` WHERE `id`=?';
+  $users_data = array($_SESSION['id']);
+  $users_stmt = $dbh->prepare($users_sql);
+  $users_stmt->execute($users_data);
+
+  $users_record = $users_stmt->fetch(PDO::FETCH_ASSOC);
+
+  //var_dump($users_record);
+
+  $count_sql = "SELECT COUNT(*) as `cnt` FROM `feeds` WHERE `user_id`=?";
+  $data_cnt = array($_SESSION['id']);
+  $stmt_count = $dbh->prepare($count_sql);
+  $stmt_count->execute($data_cnt);
+
+  $record_cnt = $stmt_count->fetch(PDO::FETCH_ASSOC);
+
     $sql = 'SELECT * FROM `feeds` ORDER BY `id` DESC';
             $data = array();
             $stmt = $dbh->prepare($sql);
@@ -34,15 +51,33 @@
 
                 $like_flag = $like_flag_stmt->fetch(PDO::FETCH_ASSOC);
                 // var_dump($like_flag);
-                if ($like_flag["like_flag"] > 0) {
-                  $record["like_flag"] = 1;
-                } else {
-                  $record["like_flag"] = 0;
-                }
+                  if ($like_flag["like_flag"] > 0) {
+                    $record["like_flag"] = 1;
+                  } else {
+                    $record["like_flag"] = 0;
+                  }
+
+                  $view_sql = "SELECT COUNT(*) FROM `views` WHERE `feed_id`=?";
+                  $view_data = array($record["id"]);
+                  $view_stmt = $dbh->prepare($view_sql);
+                  $view_stmt->execute($view_data);
+
+                  while (true) {
+                    $view_record = $view_stmt->fetch(PDO::FETCH_ASSOC);
+
+                    if ($view_record == false) {
+                        break;
+                    }
+                    //var_dump($view_record);
+                    $record["view_count"] = $view_record;
+                  }
 
                 $feeds[] = $record;
             }
-    $feed_cnt = 1;
+//            echo'<pre>';
+//            var_dump($feeds);
+//            echo'<pre>';
+
  ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -53,6 +88,7 @@
   <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.css">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <link rel="stylesheet" type="text/css" href="assets/css/elohssa.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
 
@@ -73,45 +109,38 @@
       </div><!-- /row -->
     </div><!-- /container -->
 
+        <div class="row">
+          <div class="col-sm-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 profile">
+            <div class="detail">
+              <img src="user_profile_img/<?php echo $users_record['img_name'] ?>" >
+              <h4><?php echo $users_record['name'] ?></h4>
+              <a class="edit_profile" href="post_profile.php">プロフィールを編集</a><br>
+              <br>
+              <p>投稿 : <?php echo $record_cnt["cnt"]; ?>件  フォロワー98人 フォロー中129件</p>
+              <p><?php echo $users_record['introduction'] ?></p>
+            </div><!-- /detail -->
+          </div>
+        </div>
+
     <div class="container">
+
+      <div class="row post-card">
       <?php foreach($feeds as $feed){ ?>
-      <div class="row">
-        <div class="col-sm-4">
-
-
-          <div class="card<?php echo $feed_cnt; ?>">
-            <a href="comment_timeline.php?feed_id=<?php echo $feed["id"] ?>" class="noline">
-              <div class="card_item">
-                <img src="user_profile_img/<?php echo $feed['img_name']; ?>" width="100%">
-                <h4><?php echo $feed['title']; ?></h4>
-                <p><?php echo $feed['feed']; ?></p>
-
-                <?php if($feed["like_flag"] == 0){ ?>
-                <a href="like.php?feed_id=<?php echo $feed["id"]; ?>" class="noline">
-                    <button class="btn btn-default btn-xs"><i class="fa fa-thumbs-up" aria-hidden="true"></i>いいね！</button>
-                </a>
-                <?php } else { ?>
-                <a href="unlike.php?feed_id=<?php echo $feed["id"]; ?>">
-                  <button class="btn btn-default btn-xs"><i class="fa fa-thumbs-down" aria-hidden="true"></i>いいね！を取り消すボタン</button>
-                </a>
-                <?php } ?>
-                <span class="like_count">いいね数 : <?php echo $feed["like_cnt"]; ?></span>
-
-                <h4 class="cost"><?php echo $feed['price']; ?>円</h4>
-
+        <div class="col-md-4 col-xs-12">
+          <div class="card">
+            <a href="click_count.php?feed_id=<?php echo $feed["id"] ?>" class="noline">
+              <div class="card_item card_hover card_click">                
+                <img class="card_img" src="user_profile_img/<?php echo $feed['feed_img']; ?>" style="width: 100%">
+                <ul class="card_contents">
+                  <li class="feed_title"><?php echo $feed["title"] ?></li>
+                  <li><i class="fa fa-heart fa-lg"></i>  <?php echo $feed["like_cnt"] ?>件</li>
+                  <li><i class="fa fa-eye fa-lg"></i>  <?php echo $feed["view_count"]["COUNT(*)"] ?>件</li>
+                </ul>
               </div><!-- /card_item -->
             </a>
           </div><!-- /card -->
         </div>
-
-        <?php
-              if ($feed_cnt > 2) {
-                  $feed_cnt = 1;
-              } else {
-                  $feed_cnt++;
-              }
-          }
-        ?>
+      <?php }?>
       </div><!-- /row -->
     </div><!-- /container -->
   </div><!-- /background -->
@@ -120,5 +149,6 @@
   <script src="assets/js/jquery-3.1.1.js"></script>
   <script src="assets/js/jquery-migrate-1.4.1.js"></script>
   <script src="assets/js/bootstrap.js"></script>
+  <script src="missyou.js"></script>
 </body>
 </html>

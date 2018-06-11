@@ -2,6 +2,16 @@
     session_start();
     $errors = array();    //この配列の意味はエラーの種類
 
+    require('dbconnect.php');
+
+    $sql = 'SELECT * FROM `users` WHERE `id`=?';
+    $data = array($_SESSION["id"]);
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute($data);
+    $record = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $default = $record;
+
     if (!empty($_POST)) {   //POST送信があった時に以下を実行する
         $introduction = $_POST['input_introduction'];
 
@@ -29,7 +39,7 @@
           }
           else {
             //ファイルがないときの処理
-            $errors['img_name']='blank';
+            $file_name=$default["img_name"];
           }
 
           //echo $file_name."<br>"
@@ -46,15 +56,13 @@
             move_uploaded_file($_FILES['input_img_name']['tmp_name'], 'user_profile_img/'.$submit_file_name);
 
 
-            require('dbconnect.php');
-
             // 2.SQL文実行
             $sql = 'UPDATE `users` SET `img_name`=?, `introduction`=? WHERE `id`=?';
             $data = array($file_name, $introduction, $_SESSION["id"]);
             $stmt = $dbh->prepare($sql);
             $stmt->execute($data);
 
-            header('Location:mypage.php');
+            header('Location:timeline.php');
             exit();
           }
     }
@@ -96,9 +104,6 @@
             <input type="file" name="input_img_name" id="img_name">
               <?php if(isset($errors['img_name']) && $errors['img_name'] == 'type') { ?>
               <p class="text-danger">拡張子が「jpg」「png」「gif」「jpeg」の画像を選択してください</p>
-              <?php } ?>
-              <?php if(isset($errors['img_name']) && $errors['img_name'] == 'blank') { ?>
-              <p class="text-danger">画像を選択してください</p>
               <?php } ?>
           </div>
 

@@ -149,6 +149,7 @@ header {
   background-color: rgba(0,0,0,0.3);
   color: #fff;
   height: 100%;
+
 }
 
 /*-------------------------*/
@@ -396,4 +397,5 @@ header {
 }
 .comment_box {
   border-bottom: 1px solid #8B8F9F;
+
 }
