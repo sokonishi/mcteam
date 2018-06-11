@@ -82,7 +82,7 @@
           <div class="card<?php echo $feed_cnt; ?>">
             <a href="comment_timeline.php?feed_id=<?php echo $feed["id"] ?>" class="noline">
               <div class="card_item">
-                <img src="user_profile_img/<?php echo $feed['img_name']; ?>" style="width: 100%">
+                <img src="user_profile_img/<?php echo $feed['img_name']; ?>" width="100%">
                 <h4><?php echo $feed['title']; ?></h4>
                 <p><?php echo $feed['feed']; ?></p>
 
