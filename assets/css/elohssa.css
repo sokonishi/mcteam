@@ -115,13 +115,29 @@ header {
 .card_item {
   background-color: #fff;
   position: relative;
+  background-color: black;
+  text-align:center;
+  position: relative;
+  width: 300px !important;
+  height:  300px !important; 
 }
+
 
 .card_item ul {
   position: absolute;
   top: 0px;
   width: 100%;
   list-style: none;
+}
+
+.card_img{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+
 }
 
 .card_contents {
