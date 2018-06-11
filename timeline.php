@@ -114,7 +114,7 @@
             <div class="detail">
               <img src="user_profile_img/<?php echo $users_record['img_name'] ?>" >
               <h4><?php echo $users_record['name'] ?></h4>
-              <br>
+              <a class="edit_profile" href="post_profile.php">プロフィールを編集</a><br>
               <br>
               <p>投稿 : <?php echo $record_cnt["cnt"]; ?>件  フォロワー98人 フォロー中129件</p>
               <p><?php echo $users_record['introduction'] ?></p>
