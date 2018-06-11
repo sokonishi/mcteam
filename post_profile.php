@@ -62,7 +62,7 @@
             $stmt = $dbh->prepare($sql);
             $stmt->execute($data);
 
-            header('Location:mypage.php');
+            header('Location:timeline.php');
             exit();
           }
     }
