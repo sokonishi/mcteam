@@ -123,13 +123,10 @@
         </div>
 
     <div class="container">
-      <?php foreach($feeds as $feed){ ?>
       <div class="row post-card">
-        <div class="col-sm-4 col-xs-12">
-
-
+      <?php foreach($feeds as $feed){ ?>
+        <div class="col-md-4 col-xs-12">
           <div class="card">
-
             <a href="click_count.php?feed_id=<?php echo $feed["id"] ?>" class="noline">
               <div class="card_item card_hover card_click">                
                 <img class="card_img" src="user_profile_img/<?php echo $feed['feed_img']; ?>" style="width: 100%">
@@ -142,7 +139,7 @@
             </a>
           </div><!-- /card -->
         </div>
-        <?php }?>
+      <?php }?>
       </div><!-- /row -->
     </div><!-- /container -->
   </div><!-- /background -->
