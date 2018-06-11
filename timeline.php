@@ -124,9 +124,9 @@
 
     <div class="container">
       <?php foreach($feeds as $feed){ ?>
+
       <div class="row post-card">
         <div class="col-sm-4 col-xs-12">
-
 
           <div class="card">
 

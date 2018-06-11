@@ -32,16 +32,39 @@ header {
   z-index: 1;
 }
 
+.navbar {
+  margin-bottom: 0;
+}
+
+@media(min-width:768px) {
+    .navbar-collapse.collapse {
+        display: none !important;
+    }
+}
+
+.navbar-toggler {
+  text-align: right;
+}
+
+.hamburger {
+  margin: 15px;
+}
+
 .background {
   width: 100%;
   margin: 0px;
   padding: 0px;
   background: url(../../img/top_img.jpg);
-  background-position: center center;
+/*  background-position: center center;*/
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100%;
 }
+
+@media only screen and (max-width: 600px){
+
+  }
+
 
 /*signup.php*/
 .background_signup {
@@ -168,6 +191,7 @@ header {
 }
 /*-----------------------*/
 
+
 .space_timeline {
   height: 300px;
 }
@@ -183,6 +207,7 @@ header {
 }
 
 .post-card{
+
 }
  
 
@@ -200,6 +225,11 @@ header {
 .space_mypage {
   height: 120px;
 }
+
+@media (min-width: 768px){
+.comment_layer_col {
+  margin: 0px;
+}}
 
 .profile_card {
   margin: 0 10%;
@@ -251,8 +281,105 @@ header {
 
 .purchase {
   text-align: center;
-
-.detail{
-  background-color : red;
 }
+
+/*comment_layer*/
+
+
+/*body {
+  background-color: rgba(0,0,0,.75);
+  position: relative;
+  padding: 0;
+
+}*/
+.whiteBbackground: {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 500px;
+  height: 500px;
+}
+
+/**/
+
+#comment_layer_img {
+  width: 100%;
+  height: auto;
+  padding: 0px;
+  position: relative;
+}
+
+.wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+
+}
+
+.wrapper:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+.square {
+  background: rgba(0,0,0,.75);
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.square h3, .square p {
+  color: #fff;
+  margin-bottom: 10%
+}
+
+.square p {
+  line-height: 3;
+}
+
+.square h2 {
+  color: red;
+  text-align: center;
+  margin-bottom: 10%;
+}
+
+.square .purchase_btn_wrapper {
+  text-align: center;
+}
+
+.purchase_btn{
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #668ad8;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+}
+.purchase_btn:active {/*ボタンを押したとき*/
+    -ms-transform: translateY(4px);
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    border-bottom: none;/*線を消す*/
+}
+
+.profile_img {
+  margin: 0;
+  border-radius: 50px;
+  height: 50px;
+  width: 50px;
+}
+.comment_box {
+  border-bottom: 1px solid #8B8F9F;
+  
 
