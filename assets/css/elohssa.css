@@ -80,17 +80,120 @@ header {
 }
 
 /*timeline.php*/
+.profile{
+  /*背景透明にしてみた*/
+}
+
+@media only screen and (max-width: 750px) {
+.profile { margin-top: 50px !important; }
+}
+
+.profile img{
+  width: 200px;
+  border-radius: 50%;
+    height: 200px;
+    display:inline;
+      float: left;
+}
+
+.profile h4{
+  float: left;
+}
+
+.profile p{
+  
+}
+
+.feed_title {
+  font-size: 24px;
+}
+
 .copy_img {
   margin-top: 150px;
 }
 
 .card_item {
-  background-color: #FFF;
+  background-color: #fff;
+  position: relative;
 }
+
+.card_item ul {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  list-style: none;
+}
+
+.card_contents {
+  display: none;
+}
+
+.card_active {
+  display: block;
+  background-color: rgba(0,0,0,0.3);
+  color: #fff;
+  height: 100%;
+}
+
+/*-------------------------*/
+.login-modal-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  /* display: none;を追加してください */
+  display: none;
+}
+
+.modal {
+  position: absolute;
+  top: 20%;
+  left: 34%;
+  background-color: #e6ecf0;
+  padding: 20px 0 40px;
+  border-radius: 10px;
+  width: 450px;
+  height: auto;
+  text-align: center;
+}
+
+#signup-form, #login-form {
+  width: 100%;
+}
+
+#signup-form h2, #login-form h2 {
+  color: #5f5d60;
+  letter-spacing: 1px;
+  margin-bottom: 40px;
+}
+
+#signup-form input, #login-form input {
+  width: 320px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  padding: 12px 12px;
+  border: 1px solid #d0d5d8;
+  border-radius: 5px;
+}
+
+#submit-btn {
+  display: inline-block;
+  padding: 14px 140px;
+  background-color: #5dca88;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  margin: 10px auto;
+  cursor: pointer;
+}
+/*-----------------------*/
 
 
 .space_timeline {
-  height: 600px;
+  height: 300px;
 }
 
 .noline {
@@ -103,20 +206,10 @@ header {
   text-decoration: none;
 }
 
+.post-card{
 
-@media only screen and (min-width: 768px){
-.card1 {
-  margin-top: 0;
 }
-
-.card2 {
-  margin-top: calc(100% / 3);
-}
-
-.card3 {
-  margin-top: calc(200% / 3);
-}
-}
+ 
 
 .cost {
   text-align: center;
@@ -288,5 +381,5 @@ header {
 }
 .comment_box {
   border-bottom: 1px solid #8B8F9F;
-}
+  
 
