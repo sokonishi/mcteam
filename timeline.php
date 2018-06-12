@@ -91,10 +91,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
-
-  <?php require('header.php'); ?>
-
-
+<?php require('header.php'); ?>
+  <div id="con1" class="modal-content"> 
+    <p><?php include("comment_layer.html") ?></p> 
+    <p><a class="modal-close">閉じる</a></p> 
+  </div><!-- /modal-content -->
   <div class="background_timeline">
     <div class="container">
       <div class="row col-xs-offset-10">
@@ -103,50 +104,47 @@
         </div><!-- /copy-img -->
       </div><!-- /row -->
     </div><!-- /container -->
-
     <div class="container">
       <div class="row space_timeline">
       </div><!-- /row -->
     </div><!-- /container -->
-
-        <div class="row">
-          <div class="col-sm-offset-3 col-sm-6 col-xs-12">
-            <div class="col-sm-4 col-xs-12 user_profile_img_wrapper">
-              <img class="user_profile_img" src="user_profile_img/<?php echo $users_record['img_name'] ?>" >
-            </div>
-            <div class="col-sm-8">
-              <h4><?php echo $users_record['name'] ?></h4>
-              <a class="edit_profile" href="post_profile.php">プロフィールを編集</a><br>
-              <br>
-              <p>投稿 : <?php echo $record_cnt["cnt"]; ?>件  フォロワー98人 フォロー中129件</p>
-              <p><?php echo $users_record['introduction'] ?></p>
-            </div>
-
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-offset-3 col-sm-6 col-xs-12">
+          <div class="col-sm-4 col-xs-12 user_profile_img_wrapper">
+            <img class="user_profile_img" src="user_profile_img/<?php echo $users_record['img_name'] ?>" >
+          </div>
+          <div class="col-sm-8">
+            <h4><?php echo $users_record['name'] ?></h4>
+            <a class="edit_profile" href="post_profile.php">プロフィールを編集</a><br>
+            <p>投稿 : <?php echo $record_cnt["cnt"]; ?>件  フォロワー98人 フォロー中129件</p>
+            <p><?php echo $users_record['introduction'] ?></p>
           </div>
         </div>
-
+      </div><!-- /row -->
+    </div><!-- /container-fluid -->
     <div class="container">
-
       <div class="row">
       <?php foreach($feeds as $feed){ ?>
         <div class="col-md-4 col-xs-12">
-
-
-            <a href="click_count.php?feed_id=<?php echo $feed["id"] ?>" class="noline click_card_img">
-              <div class="card_item card_hover card_click">                
-                <img class="card_img" src="user_profile_img/<?php echo $feed['feed_img']; ?>" style="width: 100%">
-                <ul class="card_contents">
-                  <li class="feed_title"><?php echo $feed["title"] ?></li>
-                  <li><i class="fa fa-heart fa-lg"></i>  <?php echo $feed["like_cnt"] ?>件</li>
-                  <li><i class="fa fa-eye fa-lg"></i>  <?php echo $feed["view_count"]["COUNT(*)"] ?>件</li>
-                </ul>
-              </div><!-- /card_item -->
-            </a>
+        <!-- modalレイアウト表示 -->
+          <a data-target="con1" class="modal-open noline">
+            <!-- comment_timeline.phpに遷移 -->
+            <!-- <a href="click_count.php?feed_id=?php echo $feed["id"] ?>" class="noline"> -->
+            <div class="card_item card_hover card_click">
+              <img class="card_img" src="user_profile_img/<?php echo $feed['feed_img']; ?>" style="width: 100%">
+              <ul class="card_contents">
+                <li class="feed_title"><?php echo $feed["title"] ?></li>
+                <li><i class="fa fa-heart fa-lg"></i>  <?php echo $feed["like_cnt"] ?>件</li>
+                <li><i class="fa fa-eye fa-lg"></i>  <?php echo $feed["view_count"]["COUNT(*)"] ?>件</li>
+              </ul>
+            </div><!-- /card_item -->
+          </a>
         </div>
       <?php }?>
       </div><!-- /row -->
     </div><!-- /container -->
-  </div><!-- /background -->
+  </div><!-- /background_timeline -->
 
 
   <script src="assets/js/jquery-3.1.1.js"></script>

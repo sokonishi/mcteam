@@ -24,6 +24,7 @@
   }
 }*/
 
+@charset "UTF-8";
 
 header {
   width: 100%;
@@ -114,6 +115,7 @@ div.background,div.background_timeline {
   height: 200px;
   display:inline;
   float: left;
+  margin-right: 50px;
 }
 
 .user_profile_img_wrapper {
@@ -176,68 +178,59 @@ div.background,div.background_timeline {
 }
 
 .card_active {
-  position: relative;
   display: block;
   background-color: rgba(0,0,0,0.3);
   color: #fff;
   height: 100%;
-  margin: auto;
 
 }
 
 /*-------------------------*/
-.login-modal-wrapper {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-  z-index: 100;
-  /* display: none;を追加してください */
-  display: none;
+.modal-content {
+  position:fixed;
+  display:none;
+  z-index:2;
+  width:75%;
+  margin:0;
+  padding:10px 20px;
+  border:2px solid #aaa;
+  background:#fff;
 }
 
-.modal {
-  position: absolute;
-  top: 20%;
-  left: 34%;
-  background-color: #e6ecf0;
-  padding: 20px 0 40px;
-  border-radius: 10px;
-  width: 450px;
-  height: auto;
-  text-align: center;
+.modal-content p {
+  margin:0;
+  padding:0;
 }
 
-#signup-form, #login-form {
-  width: 100%;
+.modal-overlay {
+  z-index:1;
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:120%;
+  background-color:rgba(0,0,0,0.75);
 }
 
-#signup-form h2, #login-form h2 {
-  color: #5f5d60;
-  letter-spacing: 1px;
-  margin-bottom: 40px;
+.modal-open {
+  color:#00f;
+  text-decoration:underline;
 }
 
-#signup-form input, #login-form input {
-  width: 320px;
-  margin-bottom: 20px;
-  font-size: 12px;
-  padding: 12px 12px;
-  border: 1px solid #d0d5d8;
-  border-radius: 5px;
+.modal-open:hover {
+  cursor:pointer;
+  color:#f00;
 }
 
-#submit-btn {
-  display: inline-block;
-  padding: 14px 140px;
-  background-color: #5dca88;
-  border: none;
-  border-radius: 3px;
-  color: white;
-  margin: 10px auto;
-  cursor: pointer;
+.modal-close {
+  color:#00f;
+  text-decoration:underline;
+}
+
+.modal-close:hover {
+  cursor:pointer;
+  color:#f00;
 }
 /*-----------------------*/
 
@@ -401,19 +394,19 @@ body .post_body {
 }
 
 .purchase_btn{
-    display: inline-block;
-    padding: 0.5em 1em;
-    text-decoration: none;
-    background: #668ad8;/*ボタン色*/
-    color: #FFF;
-    border-bottom: solid 4px #627295;
-    border-radius: 3px;
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #668ad8;/*ボタン色*/
+  color: #FFF;
+  border-bottom: solid 4px #627295;
+  border-radius: 3px;
 }
 .purchase_btn:active {/*ボタンを押したとき*/
-    -ms-transform: translateY(4px);
-    -webkit-transform: translateY(4px);
-    transform: translateY(4px);/*下に動く*/
-    border-bottom: none;/*線を消す*/
+  -ms-transform: translateY(4px);
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
 }
 
 
