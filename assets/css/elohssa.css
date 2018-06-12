@@ -79,6 +79,10 @@ header {
   background-size: 100%;
 }
 
+.profile {
+  background-color: #fff;
+}
+
 /*timeline.php*/
 .timeline_profile{
   /*背景透明にしてみた*/
