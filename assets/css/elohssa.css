@@ -55,15 +55,24 @@ header {
   margin: 0px;
   padding: 0px;
   background: url(../../img/top_img.jpg);
-/*  background-position: center center;*/
+  background-position: ;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100%;
 }
 
-@media only screen and (max-width: 600px){
-
-  }
+@media(max-width: 720px){
+.background {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  background: url(../../img/top_img_sm.jpg);
+  background-position: ;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100%;
+}
+}
 
 
 /*signup.php*/
@@ -79,12 +88,8 @@ header {
   background-size: 100%;
 }
 
-.profile {
-  background-color: #fff;
-}
-
 /*timeline.php*/
-.timeline_profile{
+.profile{
   /*背景透明にしてみた*/
 }
 
@@ -304,14 +309,19 @@ header {
   text-align: center;
 }
 
+
+/*post.php*/
+body .post_body {
+  height: 100%;
+}
+
+.background {
+  height: 100vh;
+}
+
+
 /*comment_layer*/
 
-
-/*body {
-  background-color: rgba(0,0,0,.75);
-  position: relative;
-  padding: 0;
-}*/
 .whiteBbackground: {
   position: absolute;
   bottom: 0;
