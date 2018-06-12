@@ -50,8 +50,11 @@ header {
   margin: 15px;
 }
 
+
+
 .background {
   width: 100%;
+  height: 100vh;
   margin: 0px;
   padding: 0px;
   background: url(../../img/top_img.jpg);
@@ -62,7 +65,7 @@ header {
 }
 
 @media(max-width: 720px){
-.background {
+div.background,div.background_timeline {
   width: 100%;
   margin: 0px;
   padding: 0px;
@@ -89,8 +92,16 @@ header {
 }
 
 /*timeline.php*/
-.profile{
-  /*背景透明にしてみた*/
+
+.background_timeline {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  background: url(../../img/top_img.jpg);
+  background-position: ;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100%;
 }
 
 @media only screen and (max-width: 750px) {
@@ -100,18 +111,28 @@ header {
 .profile img{
   width: 200px;
   border-radius: 50%;
-    height: 200px;
-    display:inline;
-      float: left;
+  height: 200px;
+  display:inline;
+  float: left;
 }
+
+.user_profile_img_wrapper {
+  text-align: center;
+  margin-top: 10%;
+}
+
+.user_profile_img {
+  border-radius: 50px;
+  height: 100px;
+  width: 100px;
+  position: relative;
+}
+
 
 .profile h4{
   float: left;
 }
 
-.profile p{
-  
-}
 
 .feed_title {
   font-size: 24px;
@@ -121,43 +142,46 @@ header {
   margin-top: 150px;
 }
 
+
 .card_item {
   background-color: #fff;
   position: relative;
+  margin: 0 auto;
   background-color: black;
-  text-align:center;
-  position: relative;
+  /*text-align:center;*/
   width: 300px !important;
   height:  300px !important; 
 }
 
 
 .card_item ul {
-  position: absolute;
+  position: relative;
   top: 0px;
   width: 100%;
   list-style: none;
 }
 
 .card_img{
-    position: absolute;
+    position: relative;
     top: 0;
     bottom: 0;
     right: 0;
     left: 0;
     margin: auto;
-
 }
 
 .card_contents {
   display: none;
+
 }
 
 .card_active {
+  position: relative;
   display: block;
   background-color: rgba(0,0,0,0.3);
   color: #fff;
   height: 100%;
+  margin: auto;
 
 }
 
@@ -232,10 +256,6 @@ header {
   text-decoration: none;
 }
 
-.post-card{
-
-}
- 
 
 .cost {
   text-align: center;
@@ -315,11 +335,6 @@ body .post_body {
   height: 100%;
 }
 
-.background {
-  height: 100vh;
-}
-
-
 /*comment_layer*/
 
 .whiteBbackground: {
@@ -333,8 +348,6 @@ body .post_body {
   width: 500px;
   height: 500px;
 }
-
-/**/
 
 #comment_layer_img {
   width: 100%;
@@ -402,6 +415,7 @@ body .post_body {
     transform: translateY(4px);/*下に動く*/
     border-bottom: none;/*線を消す*/
 }
+
 
 .profile_img {
   margin: 0;

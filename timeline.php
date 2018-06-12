@@ -95,7 +95,7 @@
   <?php require('header.php'); ?>
 
 
-  <div class="background">
+  <div class="background_timeline">
     <div class="container">
       <div class="row col-xs-offset-10">
         <div class="copy_img top">
@@ -110,25 +110,29 @@
     </div><!-- /container -->
 
         <div class="row">
-          <div class="col-sm-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 timeline_profile">
-            <div class="detail">
-              <img src="user_profile_img/<?php echo $users_record['img_name'] ?>" >
+          <div class="col-sm-offset-3 col-sm-6 col-xs-12">
+            <div class="col-sm-4 col-xs-12 user_profile_img_wrapper">
+              <img class="user_profile_img" src="user_profile_img/<?php echo $users_record['img_name'] ?>" >
+            </div>
+            <div class="col-sm-8">
               <h4><?php echo $users_record['name'] ?></h4>
               <a class="edit_profile" href="post_profile.php">プロフィールを編集</a><br>
               <br>
               <p>投稿 : <?php echo $record_cnt["cnt"]; ?>件  フォロワー98人 フォロー中129件</p>
               <p><?php echo $users_record['introduction'] ?></p>
-            </div><!-- /detail -->
+            </div>
+
           </div>
         </div>
 
     <div class="container">
 
-      <div class="row post-card">
+      <div class="row">
       <?php foreach($feeds as $feed){ ?>
         <div class="col-md-4 col-xs-12">
-          <div class="card">
-            <a href="click_count.php?feed_id=<?php echo $feed["id"] ?>" class="noline">
+
+
+            <a href="click_count.php?feed_id=<?php echo $feed["id"] ?>" class="noline click_card_img">
               <div class="card_item card_hover card_click">                
                 <img class="card_img" src="user_profile_img/<?php echo $feed['feed_img']; ?>" style="width: 100%">
                 <ul class="card_contents">
@@ -138,7 +142,6 @@
                 </ul>
               </div><!-- /card_item -->
             </a>
-          </div><!-- /card -->
         </div>
       <?php }?>
       </div><!-- /row -->
