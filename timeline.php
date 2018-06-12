@@ -94,6 +94,11 @@
 
   <?php require('header.php'); ?>
 
+  <div id="con1" class="modal-content">
+    <p><?php include("comment_layer.html") ?></p>
+    <p><a class="modal-close">閉じる</a></p>
+  </div>
+
 
   <div class="background">
     <div class="container">
@@ -128,7 +133,13 @@
       <?php foreach($feeds as $feed){ ?>
         <div class="col-md-4 col-xs-12">
           <div class="card">
-            <a href="click_count.php?feed_id=<?php echo $feed["id"] ?>" class="noline">
+
+            <!-- modalレイアウト表示 -->
+            <a data-target="con1" class="modal-open noline">
+
+            <!-- comment_timeline.phpに遷移 -->
+            <!-- <a href="click_count.php?feed_id=?php echo $feed["id"] ?>" class="noline"> -->
+
               <div class="card_item card_hover card_click">                
                 <img class="card_img" src="user_profile_img/<?php echo $feed['feed_img']; ?>" style="width: 100%">
                 <ul class="card_contents">
