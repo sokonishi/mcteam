@@ -79,12 +79,7 @@
   <link rel="stylesheet" type="text/css" href="assets/css/elohssa.css">
 </head>
 <body>
- <header>
-  <div class="header_logo">
-    <img src="img/missyou_logo.png" style="width: 20%">
-    <img src="img/menu_bar.png" style="width: 5%; float: right;">
-  </div>
- </header>
+  <?php require('header.php'); ?>
 
   <div class="background">
     <div class="container">
@@ -96,30 +91,27 @@
     </div>
 
     <div class="container">
-      <div class="row space_timeline">
+      <div class="row">
         <form method='POST' action='post_profile.php' enctype="multipart/form-data">
-
-          <div class="form-group">
-            <label for="img_name">写真</label>
-            <input type="file" name="input_img_name" id="img_name">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <h3 for="img_name">写真</h3>
+              <input type="file" name="input_img_name" id="img_name">
               <?php if(isset($errors['img_name']) && $errors['img_name'] == 'type') { ?>
               <p class="text-danger">拡張子が「jpg」「png」「gif」「jpeg」の画像を選択してください</p>
               <?php } ?>
-          </div>
-
-          <div>
               <h3>自己紹介</h3>
-              <textarea name="input_introduction" cols="65" rows="5"></textarea>
+              <textarea name="input_introduction" class="form-control" cols="65" rows="5"></textarea>
               <?php if(isset($errors['introduction']) && $errors['introduction'] == 'blank') { ?>
-                <p style="color: red;">自己紹介文を入力してください</p>
+              <p style="color: red;">自己紹介文を入力してください</p>
               <?php } ?>
+            </div><!-- /form-group -->
+            <input type="submit" class="btn btn-primary" value="保存">
           </div>
-          <br>
-          <input type="submit" value="保存">
         </form>
-      </div>
-    </div>
-  </div>
+      </div><!-- /row -->
+    </div><!-- /container -->
+  </div><!-- /background -->
   <script src="assets/js/jquery-3.1.1.js"></script>
   <script src="assets/js/jquery-migrate-1.4.1.js"></script>
   <script src="assets/js/bootstrap.js"></script>
