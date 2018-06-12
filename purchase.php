@@ -10,17 +10,16 @@
   </head>
   <body>
     <?php require('header.php'); ?>
-    <div class="background_signup">
+    <div class="background">
       <div class="container">
         <div class="row space_mypage">
         </div><!-- /row -->
       </div><!-- /container -->
       <div class="container">
         <div class="row">
-          <div class="col-xs-8 col-xs-offset-2 card_item" style="text-align: center">
-              <img src="img/icon.png" style="width: 50%">
-              <h3><img src="img/icon.png" style="width: 5%"> まだ購入できません。<img src="img/icon.png" style="width: 5%"></h3>
-              <button type="button" class="btn btn-primary">戻る</button>
+          <div class="col-xs-8 col-xs-offset-2 purchase_card">
+              <img src="img/icon.png" class="purchase_img">
+              <h3 class="no_purchase"><img src="img/icon.png" class="sm-icon"> まだ購入できません。<img src="img/icon.png" class="sm-icon"></h3><a href="timeline.php" class="back_to_timeline"><button type="button" class="btn btn-primary">戻る</button></a>
           </div>
         </div><!-- /row -->
       </div><!-- /container -->

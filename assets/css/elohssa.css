@@ -65,7 +65,7 @@ header {
   background-size: 100%;
 }
 
-@media(max-width: 720px){
+@media(max-width: 768px){
 div.background,div.background_timeline {
   width: 100%;
   margin: 0px;
@@ -146,7 +146,6 @@ div.background,div.background_timeline {
 
 
 .card_item {
-  background-color: #fff;
   position: relative;
   margin: 0 auto;
   background-color: black;
@@ -420,3 +419,33 @@ body .post_body {
   border-bottom: 1px solid #8B8F9F;
 
 }
+
+/*purchase.php*/
+.purchase_card {
+  background-color: #fff;
+  text-align: center;
+  padding: 5%;
+  margin-top: 5%;
+}
+
+.back_to_timeline {
+  user-select: none;
+}
+
+@media (max-width: 576px){
+h3.no_purchase {
+  font-size: 20%;
+}
+}
+
+.purchase_img {
+  width: 50%;
+}
+
+.sm-icon {
+  width: 5%;
+}
+
+
+
+
