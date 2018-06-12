@@ -115,7 +115,7 @@
     </div><!-- /container -->
 
         <div class="row">
-          <div class="col-sm-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 profile">
+          <div class="col-sm-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 timeline_profile">
             <div class="detail">
               <img src="user_profile_img/<?php echo $users_record['img_name'] ?>" >
               <h4><?php echo $users_record['name'] ?></h4>
