@@ -88,7 +88,7 @@
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <link rel="stylesheet" type="text/css" href="assets/css/elohssa.css">
 </head>
-<body>
+<body class="post_body">
   <?php require('header.php'); ?>
 
   <div class="background">
@@ -99,6 +99,7 @@
 
     <div class="container">
       <div class="row space_timeline">
+        <div class="col-xs-offset-1 col-xs-10">
         <form method='POST' action='post.php' enctype="multipart/form-data">
 
           <div class="form-group">
@@ -117,19 +118,20 @@
             <input type="text" name="input_title" placeholder="名前を入力してください" style="width:300px">
           </div>
 
-          <div>
+          <div class="form-group">
               <h3>内容</h3>
-              <textarea name="input_feed" cols="65" rows="5"></textarea>
-          </div>
+                <textarea class="form-control" name="input_feed" cols="65" rows="3"></textarea>
+          </div><!-- /form-group -->
 
-          <div>
+          <div class="form-group">
               <h3>価格設定</h3>
-              <input type="text" name="input_price" placeholder="価格設定" style="width: 300px">
+              <input class="form-control" type="text" name="input_price" placeholder="価格設定" style="width: 300px">
               <a class="noline" href="https://info.finance.yahoo.co.jp/fx/detail/?code=usdjpy" style="font-size: 15px;">円</a>
-          </div>
+          </div><!-- /form-group -->
           <br>
-          <input type="submit" value="送信">
+          <input class="btn btn-primary" type="submit" value="送信">
         </form>
+      </div>
       </div>
     </div>
   </div>

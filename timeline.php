@@ -112,16 +112,12 @@
 </head>
 
 <body>
-
-  <?php require('header.php'); ?>
-
-  <div id="con1" class="modal-content">
-    <p><?php include("comment_layer.html") ?></p>
-    <p><a class="modal-close">閉じる</a></p>
-  </div>
-
-
-  <div class="background">
+<?php require('header.php'); ?>
+  <div id="con1" class="modal-content"> 
+    <p><?php include("comment_layer.html") ?></p> 
+    <p><a class="modal-close">閉じる</a></p> 
+  </div><!-- /modal-content -->
+  <div class="background_timeline">
     <div class="container">
       <div class="row col-xs-offset-10">
         <div class="copy_img top">
@@ -129,36 +125,33 @@
         </div><!-- /copy-img -->
       </div><!-- /row -->
     </div><!-- /container -->
-
     <div class="container">
       <div class="row space_timeline">
       </div><!-- /row -->
     </div><!-- /container -->
-
-        <div class="row">
-          <div class="col-sm-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 profile">
-            <div class="detail">
-              <img src="user_profile_img/<?php echo $users_record['img_name'] ?>" >
-              <h4><?php echo $users_record['name'] ?></h4>
-              <a class="edit_profile" href="post_profile.php">プロフィールを編集</a><br>
-              <br>
-              <p>投稿 : <?php echo $record_cnt["cnt"]; ?>件  フォロワー98人 フォロー中129件</p>
-              <p><?php echo $users_record['introduction'] ?></p>
-            </div><!-- /detail -->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-offset-3 col-sm-6 col-xs-12">
+          <div class="col-sm-4 col-xs-12 user_profile_img_wrapper">
+            <img class="user_profile_img" src="user_profile_img/<?php echo $users_record['img_name'] ?>" >
+          </div>
+          <div class="col-sm-8">
+            <h4><?php echo $users_record['name'] ?></h4>
+            <a class="edit_profile" href="post_profile.php">プロフィールを編集</a><br>
+            <p>投稿 : <?php echo $record_cnt["cnt"]; ?>件  フォロワー98人 フォロー中129件</p>
+            <p><?php echo $users_record['introduction'] ?></p>
           </div>
         </div>
-
+      </div><!-- /row -->
+    </div><!-- /container-fluid -->
     <div class="container">
-
-      <div class="row post-card">
+      <div class="row">
       <?php foreach($feeds as $feed){ ?>
         <div class="col-md-4 col-xs-12">
-          <div class="card">
-
-            <!-- modalレイアウト表示 -->
-            <a data-target="con1" class="modal-open noline">
-
+        <!-- modalレイアウト表示 -->
+          <a data-target="con1" class="modal-open noline">
             <!-- comment_timeline.phpに遷移 -->
+
             <!-- <a href="comment_layer.php?feed_id=?php echo $feed["id"] ?>" class="noline"> -->
 
               <div class="card_item card_hover card_click">                
@@ -171,11 +164,10 @@
               </div><!-- /card_item -->
             </a>
           </div><!-- /card -->
-        </div>
       <?php }?>
       </div><!-- /row -->
     </div><!-- /container -->
-  </div><!-- /background -->
+  </div><!-- /background_timeline -->
 
 
   <script src="assets/js/jquery-3.1.1.js"></script>
