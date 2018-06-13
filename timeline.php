@@ -78,6 +78,26 @@
 //            var_dump($feeds);
 //            echo'<pre>';
 
+//  $user_id = $_SESSION['id'];
+//
+//  if(isset($_GET['feed_id'])){
+//
+//  $feed_id = $_GET['feed_id'];
+//
+//  require('click_count.php');
+//
+//  require('comment_function.php');
+//
+//  $record = feed_detail($dbh,$feed_id);
+//
+//  $users_record = user_detail($dbh,$user_id);
+//
+//  $record_cnt = feed_count($dbh,$feed_id);
+//
+//  post_comment($dbh,$feed_id,$user_id);
+//
+//  $comments = comment_detail($dbh,$feed_id);
+//  }
  ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -90,6 +110,7 @@
   <link rel="stylesheet" type="text/css" href="assets/css/elohssa.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
+
 <body>
 
   <?php require('header.php'); ?>
@@ -138,7 +159,7 @@
             <a data-target="con1" class="modal-open noline">
 
             <!-- comment_timeline.phpに遷移 -->
-            <!-- <a href="click_count.php?feed_id=?php echo $feed["id"] ?>" class="noline"> -->
+            <!-- <a href="comment_layer.php?feed_id=?php echo $feed["id"] ?>" class="noline"> -->
 
               <div class="card_item card_hover card_click">                
                 <img class="card_img" src="user_profile_img/<?php echo $feed['feed_img']; ?>" style="width: 100%">
