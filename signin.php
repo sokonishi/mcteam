@@ -67,6 +67,8 @@
     <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="assets/css/elohssa.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/header.css">  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   </head>
   <body>
     <?php require('header.php'); ?>
@@ -97,7 +99,7 @@
                   <p class="text-danger">サインインに失敗しました</p>
                 <?php } ?>
               </div><!-- /form-group -->
-              <input type="submit" class="btn btn-info" value="サインイン">
+              <input class="btn btn-primary" type="submit" value="サインイン">
             </form>
           </div>
         </div><!-- /row -->
@@ -106,5 +108,6 @@
     <script src="assets/js/jquery-3.1.1.js"></script>
     <script src="assets/js/jquery-migrate-1.4.1.js"></script>
     <script src="assets/js/bootstrap.js"></script>
+    <script src="assets/js/header.js"></script>
   </body>
   </html>
