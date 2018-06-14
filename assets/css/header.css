@@ -78,11 +78,33 @@
   float: left;
   background-color: white;
   width: 100%;
+  position: fixed;
+  z-index: 1;
 }
 
 .header-menu li{
   list-style: none !important;
-  margin-top: 10px;
+  height: 30px;
+  padding-top: 5px;
+
+}
+.header-menu a{
+  text-decoration: none !important;
+  margin-left: 20px;
+ 
+
+}
+
+.header-menu li:hover{
+    background-color: rgba(0, 151, 149, 0.1);
+
+
+}
+.header-menu ul{
+       height: 100%;
+       width:  100%;
+       padding-left: 0;
+
 }
 
 header{
@@ -94,8 +116,6 @@ header{
  height: 100%;
 }
 
-.right-header:hover{
-}
 
 .right-header a{
   text-decoration: none !important;
