@@ -15,6 +15,7 @@
         <li><a href="timeline.php">ホーム</a></li>
         <li><a href="mypage.php">マイページ</a></li>
         <li><a href="post.php">投稿</a></li>
+        <li><a href="ranking.php">ランキング</a></li>
         <li><a href="signout.php">サインアウト</a></li>
       </ul>
     </div>
@@ -25,6 +26,7 @@
           <li><a href="timeline.php">ホーム</a></li>
           <li><a href="mypage.php">マイページ</a></li>
           <li><a href="post.php">投稿</a></li>
+          <li><a href="ranking.php">ランキング</a></li>
           <li><a href="signout.php">サインアウト</a></li>
         </ul>
       </div>
