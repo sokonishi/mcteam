@@ -1,0 +1,130 @@
+.type-9 {
+  span {
+    transition: all 0.4s 0.4s;
+    &:before, &:after {
+      content: "";
+    }
+  }
+  .top {
+    transform: translateY(-17px);
+  }
+  .middle {
+    position: relative;
+    background: none;
+    &:after{
+      content: "";
+      display: block;
+      width: 100px;
+      height: 100px;
+      border-radius: 100%;
+      left: 50%;
+      top: 50%;
+      margin-left: -50px;
+      margin-top: -50px;
+      position: absolute;
+    }
+    &:before{
+      content: "";
+      transition: all 0.4s;
+      width: 50px;
+      display: block;
+      height: 1px;
+      background: #fff;
+      transform: translateY(0px) translateX(0px);
+      opacity: 1;
+    }
+  }
+  .bottom {
+    transform: translateY(17px);
+  }
+}
+
+@keyframes type9-circle{
+  0%{
+    transform:scale(0);
+    opacity: 1;
+    border: 1px solid #fff;
+  }
+  100%{
+    opacity: 0;
+    border: 1px solid #fff;
+    transform:scale(1.5);
+  }
+}
+
+.hamburger-menu
+{ width: 50px; height:50px; top: 0px; position:relative; cursor:pointer; float: right; margin-top: 20px;display: none;}
+@media only screen and (max-width: 750px) {
+.hamburger-menu { display: block !important; }
+}
+.hamburger-menu1
+{ width:25px; height:5px; background-color:#009795; top:0px; position:absolute; } 
+.hamburger-menu2
+{ width:25px; height:5px; background-color:#009795; top:10px; position:absolute; } 
+.hamburger-menu3
+{ width:25px; height:5px; background-color:#009795; top:20px; position:absolute; } 
+
+.hamburger-menu1,.hamburger-menu2,.hamburger-menu3
+{ transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out; /* Opera */
+  -moz-transition: all 0.5s ease-out; /* Firefox */
+  -webkit-transition: all 0.5s ease-out; /* GoogleChrome, Safari */
+  -ms-transition: all 0.5s ease-out; /* IE */ }
+
+
+.header-menu{
+  display: none;
+  margin-top: 80px;
+  float: left;
+  background-color: white;
+  width: 100%;
+}
+
+.header-menu li{
+  list-style: none !important;
+  margin-top: 10px;
+}
+
+header{
+  height: 80px !important;
+}
+
+.right-header{
+ float: right;
+ height: 100%;
+}
+
+.right-header:hover{
+}
+
+.right-header a{
+  text-decoration: none !important;
+
+}
+
+.right-header li{
+    list-style: none !important;
+     display: inline-block;
+    font-size: 15px;
+     padding-top: 25px;
+     padding-right: 15px;
+     padding-left: 15px;
+     padding-bottom: : 10px;
+     height: 100%;
+
+}
+.right-header li:hover{
+    background-color: rgba(0, 151, 149, 0.1);
+
+}
+.right-header ul{
+       height: 100%;
+       margin-bottom: 0;
+}
+
+@media only screen and (max-width: 750px) {
+.right-header { display: none !important; }
+
+}
+
+
