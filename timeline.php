@@ -148,7 +148,7 @@
 
       <?php foreach($feeds as $feed){ ?>
 
-        <div id="con1" class="modal-content">
+        <div id="con<?php echo $feed['id'] ?>" class="modal-content">
           <p><?php include("comment_layer.php") ?></p>
           <p><a class="modal-close">閉じる</a></p>
         </div>
@@ -156,7 +156,7 @@
         <div class="col-md-4 col-xs-12">
           <div class="card">
             <!-- modalレイアウト表示 -->
-            <a data-target="con1" class="modal-open noline">
+            <a data-target="con<?php echo $feed['id'] ?>" class="modal-open noline">
 
             <!-- comment_timeline.phpに遷移 -->
             <!-- <a href="comment_layer.php?feed_id=?php echo $feed["id"] ?>" class="noline"> -->
