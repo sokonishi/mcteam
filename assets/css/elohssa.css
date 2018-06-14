@@ -331,8 +331,16 @@ body .post_body {
   height: 100%;
 }
 
-.background {
-  height: 100vh;
+.side_by_side {
+  display: inline-flex;
+  position: relative;
+}
+
+a.jpy {
+  position: absolute;
+  top: 50%;
+  left: 102%;
+  margin-top: -1.0rem;
 }
 
 
