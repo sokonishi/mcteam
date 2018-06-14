@@ -70,7 +70,7 @@
   </head>
   <body>
     <?php require('header.php'); ?>
-    <div class="background_signup">
+    <div class="background">
       <div class="container">
         <div class="row space_mypage">
         </div><!-- /row -->
