@@ -74,30 +74,30 @@
 
                 $feeds[] = $record;
             }
-//            echo'<pre>';
-//            var_dump($feeds);
-//            echo'<pre>';
+//           echo'<pre>';
+//           var_dump($feeds);
+//           echo'<pre>';
 
 //  $user_id = $_SESSION['id'];
-//
-//  if(isset($_GET['feed_id'])){
-//
-//  $feed_id = $_GET['feed_id'];
-//
-//  require('click_count.php');
-//
-//  require('comment_function.php');
-//
-//  $record = feed_detail($dbh,$feed_id);
-//
-//  $users_record = user_detail($dbh,$user_id);
-//
-//  $record_cnt = feed_count($dbh,$feed_id);
-//
-//  post_comment($dbh,$feed_id,$user_id);
-//
-//  $comments = comment_detail($dbh,$feed_id);
-//  }
+
+//if(isset($_GET['feed_id'])){
+
+//$feed_id = $_GET['feed_id'];
+
+//require('click_count.php');
+
+//require('comment_function.php');
+
+//record = feed_detail($dbh,$feed_id);
+
+//$users_record = user_detail($dbh,$user_id);
+
+//$record_cnt = feed_count($dbh,$feed_id);
+
+//post_comment($dbh,$feed_id,$user_id);
+
+//$comments = comment_detail($dbh,$feed_id);
+//}
  ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -115,12 +115,6 @@
 <body>
 
   <?php require('header.php'); ?>
-
-  <div id="con1" class="modal-content">
-    <p><?php include("comment_layer.html") ?></p>
-    <p><a class="modal-close">閉じる</a></p>
-  </div>
-
 
   <div class="background">
     <div class="container">
@@ -152,12 +146,18 @@
     <div class="container">
 
       <div class="row post-card">
+
       <?php foreach($feeds as $feed){ ?>
+
+        <div id="con<?php echo $feed['id'] ?>" class="modal-content">
+          <p><?php include("comment_layer.php") ?></p>
+          <p><a class="modal-close">閉じる</a></p>
+        </div>
+
         <div class="col-md-4 col-xs-12">
           <div class="card">
-
             <!-- modalレイアウト表示 -->
-            <a data-target="con1" class="modal-open noline">
+            <a data-target="con<?php echo $feed['id'] ?>" class="modal-open noline">
 
             <!-- comment_timeline.phpに遷移 -->
             <!-- <a href="comment_layer.php?feed_id=?php echo $feed["id"] ?>" class="noline"> -->
