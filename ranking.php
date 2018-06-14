@@ -1,6 +1,6 @@
-<?php  
+<?php
 session_start();
-    
+
 require('dbconnect.php');
 
 $ranking_sql = 'SELECT `feeds`.*, COUNT(`feed_id`) AS total FROM `likes` LEFT JOIN `feeds` ON `feeds`.`id` = `likes`.`feed_id` GROUP BY `feed_id` ORDER BY `total` DESC';
@@ -16,7 +16,7 @@ $ranking_sql = 'SELECT `feeds`.*, COUNT(`feed_id`) AS total FROM `likes` LEFT JO
             }
             $rankings[] = $record;
           }
-          
+
 
 ?>
 
