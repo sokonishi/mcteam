@@ -51,32 +51,20 @@ header {
   margin: 15px;
 }
 
-
-
 .background {
   width: 100%;
-  height: 100vh;
   margin: 0px;
   padding: 0px;
   background: url(../../img/top_img.jpg);
-  background-position: ;
+/*  background-position: center center;*/
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100%;
 }
 
-@media(max-width: 768px){
-div.background,div.background_timeline {
-  width: 100%;
-  margin: 0px;
-  padding: 0px;
-  background: url(../../img/top_img_sm.jpg);
-  background-position: ;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 100%;
-}
-}
+@media only screen and (max-width: 600px){
+
+  }
 
 
 /*signup.php*/
@@ -93,16 +81,8 @@ div.background,div.background_timeline {
 }
 
 /*timeline.php*/
-
-.background_timeline {
-  width: 100%;
-  margin: 0px;
-  padding: 0px;
-  background: url(../../img/top_img.jpg);
-  background-position: ;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 100%;
+.profile{
+  /*背景透明にしてみた*/
 }
 
 @media only screen and (max-width: 750px) {
@@ -118,23 +98,13 @@ div.background,div.background_timeline {
   margin-right: 50px;
 }
 
-.user_profile_img_wrapper {
-  text-align: center;
-  margin-top: 10%;
-}
-
-.user_profile_img {
-  border-radius: 50px;
-  height: 100px;
-  width: 100px;
-  position: relative;
-}
-
-
 .profile h4{
   float: left;
 }
 
+.profile p{
+  
+}
 
 .feed_title {
   font-size: 24px;
@@ -144,36 +114,36 @@ div.background,div.background_timeline {
   margin-top: 150px;
 }
 
-
 .card_item {
+  background-color: #fff;
   position: relative;
-  margin: 0 auto;
   background-color: black;
-  /*text-align:center;*/
+/*  text-align:center;*/
+  position: relative;
   width: 300px !important;
   height:  300px !important; 
 }
 
 
 .card_item ul {
-  position: relative;
+  position: absolute;
   top: 0px;
   width: 100%;
   list-style: none;
 }
 
 .card_img{
-    position: relative;
+    position: absolute;
     top: 0;
     bottom: 0;
     right: 0;
     left: 0;
     margin: auto;
+
 }
 
 .card_contents {
   display: none;
-
 }
 
 .card_active {
@@ -185,6 +155,7 @@ div.background,div.background_timeline {
 }
 
 /*-------------------------*/
+
 .modal-content {
   position:fixed;
   display:none;
@@ -248,6 +219,10 @@ div.background,div.background_timeline {
   text-decoration: none;
 }
 
+.post-card{
+
+}
+ 
 
 .cost {
   text-align: center;
@@ -321,14 +296,14 @@ div.background,div.background_timeline {
   text-align: center;
 }
 
-
-/*post.php*/
-body .post_body {
-  height: 100%;
-}
-
 /*comment_layer*/
 
+
+/*body {
+  background-color: rgba(0,0,0,.75);
+  position: relative;
+  padding: 0;
+}*/
 .whiteBbackground: {
   position: absolute;
   bottom: 0;
@@ -340,6 +315,8 @@ body .post_body {
   width: 500px;
   height: 500px;
 }
+
+/**/
 
 #comment_layer_img {
   width: 100%;
@@ -393,21 +370,20 @@ body .post_body {
 }
 
 .purchase_btn{
-  display: inline-block;
-  padding: 0.5em 1em;
-  text-decoration: none;
-  background: #668ad8;/*ボタン色*/
-  color: #FFF;
-  border-bottom: solid 4px #627295;
-  border-radius: 3px;
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #668ad8;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
 }
 .purchase_btn:active {/*ボタンを押したとき*/
-  -ms-transform: translateY(4px);
-  -webkit-transform: translateY(4px);
-  transform: translateY(4px);/*下に動く*/
-  border-bottom: none;/*線を消す*/
+    -ms-transform: translateY(4px);
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    border-bottom: none;/*線を消す*/
 }
-
 
 .profile_img {
   margin: 0;
@@ -419,32 +395,3 @@ body .post_body {
   border-bottom: 1px solid #8B8F9F;
 
 }
-
-/*purchase.php*/
-.purchase_card {
-  background-color: #fff;
-  text-align: center;
-  padding: 5%;
-  margin-top: 5%;
-}
-
-.back_to_timeline {
-  user-select: none;
-}
-
-@media (max-width: 576px){
-h3.no_purchase {
-  font-size: 20%;
-}
-}
-
-.purchase_img {
-  width: 50%;
-}
-
-.sm-icon {
-  width: 5%;
-}
-
-
-

@@ -14,5 +14,4 @@
   //header("Location: comment_timeline.php?feed_id=".$feed_id);
 
 //  header("Location: comment_layer.php?feed_id=".$feed_id);
-
 ?>
