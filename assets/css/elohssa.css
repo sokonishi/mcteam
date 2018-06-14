@@ -53,18 +53,26 @@ header {
 
 .background {
   width: 100%;
+  height: 100vh;
   margin: 0px;
   padding: 0px;
   background: url(../../img/top_img.jpg);
-/*  background-position: center center;*/
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100%;
 }
 
-@media only screen and (max-width: 600px){
-
-  }
+@media(max-width: 768px){
+div.background,div.background_timeline {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  background: url(../../img/top_img_sm.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100%;
+}
+}
 
 
 /*signup.php*/
@@ -85,17 +93,39 @@ header {
   /*背景透明にしてみた*/
 }
 
+.background_timeline {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  background: url(../../img/top_img.jpg);
+  background-position: ;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100%;
+}
+
 @media only screen and (max-width: 750px) {
 .profile { margin-top: 50px !important; }
 }
 
 .profile img{
   width: 200px;
-  border-radius: 50%;
-  height: 200px;
   display:inline;
   float: left;
   margin-right: 50px;
+}
+
+.user_profile_img_wrapper {
+  text-align: center;
+  margin-top: 10%;
+}
+
+.user_profile_img {
+  border-radius: 50px;
+  height: 100px;
+  width: 100px;
+  position: relative;
+
 }
 
 .profile h4{
@@ -115,8 +145,8 @@ header {
 }
 
 .card_item {
-  background-color: #fff;
   position: relative;
+  margin: 0 auto;
   background-color: black;
 /*  text-align:center;*/
   position: relative;
@@ -151,7 +181,7 @@ header {
   background-color: rgba(0,0,0,0.3);
   color: #fff;
   height: 100%;
-
+  margin: auto;
 }
 
 /*-------------------------*/
@@ -296,14 +326,19 @@ header {
   text-align: center;
 }
 
+/*post.php*/
+body .post_body {
+  height: 100%;
+}
+
+.background {
+  height: 100vh;
+}
+
+
 /*comment_layer*/
 
 
-/*body {
-  background-color: rgba(0,0,0,.75);
-  position: relative;
-  padding: 0;
-}*/
 .whiteBbackground: {
   position: absolute;
   bottom: 0;
@@ -393,5 +428,31 @@ header {
 }
 .comment_box {
   border-bottom: 1px solid #8B8F9F;
-
 }
+
+/*purchase.php*/
+.purchase_card {
+  background-color: #fff;
+  text-align: center;
+  padding: 5%;
+  margin-top: 5%;
+}
+
+.back_to_timeline {
+  user-select: none;
+}
+
+@media (max-width: 576px){
+h3.no_purchase {
+  font-size: 20%;
+}
+}
+
+.purchase_img {
+  width: 50%;
+}
+
+.sm-icon {
+  width: 5%;
+}
+
