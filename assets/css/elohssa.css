@@ -33,6 +33,22 @@ header {
   z-index: 1;
 }
 
+div .center_btn {
+  position: relative;
+}
+
+a .back_btn {
+  margin: 0 auto;
+  position: relative;
+  left: 50%;
+}
+
+input .register {
+  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+}
+
 .navbar {
   margin-bottom: 0;
 }
@@ -104,29 +120,30 @@ div.background,div.background_timeline {
   background-size: 100%;
 }
 
+div.user_profile_img_wrapper {
+  text-align: center;
+  margin-top: 10%;
+}
+
+img.user_profile_img {
+  border-radius: 50px;
+  height: 100px;
+  width: 100px;
+  position: relative;
+}
+
+
 @media only screen and (max-width: 750px) {
 .profile { margin-top: 50px !important; }
 }
 
-.profile img{
+.profile{
   width: 200px;
   display:inline;
   float: left;
   margin-right: 50px;
 }
 
-.user_profile_img_wrapper {
-  text-align: center;
-  margin-top: 10%;
-}
-
-.user_profile_img {
-  border-radius: 50px;
-  height: 100px;
-  width: 100px;
-  position: relative;
-
-}
 
 .profile h4{
   float: left;
@@ -169,6 +186,8 @@ div.background,div.background_timeline {
     right: 0;
     left: 0;
     margin: auto;
+    background-color: #fff;
+    filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.6));
 
 }
 
@@ -331,8 +350,16 @@ body .post_body {
   height: 100%;
 }
 
-.background {
-  height: 100vh;
+.side_by_side {
+  display: inline-flex;
+  position: relative;
+}
+
+a.jpy {
+  position: absolute;
+  top: 50%;
+  left: 102%;
+  margin-top: -1.0rem;
 }
 
 

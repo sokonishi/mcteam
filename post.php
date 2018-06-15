@@ -87,56 +87,47 @@
   <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.css">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <link rel="stylesheet" type="text/css" href="assets/css/elohssa.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/header.css">
 </head>
-<body>
+<body class="post_body">
   <?php require('header.php'); ?>
-
   <div class="background">
     <div class="container">
       <div class="row space_mypage">
-      </div>
-    </div>
-
+      </div><!-- /row -->
+    </div><!-- container -->
     <div class="container">
       <div class="row space_timeline">
-        <form method='POST' action='post.php' enctype="multipart/form-data">
-
-          <div class="form-group">
-            <h3 for="img_name">写真</h3>
-            <input type="file" name="input_img_name" id="img_name">
+        <div class="col-xs-offset-1 col-xs-10">
+          <form method='POST' action='post.php' enctype="multipart/form-data">
+            <div class="form-group">
+              <h3 for="img_name">写真</h3>
+              <input type="file" name="input_img_name" id="img_name">
               <?php if(isset($errors['img_name']) && $errors['img_name'] == 'type') { ?>
               <p class="text-danger">拡張子が「jpg」「png」「gif」「jpeg」の画像を選択してください</p>
               <?php } ?>
               <?php if(isset($errors['img_name']) && $errors['img_name'] == 'blank') { ?>
               <p class="text-danger">画像を選択してください</p>
               <?php } ?>
-          </div>
-
-          <div>
-            <h3>題名</h3>
-            <input type="text" name="input_title" placeholder="名前を入力してください" style="width:300px">
-          </div>
-
-          <div>
+              <h3>題名</h3>
+              <input type="text" name="input_title" placeholder="名前を入力してください" style="width:300px">
               <h3>内容</h3>
-              <textarea name="input_feed" cols="65" rows="5"></textarea>
-          </div>
-
-          <div>
+              <textarea class="form-control" name="input_feed" cols="65" rows="3"></textarea>
               <h3>価格設定</h3>
-              <input type="text" name="input_price" placeholder="価格設定" style="width: 300px">
-              <a class="noline" href="https://info.finance.yahoo.co.jp/fx/detail/?code=usdjpy" style="font-size: 15px;">円</a>
-          </div>
-          <br>
-          <input type="submit" value="送信">
-        </form>
-      </div>
-    </div>
-  </div>
-
-
+              <div class="side_by_side">
+                <input class="form-control" type="text" name="input_price" placeholder="価格設定" style="width: 300px">
+                <a class="noline jpy" href="https://info.finance.yahoo.co.jp/fx/detail/?code=usdjpy" style="font-size: 15px;">円</a>
+              </div>
+            </div><!-- /form-group -->
+            <input class="btn btn-primary" type="submit" value="送信">
+          </form>
+        </div>
+      </div><!-- /row -->
+    </div><!-- /container -->
+  </div><!-- /background -->
   <script src="assets/js/jquery-3.1.1.js"></script>
   <script src="assets/js/jquery-migrate-1.4.1.js"></script>
   <script src="assets/js/bootstrap.js"></script>
+  <script src="assets/js/header.js"></script>
 </body>
 </html>
