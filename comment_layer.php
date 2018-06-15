@@ -196,7 +196,7 @@
         </div>
         <div class="col-sm-5 right_col">
           <div class="col-xs-4">
-            <img src="user_profile_img/?php echo $record['img_name'] ?>" class="profile_img">
+            <img src="user_profile_img/<?php echo $record['img_name'] ?>" class="profile_img">
           </div>
           <div class="col-xs-8">
             <h4><?php echo $record['name'] ?></h4>
