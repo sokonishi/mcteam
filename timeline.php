@@ -78,26 +78,27 @@
 //           var_dump($feeds);
 //           echo'<pre>';
 
-//  $user_id = $_SESSION['id'];
+ $user_id = $_SESSION['id'];
 
-//if(isset($_GET['feed_id'])){
+if(isset($_GET['feed_id'])){
 
-//$feed_id = $_GET['feed_id'];
+$feed_id = $_GET['feed_id'];
 
-//require('click_count.php');
+require('click_count.php');
 
-//require('comment_function.php');
+require('comment_function.php');
 
-//record = feed_detail($dbh,$feed_id);
+$record = feed_detail($dbh,$feed_id);
 
-//$users_record = user_detail($dbh,$user_id);
+$users_record = user_detail($dbh,$user_id);
 
-//$record_cnt = feed_count($dbh,$feed_id);
+$record_cnt = feed_count($dbh,$feed_id);
 
-//post_comment($dbh,$feed_id,$user_id);
+post_comment($dbh,$feed_id,$user_id);
 
-//$comments = comment_detail($dbh,$feed_id);
-//}
+$comments = array();
+$comments = comment_detail($dbh,$feed_id);
+}
  ?>
 <!DOCTYPE html>
 <html lang="ja">
