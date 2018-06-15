@@ -1,0 +1,12 @@
+.cat{
+	list-style-type: none !important;
+	text-align: center;
+}
+.type{
+	list-style-type: none !important;
+}
+.type li{
+	display: inline-block;
+	padding: 20px;
+
+}

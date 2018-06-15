@@ -88,7 +88,8 @@
   <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.css">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <link rel="stylesheet" type="text/css" href="assets/css/elohssa.css">
-  <link rel="stylesheet" type="text/css" href="assets/css/header.css">  
+  <link rel="stylesheet" type="text/css" href="assets/css/header.css"> 
+  <link rel="stylesheet" type="text/css" href="assets/css/timeline.css"> 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 
@@ -125,8 +126,17 @@
       </div><!-- /row -->
     </div><!-- /container-fluid -->
     <div class="container">
+      <ul class="cat">
+        <li>
+          <ol class="type">
+            <li><a href="javascript:void(0)" data-filter="*" class="active">タイムライン</a></li>
+            <li><a href="javascript:void(0)" data-filter=".asia">ランキング</a></li>
+            <li><a href="javascript:void(0)" data-filter=".europe">自分の投稿</a></li>
+          </ol>
+        </li>
+      </ul>
 
-      <div class="row post-card">
+      <div class="row post-card ">
 
       <?php foreach($feeds as $feed){ ?>
 
@@ -135,7 +145,7 @@
           <p><a class="modal-close">閉じる</a></p>
         </div>
 
-        <div class="col-md-4 col-xs-12">
+        <div class="col-md-4 col-xs-12 portfolio-items isotope">
           <div class="card">
             <!-- modalレイアウト表示 -->
             <a data-target="con<?php echo $feed['id'] ?>" class="modal-open noline">
@@ -165,5 +175,7 @@
   <script src="assets/js/bootstrap.js"></script>
   <script src="missyou.js"></script>
   <script src="assets/js/header.js"></script>
+  <data></data><script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+<script src="assets/js/timeline.js"></script>
 </body>
 </html>
