@@ -104,89 +104,17 @@
 </head>
 <body> -->
 
-    <div class="container-fluid">
+<!--     <div class="container-fluid">
     <div class="row">
       <div class="col-xs-offset-1 col-xs-10 col-sm-12 comment_layer_col" style="padding: 0px; background-color: #fff">
         <div class="col-sm-7" style="padding: 0px;">
-          <img src="user_profile_img/<?php echo $feed['feed_img']; ?>" id="comment_layer_img">
+          <img src="user_profile_img/?php echo $feed['feed_img']; ?>" id="comment_layer_img">
           <div class="col-sm-7 wrapper" style="padding: 0px;">
             <div class="square">
               <div class="col-xs-offset-1 col-xs-10">
-                <h3><?php echo $feed["title"] ?></h3>
-                <p><?php echo $feed["feed"] ?></p>
-                <h2><?php echo $feed["price"] ?>円</h2>
-                <div class="purchase_btn_wrapper">
-                  <a href="purchase.php" class="purchase_btn"><i class="fa fa-shopping-cart" aria-hidden="true"></i> カートに入れる</a>
-                </div><!-- /purchase_btn_wrapper -->
-              </div>
-            </div><!-- /square -->
-          </div>
-        </div>
-        <div class="col-sm-5 right_col">
-          <div class="col-xs-4">
-            <img src="img/sample_img.jpg" class="profile_img">
-          </div>
-          <div class="col-xs-8">
-            <h4>Name<!-- <?php echo $users_record['name'] ?> --></h4>
-            <p>投稿 : 3<!-- <?php echo $record_cnt["cnt"]; ?> -->件  フォロワー98人 フォロー中129件</p>
-            <p>2018-06-09<!-- <?php echo $users_record['introduction'] ?> --></p>
-          </div>
-          <div class="row comment_box">
-            <div class="col-xs-12">
-              <form method="POST" action="">
-                <div class="form-group">
-                  <label for="comment">ツッコミを書く</label>
-                  <textarea class="form-control" rows="2" id="comment"></textarea>
-                  <a href="#" class="btn btn-primary btn-xs active" role="button" aria-pressed="true">ツッコむ</a>
-                </div><!-- /form-group -->
-              </form>
-            </div>
-          </div><!-- /row -->
-          <div class="row comment_box">
-            <div class="col-xs-12">
-              <div class="col-xs-4">
-                <img src="img/sample_img.jpg" class="profile_img" >
-              </div>
-              <div class="col-xs-8">
-                <h4>Name</h4>
-                <p>2018-06-09</p>
-                <p>高すぎるわ！</p>
-              </div>
-            </div>
-          </div><!-- /row -->
-          <div class="row comment_box">
-            <div class="col-xs-12">
-              <div class="col-xs-4">
-                <img src="img/sample_img.jpg" class="profile_img" >
-              </div>
-              <div class="col-xs-8">
-                <h4>Name</h4>
-                <p>2018-06-09</p>
-                <p>高すぎるわ！</p>
-              </div>
-            </div>
-          </div><!-- /row -->
-          <div class="row">
-            <div class="col-xs-12">
-              いいね数：8
-            </div>
-          </div><!-- /row -->
-        </div>
-      </div>
-    </div><!-- /row -->
-  </div><!-- /container-fluid -->
-
-<!--   <div class="container-fluid">
-    <div class="row">
-      <div class="col-xs-offset-1 col-xs-10 col-sm-12 comment_layer_col" style="padding: 0px; background-color: #fff">
-        <div class="col-sm-7" style="padding: 0px;">
-          <img src="user_profile_img/?php echo $record['feed_img'] ?>" id="comment_layer_img">
-          <div class="col-sm-7 wrapper" style="padding: 0px;">
-            <div class="square">
-              <div class="col-xs-offset-1 col-xs-10">
-                <h3>?php echo $record['title'] ?></h3>
-                <p>?php echo $record['feed'] ?></p>
-                <h2 class="cost">?php echo $record['price'] ?>円</h2>
+                <h3>?php echo $feed["title"] ?></h3>
+                <p>?php echo $feed["feed"] ?></p>
+                <h2>?php echo $feed["price"] ?>円</h2>
                 <div class="purchase_btn_wrapper">
                   <a href="purchase.php" class="purchase_btn"><i class="fa fa-shopping-cart" aria-hidden="true"></i> カートに入れる</a>
                 </div>
@@ -196,12 +124,84 @@
         </div>
         <div class="col-sm-5 right_col">
           <div class="col-xs-4">
-            <img src="user_profile_img/?php echo $record['img_name'] ?>" class="profile_img">
+            <img src="img/sample_img.jpg" class="profile_img">
           </div>
           <div class="col-xs-8">
-            <h4>?php echo $record['name'] ?></h4>
-            <p>投稿 : ?php echo $record_cnt["cnt"]; ?>件  フォロワー98人 フォロー中129件</p>
-            <p>?php echo $record['introduction'] ?></p>
+            <h4>Name?php echo $users_record['name'] ?></h4>
+            <p>投稿 : 3?php echo $record_cnt["cnt"]; ?>件  フォロワー98人 フォロー中129件</p>
+            <p>2018-06-09?php echo $users_record['introduction'] ?> </p>
+          </div>
+          <div class="row comment_box">
+            <div class="col-xs-12">
+              <form method="POST" action="">
+                <div class="form-group">
+                  <label for="comment">ツッコミを書く</label>
+                  <textarea class="form-control" rows="2" id="comment"></textarea>
+                  <a href="#" class="btn btn-primary btn-xs active" role="button" aria-pressed="true">ツッコむ</a>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="row comment_box">
+            <div class="col-xs-12">
+              <div class="col-xs-4">
+                <img src="img/sample_img.jpg" class="profile_img" >
+              </div>
+              <div class="col-xs-8">
+                <h4>Name</h4>
+                <p>2018-06-09</p>
+                <p>高すぎるわ！</p>
+              </div>
+            </div>
+          </div>
+          <div class="row comment_box">
+            <div class="col-xs-12">
+              <div class="col-xs-4">
+                <img src="img/sample_img.jpg" class="profile_img" >
+              </div>
+              <div class="col-xs-8">
+                <h4>Name</h4>
+                <p>2018-06-09</p>
+                <p>高すぎるわ！</p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              いいね数：8
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-offset-1 col-xs-10 col-sm-12 comment_layer_col" style="padding: 0px; background-color: #fff">
+        <div class="col-sm-7" style="padding: 0px;">
+          <img src="user_profile_img/<?php echo $feed['feed_img'] ?>" id="comment_layer_img">
+          <div class="col-sm-7 wrapper" style="padding: 0px;">
+            <div class="square">
+              <div class="col-xs-offset-1 col-xs-10">
+                <h3><?php echo $feed['title'] ?></h3>
+                <p><?php echo $feed['feed'] ?></p>
+                <h2 class="cost"><?php echo $feed['price'] ?>円</h2>
+                <div class="purchase_btn_wrapper">
+                  <a href="purchase.php" class="purchase_btn"><i class="fa fa-shopping-cart" aria-hidden="true"></i> カートに入れる</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-5 right_col">
+          <div class="col-xs-4">
+            <img src="user_profile_img/<?php echo $record['img_name'] ?>" class="profile_img">
+          </div>
+          <div class="col-xs-8">
+            <h4><?php echo $record['name'] ?></h4>
+            <p>投稿 : <?php echo $record_cnt["cnt"]; ?>件  フォロワー98人 フォロー中129件</p>
+            <p><?php echo $record['introduction'] ?></p>
           </div>
 
           
@@ -211,9 +211,9 @@
                 <div class="form-group">
                   <label for="comment">ツッコミを書く</label>
                   <textarea name="comment" class="form-control" rows="2" id="comment"></textarea>
-                    ?php if(isset($errors['feed']) && $errors['feed'] == 'blank') { ?>
+                    <?php if(isset($errors['feed']) && $errors['feed'] == 'blank') { ?>
                       <p class="alert alert-danger">何か入力してください</p>
-                    ?php } ?>
+                    <?php } ?>
                   <input type="submit" value="ツッコミ" class="btn btn-primary btn-xs active" role="button" aria-pressed="true">
                 </div>
               </form>
@@ -221,20 +221,20 @@
           </div>
 
           
-          ?php foreach($comments as $comment) {?>
+          <?php foreach($comments as $comment) {?>
           <div class="row comment_box">
             <div class="col-xs-12">
               <div class="col-xs-4">
                 <img src="user_profile_img/?php echo $comment['img_name'] ?>"  class="profile_img" >
               </div>
               <div class="col-xs-8">
-                <h4>?php echo $comment['name'] ?></h4>
-                <p>?php echo $comment['created'] ?></p>
-                <p>?php echo $comment['comment'] ?></p>
+                <h4><?php echo $comment['name'] ?></h4>
+                <p><?php echo $comment['created'] ?></p>
+                <p><?php echo $comment['comment'] ?></p>
               </div>
             </div>
           </div>
-          ?php } ?>
+          <?php } ?>
           
 
           <div class="row">
@@ -245,7 +245,7 @@
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
 
 
 
