@@ -44,51 +44,46 @@
     <link rel="stylesheet" type="text/css" href="../assets/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/elohssa.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/header.css">  
 </head>
 <body>
-
   <?php require('register_header.php'); ?>
-
-  <div class="background_signup">
+  <div class="background">
     <div class="container">
       <div class="row space_mypage">
       </div><!-- /row -->
     </div><!-- /container -->
-
     <div class="container">
-        <div class="row">
-          <div class="col-xs-8 col-xs-offset-2">
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
           <h2 class="text-center content_header">アカウント情報確認</h2>
           <div class="row">
-            <div class="col-xs-4">
+            <div class="col-sm-5">
               <img src="../user_profile_img/<?php echo htmlspecialchars($img_name); ?>" class="img-responsive img-tumbnail">
             </div>
-            
-            <div class="col-xs-8">
-              <div>
-                <span>名前</span>      
-                <p class="lead"><?php echo htmlspecialchars($name); ?></p>
-              </div>
-              <div>
-                <span>メールアドレス</span>
-                <p class="lead"><?php echo htmlspecialchars($email); ?></p>
-              </div>
-              <div>
-                <span>パスワード</span>
-                <p class="lead">●●●●●●●●●●</p>
-              </div>
-    
-                <form method="POST" action="">
-                  <a href="signup.php" class="btn" onclick="history.back()">&laquo;&nbsp;戻る</a>
-                  <input type="hidden" name="action" value="submit">
-                  <input type="submit" class="btn btn-primary" value="登録">
-                </form>
+            <div class="col-sm-7">
+              <span>名前</span>      
+              <p class="lead"><?php echo htmlspecialchars($name); ?></p>
+              <span>メールアドレス</span>
+              <p class="lead"><?php echo htmlspecialchars($email); ?></p>
+              <span>パスワード</span>
+              <p class="lead">●●●●●●●●●●</p>
             </div>
-          </div>
+          </div><!-- /row -->
+        </div>
+      </div><!-- /row -->
+      <div class="row">
+        <div class="col-sm-offset-4 col-sm-4">
+          <form method="POST" action="">
+            <a href="signup.php" class="btn" onclick="history.back()">&laquo;&nbsp;戻る</a>
+            <input type="hidden" name="action" value="submit">
+            <input type="submit" class="btn btn-primary" value="登録">
+          </form>
+        </div>
         </div>
       </div><!-- /row -->
     </div><!-- /container -->
-  </div><!-- /background_signup -->
+  </div><!-- /background -->
 
   <script src="../assets/js/jquery-3.1.1.js"></script>
   <script src="../assets/js/jquery-migrate-1.4.1.js"></script>

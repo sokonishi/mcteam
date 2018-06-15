@@ -104,12 +104,13 @@
     <link rel="stylesheet" type="text/css" href="../assets/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/elohssa.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/header.css">  
 </head>
 <body>
 
   <?php require('../register/register_header.php'); ?>
   
-  <div class="background_signup">
+  <div class="background">
     <div class="container">
         <div class="row space_mypage">
         </div><!-- /row -->
