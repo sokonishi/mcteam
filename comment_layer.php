@@ -20,7 +20,7 @@
 //  $comments = comment_detail($dbh,$feed_id);
 
 
-//  $sql = 'SELECT `f`.*, `u`.`name`,`u`.`img_name`, `u`.`introduction` FROM `feeds` AS `f` LEFT JOIN `users` AS `u` ON `f`.`user_id` = `u`.`id` WHERE `f`.`//id`=?';
+//  $sql = 'SELECT `f`.*, `u`.`name`,`u`.`img_name`, `u`.`introduction` FROM `feeds` AS `f` LEFT JOIN `users` AS `u` ON `f`.`user_id` = `u`.`id` WHERE `f`.`id`=?';
 //  $data = array($feed_id);
 //  $stmt = $dbh->prepare($sql);
 //  $stmt->execute($data);
@@ -196,18 +196,18 @@
         </div>
         <div class="col-sm-5 right_col">
           <div class="col-xs-4">
-            <img src="user_profile_img/<?php echo $record['img_name'] ?>" class="profile_img">
+            <img src="user_profile_img/<?php echo $feed['feed_user']['img_name'] ?>" class="profile_img">
           </div>
           <div class="col-xs-8">
-            <h4><?php echo $record['name'] ?></h4>
-            <p>投稿 : <?php echo $record_cnt["cnt"]; ?>件  フォロワー98人 フォロー中129件</p>
-            <p><?php echo $record['introduction'] ?></p>
+            <h4><?php echo $feed['feed_user']['name'] ?></h4>
+            <p>投稿 : <?php echo $feed['feed_cnt']['cnt']; ?>件  フォロワー98人 フォロー中129件</p>
+            <p><?php echo $feed['feed_user']['introduction'] ?></p>
           </div>
 
           
           <div class="row comment_box">
             <div class="col-xs-12">
-              <form method="POST" action="">
+              <form method="POST" action="timeline.php">
                 <div class="form-group">
                   <label for="comment">ツッコミを書く</label>
                   <textarea name="comment" class="form-control" rows="2" id="comment"></textarea>

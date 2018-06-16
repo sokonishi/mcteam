@@ -69,6 +69,7 @@
               </div><!-- /card_item -->
             </div><!-- /row -->
           </div><!-- /container -->
+          <br><br><br><br><br><br><br><br><br><br>
           <div class="container">
             <div class="row text-center" style="margin-top: 50px;">
               <form method="POST" action="">
