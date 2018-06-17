@@ -44,6 +44,7 @@
     <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="assets/css/elohssa.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/header.css"> 
 </head>
 <body>
 
@@ -54,19 +55,22 @@
       <div class="row space_mypage">
       </div><!-- /row -->
     </div><!-- /container -->
-
-
-          <h2 class="text-center content_header">投稿確認</h2>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+        <h2 class="text-center content_header">投稿確認</h2>
           <div class="container">
-            <div class="row col-xs-offset-4 col-xs-4">
-              <div class="card_item">
-                <img style="width: 100%" src="user_profile_img/<?php echo htmlspecialchars($img_name); ?>" class="img-responsive img-tumbnail">
-                <div>
-                  <h4 class="lead"><?php echo htmlspecialchars($title); ?></h4>
-                  <p class="lead"><?php echo htmlspecialchars($feed); ?></p>
-                  <h4 class="cost" style="color: red;"><?php echo htmlspecialchars($price); ?>円</h4>
-                </div>
-              </div><!-- /card_item -->
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="card_item">
+                  <img style="width: 100%" src="user_profile_img/<?php echo htmlspecialchars($img_name); ?>" class="img-responsive img-tumbnail">
+                </div><!-- /card_item -->
+              </div>
+              <div class="col-sm-6">
+                <h4 class="lead"><?php echo htmlspecialchars($title); ?></h4>
+                <p class="lead"><?php echo htmlspecialchars($feed); ?></p>
+                <h4 class="cost";"><?php echo htmlspecialchars($price); ?>円</h4>
+              </div>
             </div><!-- /row -->
           </div><!-- /container -->
           <div class="container">
@@ -78,13 +82,15 @@
               </form>
             </div><!-- /row -->
           </div><!-- /container -->
-            
-
       </div>
+    </div><!-- /row -->
+  </div><!-- /container -->
+</div><!-- /background -->
 
 
   <script src="assets/js/jquery-3.1.1.js"></script>
   <script src="assets/js/jquery-migrate-1.4.1.js"></script>
   <script src="assets/js/bootstrap.js"></script>
+  <script src="assets/js/header.js"></script>
 </body>
 </html>

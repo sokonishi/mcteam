@@ -164,9 +164,10 @@ img.user_profile_img {
 .card_item {
   position: relative;
   margin: 0 auto;
-  background-color: black;
+  background-color: #fff;
 /*  text-align:center;*/
   position: relative;
+  filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.6));
   width: 300px !important;
   height:  300px !important; 
 }
@@ -187,7 +188,6 @@ img.user_profile_img {
     left: 0;
     margin: auto;
     background-color: #fff;
-    filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.6));
 
 }
 
@@ -202,6 +202,8 @@ img.user_profile_img {
   height: 100%;
   margin: auto;
 }
+
+
 
 /*-------------------------*/
 
@@ -268,15 +270,17 @@ img.user_profile_img {
   text-decoration: none;
 }
 
-.post-card{
-
+.timeline_card-items{
+  padding-top: 0px !important;
+  
 }
  
 
-.cost {
+h4 .cost {
   text-align: center;
   color: red;
   font-size: 20px;
+
 }
 
 .timeline {
@@ -418,7 +422,7 @@ a.jpy {
 }
 
 .square p {
-  line-height: 3;
+  line-height: 1;
 }
 
 .square h2 {

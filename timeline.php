@@ -1,61 +1,159 @@
 <?php
-    session_start();
-    // var_dump($_SESSION);
-    require('dbconnect.php');
+  session_start();
+  require('dbconnect.php');
+
+  $user_id = $_SESSION['id'];
+
+  //ログインユーザー情報
   $users_sql = 'SELECT * FROM `users` WHERE `id`=?';
   $users_data = array($_SESSION['id']);
   $users_stmt = $dbh->prepare($users_sql);
   $users_stmt->execute($users_data);
   $users_record = $users_stmt->fetch(PDO::FETCH_ASSOC);
-  //var_dump($users_record);
+
+  //ログインユーザーの投稿件数
   $count_sql = "SELECT COUNT(*) as `cnt` FROM `feeds` WHERE `user_id`=?";
   $data_cnt = array($_SESSION['id']);
   $stmt_count = $dbh->prepare($count_sql);
   $stmt_count->execute($data_cnt);
   $record_cnt = $stmt_count->fetch(PDO::FETCH_ASSOC);
-    $sql = 'SELECT * FROM `feeds` ORDER BY `id` DESC';
-            $data = array();
-            $stmt = $dbh->prepare($sql);
-            $stmt->execute($data);
-            while (true) {
-                $record = $stmt->fetch(PDO::FETCH_ASSOC);
-                if ($record == false) {
-                    break;
-                }
-                $like_sql = "SELECT COUNT(*) AS `like_cnt` FROM `likes` WHERE `feed_id` = ?";
-                $like_data = array($record["id"]);
-                $like_stmt = $dbh->prepare($like_sql);
-                $like_stmt->execute($like_data);
-                $like = $like_stmt->fetch(PDO::FETCH_ASSOC);
-                $record["like_cnt"] = $like["like_cnt"];
-                $like_flag_sql = 'SELECT COUNT(*)as `like_flag` FROM `likes` WHERE `user_id`=? AND `feed_id`=?';
-                $like_flag_data = array($_SESSION["id"],$record["id"]);
-                $like_flag_stmt = $dbh->prepare($like_flag_sql);
-                $like_flag_stmt->execute($like_flag_data);
-                $like_flag = $like_flag_stmt->fetch(PDO::FETCH_ASSOC);
-                // var_dump($like_flag);
-                  if ($like_flag["like_flag"] > 0) {
-                    $record["like_flag"] = 1;
-                  } else {
-                    $record["like_flag"] = 0;
-                  }
-                  $view_sql = "SELECT COUNT(*) FROM `views` WHERE `feed_id`=?";
-                  $view_data = array($record["id"]);
-                  $view_stmt = $dbh->prepare($view_sql);
-                  $view_stmt->execute($view_data);
-                  while (true) {
-                    $view_record = $view_stmt->fetch(PDO::FETCH_ASSOC);
-                    if ($view_record == false) {
-                        break;
-                    }
-                    //var_dump($view_record);
-                    $record["view_count"] = $view_record;
-                  }
-                $feeds[] = $record;
+
+  //以降投稿に関して
+  $sql = 'SELECT * FROM `feeds` ORDER BY `id` DESC';
+  $data = array();
+  $stmt = $dbh->prepare($sql);
+  $stmt->execute($data);
+
+  while (true) {
+    $record = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($record == false) {
+        break;
+    }
+
+    //投稿者情報
+    $feed_user_sql = 'SELECT `u`.`name`,`u`.`img_name`,`u`.`introduction` FROM `feeds` AS `f` LEFT JOIN `users` AS `u` ON `f`.`user_id` = `u`.`id` WHERE `f`.`id`=?';
+    $feed_user_data = array($record["id"]);
+    $feed_user_stmt = $dbh->prepare($feed_user_sql);
+    $feed_user_stmt->execute($feed_user_data);
+    $record['feed_user'] = $feed_user_stmt->fetch(PDO::FETCH_ASSOC);
+
+    //投稿者の投稿数
+    $feed_cnt_sql = "SELECT COUNT(*) as `cnt` FROM `feeds` WHERE `user_id`=?";
+    $feed_cnt_data = array($record['user_id']);
+    $feed_cnt_stmt = $dbh->prepare($feed_cnt_sql);
+    $feed_cnt_stmt->execute($feed_cnt_data);
+    $record["feed_cnt"] = $feed_cnt_stmt->fetch(PDO::FETCH_ASSOC);
+
+    //投稿へのlike数カウント
+    $like_sql = "SELECT COUNT(*) AS `like_cnt` FROM `likes` WHERE `feed_id` = ?";
+    $like_data = array($record["id"]);
+    $like_stmt = $dbh->prepare($like_sql);
+    $like_stmt->execute($like_data);
+    $like = $like_stmt->fetch(PDO::FETCH_ASSOC);
+    $record["like_cnt"] = $like["like_cnt"];
+
+    //これなんだっけ
+    $like_flag_sql = 'SELECT COUNT(*)as `like_flag` FROM `likes` WHERE `user_id`=? AND `feed_id`=?';
+    $like_flag_data = array($_SESSION["id"],$record["id"]);
+    $like_flag_stmt = $dbh->prepare($like_flag_sql);
+    $like_flag_stmt->execute($like_flag_data);
+    $like_flag = $like_flag_stmt->fetch(PDO::FETCH_ASSOC);
+    // var_dump($like_flag);
+      if ($like_flag["like_flag"] > 0) {
+        $record["like_flag"] = 1;
+      } else {
+        $record["like_flag"] = 0;
+      }
+
+    //閲覧数
+    $view_sql = "SELECT COUNT(*) FROM `views` WHERE `feed_id`=?";
+    $view_data = array($record["id"]);
+    $view_stmt = $dbh->prepare($view_sql);
+    $view_stmt->execute($view_data);
+      while (true) {
+       $view_record = $view_stmt->fetch(PDO::FETCH_ASSOC);
+        if ($view_record == false) {
+            break;
+        }
+        //var_dump($view_record);
+        $record["view_count"] = $view_record;
+      }
+
+      $feeds[] = $record;
+  }
+          // echo'<pre>';
+          // var_dump($feeds);
+          // echo'<pre>';
+
+    if (!empty($_POST)) {
+
+    //$feed_id = $_GET['feed_id'];
+    $user_id = $_SESSION['id'];
+    $comment = $_POST['comment'];
+
+    if ($comment != '') {
+      $comment_sql = 'INSERT INTO `comments` SET `comment`=?, `feed_id`=?,`user_id`=?, `created`=NOW()';
+      $comment_data = array($comment, $feed['id'], $user_id);
+      $comment_stmt = $dbh->prepare($comment_sql);
+      $comment_stmt->execute($comment_data);
+
+      //------------重要--------------
+      header('Location: comment_layer.php?feed_id='.$feed_id);
+      exit();
+      } else {
+        $errors['comment'] = 'blank';
+      }
+
+      $post_sql = "SELECT `c`.*, `u`.`name` , `u`.`img_name` ,`u`.`introduction` FROM `comments` AS `c` LEFT JOIN `users` AS `u` ON `c`.`user_id` = `u`.`id` WHERE `feed_id` = ? ORDER BY `c`.`created` DESC";
+
+      $post_data = array($feed_id);
+      $post_stmt = $dbh->prepare($post_sql);
+      $post_stmt->execute($post_data);
+
+      $comments = array();
+      while (true) {
+        $post_record = $post_stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($post_record == false){
+          break;
+        } 
+        $comments[] = $post_record;
+      }
+    }
+
+$ranking_sql = 'SELECT `feeds`.*, COUNT(`feed_id`) AS total FROM `likes` LEFT JOIN `feeds` ON `feeds`.`id` = `likes`.`feed_id` GROUP BY `feed_id` ORDER BY `total` DESC LIMIT 0,9';
+        $ranking_data = array();
+        $ranking_stmt = $dbh->prepare($ranking_sql);
+        $ranking_stmt->execute($ranking_data);
+
+        while (true) {
+            $record = $ranking_stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($record == false) {
+                break;
             }
-//           echo'<pre>';
-//           var_dump($feeds);
-//           echo'<pre>';
+            $rankings[] = $record;
+          }
+$number=1;
+
+  $sql = 'SELECT `l`.*,`f`.* FROM `likes` AS `l` LEFT JOIN `feeds` AS `f` ON `l`.`feed_id`=`f`.`id` WHERE `l`.`user_id`=?';
+
+  $data = array($user_id);
+  $stmt = $dbh->prepare($sql);
+  $stmt->execute($data);
+
+  while (true) {
+    $likes = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($likes == false) {
+      break;
+    }
+    $feeds[] = $likes;
+  }
+// echo "<pre>";
+// var_dump($rankings);
+// echo "<pre>";
+
+
 
 // $user_id = $_SESSION['id'];
 
@@ -129,9 +227,9 @@
       <ul class="cat">
         <li>
           <ol class="type">
-            <li><a href="javascript:void(0)" data-filter="*" class="active">タイムライン</a></li>
-            <li><a href="javascript:void(0)" data-filter=".asia">ランキング</a></li>
-            <li><a href="javascript:void(0)" data-filter=".europe">自分の投稿</a></li>
+            <li><a href="javascript:void(0)" data-filter=".timeline_card" class="active">タイムライン</a></li>
+            <li><a href="javascript:void(0)" data-filter=".ranking">ランキング</a></li>
+            <li><a href="javascript:void(0)" data-filter=".mypost">自分の投稿</a></li>
           </ol>
         </li>
       </ul>
@@ -145,15 +243,15 @@
           <p><a class="modal-close">閉じる</a></p>
         </div>
 
-        <div class="col-md-4 col-xs-12 portfolio-items isotope">
-          <div class="card">
+        <div class="col-md-4 col-xs-12 portfolio-items timeline_card-items">
+          <div class="card timeline_card  active_item">
             <!-- modalレイアウト表示 -->
             <a data-target="con<?php echo $feed['id'] ?>" class="modal-open noline">
 
             <!-- comment_timeline.phpに遷移 -->
             <!-- <a href="comment_layer.php?feed_id=?php echo $feed["id"] ?>" class="noline"> -->
 
-              <div class="card_item card_hover card_click">                
+              <div class="card_item card_hover card_click portfolio-item ">                
                 <img class="card_img" src="user_profile_img/<?php echo $feed['feed_img']; ?>" style="width: 100%">
                 <ul class="card_contents">
                   <li class="feed_title"><?php echo $feed["title"] ?></li>
@@ -166,6 +264,43 @@
         </div>
       <?php }?>
       </div><!-- /row -->
+    <div class="container">
+      <div class="row post-card  portfolio-items">
+      <?php foreach($rankings as $ranking){ ?>
+        <div class="col-sm-4 col-xs-12 ranking ">
+          <div class="card portfolio-item">
+            <a href="comment_timeline.php?feed_id=<?php echo $ranking["id"]; ?>" class="noline">
+              <h4>第<?php echo $number; ?>位</h4>
+              <div class="card_item">
+                <img src="user_profile_img/<?php echo $ranking["feed_img"]; ?>" style="width: 100%">
+                <h4><?php echo $ranking["title"]; ?></h4>
+                <h4 class="like" style="text-align: center;">いいね数<?php echo $ranking["total"]; ?></h4>
+              </div><!-- /card_item -->
+            </a>
+          </div><!-- card1 -->
+        </div>
+      <?php $number+=1; } ?>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row portfolio-items">
+      <?php if (isset($feeds)) {
+            foreach($feeds as $feed) { ?>
+        <div class="col-sm-4 mypost">
+          <a href="comment_timeline.php?feed_id=<?php echo $feed["id"] ?>" class="noline">
+            <div class="card1 card_item portfolio-item">
+              <img src="user_profile_img/<?php echo $feed["feed_img"]; ?>" style="width: 100%">
+              <h4><?php echo $feed["title"]; ?></h4>
+              <p><?php echo $feed["feed"]; ?></p>
+              <h4 class="cost"><?php echo $feed["price"] ?>円</h4>
+              
+            </div><!-- /card1 -->
+          </a>
+        </div>
+        <?php }} ?>
+      </div><!-- /row -->
+    </div><!-- /container -->
     </div><!-- /container -->
   </div><!-- /background_timeline -->
 
