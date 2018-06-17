@@ -2,6 +2,8 @@
   session_start();
   require('dbconnect.php');
 
+  $user_id = $_SESSION['id'];
+
   //ログインユーザー情報
   $users_sql = 'SELECT * FROM `users` WHERE `id`=?';
   $users_data = array($_SESSION['id']);
@@ -119,6 +121,39 @@
       }
     }
 
+$ranking_sql = 'SELECT `feeds`.*, COUNT(`feed_id`) AS total FROM `likes` LEFT JOIN `feeds` ON `feeds`.`id` = `likes`.`feed_id` GROUP BY `feed_id` ORDER BY `total` DESC LIMIT 0,9';
+        $ranking_data = array();
+        $ranking_stmt = $dbh->prepare($ranking_sql);
+        $ranking_stmt->execute($ranking_data);
+
+        while (true) {
+            $record = $ranking_stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($record == false) {
+                break;
+            }
+            $rankings[] = $record;
+          }
+$number=1;
+
+  $sql = 'SELECT `l`.*,`f`.* FROM `likes` AS `l` LEFT JOIN `feeds` AS `f` ON `l`.`feed_id`=`f`.`id` WHERE `l`.`user_id`=?';
+
+  $data = array($user_id);
+  $stmt = $dbh->prepare($sql);
+  $stmt->execute($data);
+
+  while (true) {
+    $likes = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($likes == false) {
+      break;
+    }
+    $feeds[] = $likes;
+  }
+// echo "<pre>";
+// var_dump($rankings);
+// echo "<pre>";
+
+
 
 // $user_id = $_SESSION['id'];
 
@@ -192,9 +227,9 @@
       <ul class="cat">
         <li>
           <ol class="type">
-            <li><a href="javascript:void(0)" data-filter="*" class="active">タイムライン</a></li>
-            <li><a href="javascript:void(0)" data-filter=".asia">ランキング</a></li>
-            <li><a href="javascript:void(0)" data-filter=".europe">自分の投稿</a></li>
+            <li><a href="javascript:void(0)" data-filter=".timeline_card" class="active">タイムライン</a></li>
+            <li><a href="javascript:void(0)" data-filter=".ranking">ランキング</a></li>
+            <li><a href="javascript:void(0)" data-filter=".mypost">自分の投稿</a></li>
           </ol>
         </li>
       </ul>
@@ -208,15 +243,15 @@
           <p><a class="modal-close">閉じる</a></p>
         </div>
 
-        <div class="col-md-4 col-xs-12 portfolio-items isotope">
-          <div class="card">
+        <div class="col-md-4 col-xs-12 portfolio-items timeline_card-items">
+          <div class="card timeline_card  active_item">
             <!-- modalレイアウト表示 -->
             <a data-target="con<?php echo $feed['id'] ?>" class="modal-open noline">
 
             <!-- comment_timeline.phpに遷移 -->
             <!-- <a href="comment_layer.php?feed_id=?php echo $feed["id"] ?>" class="noline"> -->
 
-              <div class="card_item card_hover card_click">                
+              <div class="card_item card_hover card_click portfolio-item ">                
                 <img class="card_img" src="user_profile_img/<?php echo $feed['feed_img']; ?>" style="width: 100%">
                 <ul class="card_contents">
                   <li class="feed_title"><?php echo $feed["title"] ?></li>
@@ -229,6 +264,43 @@
         </div>
       <?php }?>
       </div><!-- /row -->
+    <div class="container">
+      <div class="row post-card  portfolio-items">
+      <?php foreach($rankings as $ranking){ ?>
+        <div class="col-sm-4 col-xs-12 ranking ">
+          <div class="card portfolio-item">
+            <a href="comment_timeline.php?feed_id=<?php echo $ranking["id"]; ?>" class="noline">
+              <h4>第<?php echo $number; ?>位</h4>
+              <div class="card_item">
+                <img src="user_profile_img/<?php echo $ranking["feed_img"]; ?>" style="width: 100%">
+                <h4><?php echo $ranking["title"]; ?></h4>
+                <h4 class="like" style="text-align: center;">いいね数<?php echo $ranking["total"]; ?></h4>
+              </div><!-- /card_item -->
+            </a>
+          </div><!-- card1 -->
+        </div>
+      <?php $number+=1; } ?>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row portfolio-items">
+      <?php if (isset($feeds)) {
+            foreach($feeds as $feed) { ?>
+        <div class="col-sm-4 mypost">
+          <a href="comment_timeline.php?feed_id=<?php echo $feed["id"] ?>" class="noline">
+            <div class="card1 card_item portfolio-item">
+              <img src="user_profile_img/<?php echo $feed["feed_img"]; ?>" style="width: 100%">
+              <h4><?php echo $feed["title"]; ?></h4>
+              <p><?php echo $feed["feed"]; ?></p>
+              <h4 class="cost"><?php echo $feed["price"] ?>円</h4>
+              
+            </div><!-- /card1 -->
+          </a>
+        </div>
+        <?php }} ?>
+      </div><!-- /row -->
+    </div><!-- /container -->
     </div><!-- /container -->
   </div><!-- /background_timeline -->
 

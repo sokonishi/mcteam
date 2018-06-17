@@ -270,8 +270,9 @@ img.user_profile_img {
   text-decoration: none;
 }
 
-.post-card{
-
+.timeline_card-items{
+  padding-top: 0px !important;
+  
 }
  
 
