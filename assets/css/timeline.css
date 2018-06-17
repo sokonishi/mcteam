@@ -1,6 +1,15 @@
 .cat{
 	list-style-type: none !important;
 	text-align: center;
+	margin-right: 100px;
+}
+
+.cat a{
+	text-decoration: none;
+	color: black;
+	padding: 10px;
+	font-size: 20px;
+	
 }
 .type{
 	list-style-type: none !important;
@@ -9,4 +18,17 @@
 	display: inline-block;
 	padding: 20px;
 
+}
+
+.hidden_item{
+	display:none ;
+}
+
+.active_item{
+	display: block;
+}
+
+.active{
+border-top: solid #000000;
+	
 }
