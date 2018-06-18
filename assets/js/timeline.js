@@ -3,7 +3,7 @@
 $(document).ready( function() {
 
 
-  	// Portfolio Isotope Filter
+    // Portfolio Isotope Filter
     $(window).load(function() {
         var $items = $('.portfolio-items');
         $('.timeline_card').css("padding" , "20px");
