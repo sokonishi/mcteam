@@ -87,39 +87,40 @@
 
     if (!empty($_POST)) {
 
-    //$feed_id = $_GET['feed_id'];
+    $feed_id = $_POST['feed_id'];
     $user_id = $_SESSION['id'];
     $comment = $_POST['comment'];
 
     if ($comment != '') {
       $comment_sql = 'INSERT INTO `comments` SET `comment`=?, `feed_id`=?,`user_id`=?, `created`=NOW()';
-      $comment_data = array($comment, $feed['id'], $user_id);
+      $comment_data = array($comment, $feed_id, $user_id);
       $comment_stmt = $dbh->prepare($comment_sql);
       $comment_stmt->execute($comment_data);
 
       //------------重要--------------
-      header('Location: comment_layer.php?feed_id='.$feed_id);
+      header('Location: timeline.php');
       exit();
       } else {
         $errors['comment'] = 'blank';
       }
-
-      $post_sql = "SELECT `c`.*, `u`.`name` , `u`.`img_name` ,`u`.`introduction` FROM `comments` AS `c` LEFT JOIN `users` AS `u` ON `c`.`user_id` = `u`.`id` WHERE `feed_id` = ? ORDER BY `c`.`created` DESC";
-
-      $post_data = array($feed_id);
-      $post_stmt = $dbh->prepare($post_sql);
-      $post_stmt->execute($post_data);
-
-      $comments = array();
-      while (true) {
-        $post_record = $post_stmt->fetch(PDO::FETCH_ASSOC);
-
-        if ($post_record == false){
-          break;
-        } 
-        $comments[] = $post_record;
-      }
     }
+
+    //   $post_sql = "SELECT `c`.*, `u`.`name` , `u`.`img_name` ,`u`.`introduction` FROM `comments` AS `c` LEFT JOIN `users` AS `u` ON `c`.`user_id` = `u`.`id` WHERE `feed_id` = ? ORDER BY `c`.`created` DESC";
+
+    //   $post_data = array($feed_id);
+    //   $post_stmt = $dbh->prepare($post_sql);
+    //   $post_stmt->execute($post_data);
+
+    //   $comments = array();
+    //   while (true) {
+    //     $post_record = $post_stmt->fetch(PDO::FETCH_ASSOC);
+
+    //     if ($post_record == false){
+    //       break;
+    //     } 
+    //     $comments[] = $post_record;
+    //   }
+    // }
 
 $ranking_sql = 'SELECT `feeds`.*, COUNT(`feed_id`) AS total FROM `likes` LEFT JOIN `feeds` ON `feeds`.`id` = `likes`.`feed_id` GROUP BY `feed_id` ORDER BY `total` DESC LIMIT 0,9';
         $ranking_data = array();
@@ -136,21 +137,21 @@ $ranking_sql = 'SELECT `feeds`.*, COUNT(`feed_id`) AS total FROM `likes` LEFT JO
           }
 $number=1;
 
-  $sql = 'SELECT `l`.*,`f`.* FROM `likes` AS `l` LEFT JOIN `feeds` AS `f` ON `l`.`feed_id`=`f`.`id` WHERE `l`.`user_id`=?';
+$my_sql = 'SELECT `feeds`.*, COUNT(`user_id`) AS total FROM `users` LEFT JOIN `feeds` ON `feeds`.`user_id` = `users`.`id` WHERE `feeds`.`user_id`=?';
 
-  $data = array($user_id);
-  $stmt = $dbh->prepare($sql);
-  $stmt->execute($data);
+  $my_data = array($user_id);
+  $my_stmt = $dbh->prepare($my_sql);
+  $my_stmt->execute($my_data);
 
   while (true) {
-    $likes = $stmt->fetch(PDO::FETCH_ASSOC);
+    $likes = $my_stmt->fetch(PDO::FETCH_ASSOC);
     if ($likes == false) {
       break;
     }
-    $feeds[] = $likes;
+    $my_feeds[] = $likes;
   }
 // echo "<pre>";
-// var_dump($rankings);
+// var_dump($my_feeds);
 // echo "<pre>";
 
 
@@ -235,18 +236,33 @@ $number=1;
       </ul>
 
       <div class="row post-card ">
-
       <?php foreach($feeds as $feed){ ?>
+        <?php
+          $post_sql = "SELECT `c`.*, `u`.`name` , `u`.`img_name` ,`u`.`introduction` FROM `comments` AS `c` LEFT JOIN `users` AS `u` ON `c`.`user_id` = `u`.`id` WHERE `feed_id` = ? ORDER BY `c`.`created` DESC";
 
+          $post_data = array($feed['id']);
+          $post_stmt = $dbh->prepare($post_sql);
+          $post_stmt->execute($post_data);
+
+          $comments = array();
+          while (true) {
+            $post_record = $post_stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($post_record == false){
+              break;
+            } 
+            $comments[] = $post_record;
+          }
+        ?>
         <div id="con<?php echo $feed['id'] ?>" class="modal-content">
           <p><?php include("comment_layer.php") ?></p>
           <p><a class="modal-close">閉じる</a></p>
         </div>
 
-        <div class="col-md-4 col-xs-12 portfolio-items timeline_card-items">
+        <div class="col-md-4 col-xs-12 portfolio-items timeline_card-items isotope">
           <div class="card timeline_card  active_item">
             <!-- modalレイアウト表示 -->
-            <a data-target="con<?php echo $feed['id'] ?>" class="modal-open noline">
+            <a href="#cardpotision<?php echo $feed['id'] ?>" data-target="con<?php echo $feed['id'] ?>" class="modal-open noline">
 
             <!-- comment_timeline.phpに遷移 -->
             <!-- <a href="comment_layer.php?feed_id=?php echo $feed["id"] ?>" class="noline"> -->
@@ -264,43 +280,71 @@ $number=1;
         </div>
       <?php }?>
       </div><!-- /row -->
-    <div class="container">
-      <div class="row post-card  portfolio-items">
+
+
+      <div class="row post-card ">
       <?php foreach($rankings as $ranking){ ?>
-        <div class="col-sm-4 col-xs-12 ranking ">
-          <div class="card portfolio-item">
-            <a href="comment_timeline.php?feed_id=<?php echo $ranking["id"]; ?>" class="noline">
-              <h4>第<?php echo $number; ?>位</h4>
-              <div class="card_item">
-                <img src="user_profile_img/<?php echo $ranking["feed_img"]; ?>" style="width: 100%">
-                <h4><?php echo $ranking["title"]; ?></h4>
-                <h4 class="like" style="text-align: center;">いいね数<?php echo $ranking["total"]; ?></h4>
+
+        <div id="con<?php echo $ranking["id"]; ?>" class="modal-content">
+          <p><?php include("comment_layer.php") ?></p>
+          <p><a class="modal-close">閉じる</a></p>
+        </div>
+
+        <div class="col-md-4 col-xs-12 portfolio-items timeline_card-items">
+          <div class="card ranking active_item">
+            <!-- modalレイアウト表示 -->
+            <a data-target="con<?php echo $ranking["id"]; ?>" class="modal-open noline">
+
+            <!-- comment_timeline.phpに遷移 -->
+            <!-- <a href="comment_layer.php?feed_id=?php echo $feed["id"] ?>" class="noline"> -->
+
+              <div class="card_item card_hover card_click portfolio-item ">
+              <h4>第<?php echo $number; ?>位</h4>                
+                <img class="card_img" src="user_profile_img/<?php echo $ranking["feed_img"]; ?>" style="width: 100%">
+                <ul class="card_contents">
+                  <li class="feed_title"><?php echo $ranking["title"]; ?></li>
+                  <li><i class="fa fa-heart fa-lg"></i>  <?php echo $ranking["total"]; ?>件</li>
+                  <li><i class="fa fa-eye fa-lg"></i>  件</li>
+                </ul>
               </div><!-- /card_item -->
             </a>
-          </div><!-- card1 -->
+          </div><!-- /card -->
         </div>
-      <?php $number+=1; } ?>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="row portfolio-items">
-      <?php if (isset($feeds)) {
-            foreach($feeds as $feed) { ?>
-        <div class="col-sm-4 mypost">
-          <a href="comment_timeline.php?feed_id=<?php echo $feed["id"] ?>" class="noline">
-            <div class="card1 card_item portfolio-item">
-              <img src="user_profile_img/<?php echo $feed["feed_img"]; ?>" style="width: 100%">
-              <h4><?php echo $feed["title"]; ?></h4>
-              <p><?php echo $feed["feed"]; ?></p>
-              <h4 class="cost"><?php echo $feed["price"] ?>円</h4>
-              
-            </div><!-- /card1 -->
-          </a>
-        </div>
-        <?php }} ?>
+      <?php $number+=1; }?>
       </div><!-- /row -->
-    </div><!-- /container -->
+
+
+      <div class="row post-card ">
+      <?php foreach($my_feeds as $my_feed){ ?>
+
+        <div id="con<?php echo $my_feed['id'] ?>" class="modal-content">
+          <p><?php include("comment_layer.php") ?></p>
+          <p><a class="modal-close">閉じる</a></p>
+        </div>
+
+        <div class="col-md-4 col-xs-12 portfolio-items timeline_card-items">
+          <div class="card mypost active_item">
+            <!-- modalレイアウト表示 -->
+            <a data-target="con<?php echo $my_feed['id'] ?>" class="modal-open noline">
+
+            <!-- comment_timeline.phpに遷移 -->
+            <!-- <a href="comment_layer.php?feed_id=?php echo $feed["id"] ?>" class="noline"> -->
+
+              <div class="card_item card_hover card_click portfolio-item ">                
+                <img class="card_img" src="user_profile_img/<?php echo $my_feed['feed_img']; ?>" style="width: 100%">
+                <ul class="card_contents">
+                  <li class="feed_title"><?php echo $my_feed["title"] ?></li>
+                  <li><i class="fa fa-heart fa-lg"></i>  <?php echo $my_feed["total"] ?>件</li>
+                  <li><i class="fa fa-eye fa-lg"></i>  件</li>
+                </ul>
+              </div><!-- /card_item -->
+            </a>
+          </div><!-- /card -->
+        </div>
+      <?php }?>
+      </div><!-- /row -->
+
+
     </div><!-- /container -->
   </div><!-- /background_timeline -->
 

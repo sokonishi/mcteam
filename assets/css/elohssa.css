@@ -253,6 +253,21 @@ img.user_profile_img {
   cursor:pointer;
   color:#f00;
 }
+
+.slide {
+  display: none;
+}
+
+.btn-active{
+  display: block;
+}
+
+.index-btn {
+  display: inline-block;
+  color: #4e90af;
+  background-color: #e0f5ff;
+  cursor: pointer;
+}
 /*-----------------------*/
 
 
