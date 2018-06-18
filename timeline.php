@@ -190,6 +190,19 @@ $my_sql = 'SELECT `feeds`.*, COUNT(`user_id`) AS total FROM `users` LEFT JOIN `f
   <link rel="stylesheet" type="text/css" href="assets/css/header.css"> 
   <link rel="stylesheet" type="text/css" href="assets/css/timeline.css"> 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript">
+
+  function view(view_id){
+    $.ajax({
+      type: "GET",
+      url: "click_count.php",
+      data: {
+        id: view_id
+      }
+    });
+  }
+
+  </script>
 </head>
 
 <body>
@@ -262,7 +275,7 @@ $my_sql = 'SELECT `feeds`.*, COUNT(`user_id`) AS total FROM `users` LEFT JOIN `f
         <div class="col-md-4 col-xs-12 portfolio-items timeline_card-items isotope">
           <div class="card timeline_card  active_item">
             <!-- modalレイアウト表示 -->
-            <a href="#cardpotision<?php echo $feed['id'] ?>" data-target="con<?php echo $feed['id'] ?>" class="modal-open noline">
+            <a href="#cardpotision<?php echo $feed['id'] ?>" data-target="con<?php echo $feed['id'] ?>" class="modal-open noline" onclick="view(<?php echo $feed['id']; ?>);">
 
             <!-- comment_timeline.phpに遷移 -->
             <!-- <a href="comment_layer.php?feed_id=?php echo $feed["id"] ?>" class="noline"> -->
@@ -293,7 +306,7 @@ $my_sql = 'SELECT `feeds`.*, COUNT(`user_id`) AS total FROM `users` LEFT JOIN `f
         <div class="col-md-4 col-xs-12 portfolio-items timeline_card-items">
           <div class="card ranking active_item">
             <!-- modalレイアウト表示 -->
-            <a data-target="con<?php echo $ranking["id"]; ?>" class="modal-open noline">
+            <a data-target="con<?php echo $ranking["id"]; ?>" class="modal-open noline" onclick="view(<?php echo $ranking['id']; ?>);">
 
             <!-- comment_timeline.phpに遷移 -->
             <!-- <a href="comment_layer.php?feed_id=?php echo $feed["id"] ?>" class="noline"> -->
@@ -325,7 +338,7 @@ $my_sql = 'SELECT `feeds`.*, COUNT(`user_id`) AS total FROM `users` LEFT JOIN `f
         <div class="col-md-4 col-xs-12 portfolio-items timeline_card-items">
           <div class="card mypost active_item">
             <!-- modalレイアウト表示 -->
-            <a data-target="con<?php echo $my_feed['id'] ?>" class="modal-open noline">
+            <a data-target="con<?php echo $my_feed['id'] ?>" class="modal-open noline" onclick="view(<?php echo $my_feed['id']; ?>);">
 
             <!-- comment_timeline.phpに遷移 -->
             <!-- <a href="comment_layer.php?feed_id=?php echo $feed["id"] ?>" class="noline"> -->
