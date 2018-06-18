@@ -176,7 +176,7 @@
     </div>
   </div> -->
 
-<div class="container-fluid">
+<div class="container-fluid" id="#cardpotision<?php echo $feed['id'] ?>">
     <div class="row">
       <div class="col-xs-offset-1 col-xs-10 col-sm-12 comment_layer_col" style="padding: 0px; background-color: #fff">
         <div class="col-sm-7" style="padding: 0px;">
@@ -214,6 +214,7 @@
                     <?php if(isset($errors['feed']) && $errors['feed'] == 'blank') { ?>
                       <p class="alert alert-danger">何か入力してください</p>
                     <?php } ?>
+                  <input type="hidden" name="feed_id" value="<?php echo $feed["id"]; ?>">
                   <input type="submit" value="ツッコミ" class="btn btn-primary btn-xs active" role="button" aria-pressed="true">
                 </div>
               </form>
@@ -225,7 +226,7 @@
           <div class="row comment_box">
             <div class="col-xs-12">
               <div class="col-xs-4">
-                <img src="user_profile_img/?php echo $comment['img_name'] ?>"  class="profile_img" >
+                <img src="user_profile_img/<?php echo $comment['img_name'] ?>"  class="profile_img" >
               </div>
               <div class="col-xs-8">
                 <h4><?php echo $comment['name'] ?></h4>
