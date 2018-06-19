@@ -5,22 +5,6 @@
     require('dbconnect.php');
 
 
-  $users_sql = 'SELECT * FROM `users` WHERE `id`=?';
-  $users_data = array($_SESSION['id']);
-  $users_stmt = $dbh->prepare($users_sql);
-  $users_stmt->execute($users_data);
-
-  $users_record = $users_stmt->fetch(PDO::FETCH_ASSOC);
-
-  //var_dump($users_record);
-
-  $count_sql = "SELECT COUNT(*) as `cnt` FROM `feeds` WHERE `user_id`=?";
-  $data_cnt = array($_SESSION['id']);
-  $stmt_count = $dbh->prepare($count_sql);
-  $stmt_count->execute($data_cnt);
-
-  $record_cnt = $stmt_count->fetch(PDO::FETCH_ASSOC);
-
     $sql = 'SELECT * FROM `feeds` ORDER BY `id` DESC';
             $data = array();
             $stmt = $dbh->prepare($sql);
@@ -42,20 +26,6 @@
                 $like = $like_stmt->fetch(PDO::FETCH_ASSOC);
 
                 $record["like_cnt"] = $like["like_cnt"];
-
-                $like_flag_sql = 'SELECT COUNT(*)as `like_flag` FROM `likes` WHERE `user_id`=? AND `feed_id`=?';
-
-                $like_flag_data = array($_SESSION["id"],$record["id"]);
-                $like_flag_stmt = $dbh->prepare($like_flag_sql);
-                $like_flag_stmt->execute($like_flag_data);
-
-                $like_flag = $like_flag_stmt->fetch(PDO::FETCH_ASSOC);
-                // var_dump($like_flag);
-                  if ($like_flag["like_flag"] > 0) {
-                    $record["like_flag"] = 1;
-                  } else {
-                    $record["like_flag"] = 0;
-                  }
 
                   $view_sql = "SELECT COUNT(*) FROM `views` WHERE `feed_id`=?";
                   $view_data = array($record["id"]);
@@ -117,7 +87,7 @@
     <nav class="container navbar navbar-dark bg-dark" style="height: 30px;">
       <div class="row">
         <div class="col-xs-2" style="padding-top: 10px;">
-          <img src="img/missyou_logo.png" style="width: 20vw">
+          <img src="img/missyou_logo.png" style="height: 70px">
         </div>
         <div class="col-xs-offset-9 col-xs-1">
           <div class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
@@ -137,7 +107,7 @@
     <p><a class="modal-close">閉じる</a></p>
   </div>
 
-  <div class="background">
+  <div class="background_timeline">
     <div class="container">
       <div class="row col-xs-offset-10">
         <div class="copy_img top">
