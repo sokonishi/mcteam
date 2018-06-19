@@ -186,7 +186,25 @@
               <div class="col-xs-offset-1 col-xs-10">
                 <h3><?php echo $feed['title'] ?></h3>
                 <p><?php echo $feed['feed'] ?></p>
-                <h2 class="cost"><?php echo $feed['price'] ?>円</h2>
+                <h2 class="chogeost"><?php echo $feed['price'] ?>円</h2>
+
+                <?php if($feed["like_flag"] == 0){ ?>
+                  <p class="likebox">
+                    <input type="button" value="like" class="hoge">
+                    <input type="button" value="unlike" class="ika" style="display: none">
+                    <input class="fuga" type="hidden" value="<?php echo $feed["id"]; ?>">
+                  </p>
+                  <?php echo $feed['id'] ?>
+                <?php }else{ ?>
+                <!-- いいねを取り消すボタンを表示 -->
+                  <p class="unlikebox">
+                    <input type="button" value="like" class="hoge" style="display: none">
+                    <input type="button" value="unlike" class="ika">
+                    <input class="fuga" type="hidden" value="<?php echo $feed["id"]; ?>">
+                  </p>
+                  <?php echo $feed['id'] ?>
+                <?php } ?>
+
                 <div class="purchase_btn_wrapper">
                   <a href="purchase.php" class="purchase_btn"><i class="fa fa-shopping-cart" aria-hidden="true"></i> カートに入れる</a>
                 </div>

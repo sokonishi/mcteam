@@ -2,7 +2,9 @@
   session_start();
 
   $user_id = $_SESSION["id"];
-  $feed_id = $_GET["feed_id"];
+
+  //POST送信されたデータを受け取る
+  $feed_id = $_GET["id"];
 
   require('dbconnect.php');
 
@@ -12,6 +14,7 @@
   $stmt = $dbh->prepare($sql);
   $stmt->execute($data);
 
-
-  header("Location: timeline.php");
+  //ヘッダーの設定
+  header('Content-type:text/plain; charset=utf8');
+  // echo json_encode($feed_id);
  ?>
