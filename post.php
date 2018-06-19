@@ -8,6 +8,11 @@
         $feed = $_POST['input_feed'];
         $price = $_POST['input_price'];
 
+        // 半角数字チェック
+        if (!ctype_digit($price)) {
+            $errors['price'] = 'digit';
+        }
+
         // 内容の空チェック
         if ($title == '') {
             $errors['title'] = 'blank';
@@ -111,13 +116,25 @@
               <?php } ?>
               <h3>題名</h3>
               <input type="text" name="input_title" placeholder="名前を入力してください" style="width:300px">
+              <?php if(isset($errors['title']) && $errors['title'] == 'blank') { ?>
+              <p class="text-danger">題名を入力してください</p>
+              <?php } ?>
               <h3>内容</h3>
               <textarea class="form-control" name="input_feed" cols="65" rows="3"></textarea>
+              <?php if(isset($errors['feed']) && $errors['feed'] == 'blank') { ?>
+              <p class="text-danger">内容を入力してください</p>
+              <?php } ?>
               <h3>価格設定</h3>
               <div class="side_by_side">
                 <input class="form-control" type="text" name="input_price" placeholder="価格設定" style="width: 300px">
                 <a class="noline jpy" href="https://info.finance.yahoo.co.jp/fx/detail/?code=usdjpy" style="font-size: 15px;">円</a>
               </div>
+              <?php if(isset($errors['price']) && $errors['price'] == 'blank') { ?>
+              <p class="text-danger">価格を設定してください</p>
+              <?php } ?>
+              <?php if(isset($errors['price']) && $errors['price'] == 'digit') { ?>
+              <p class="text-danger">半角数字で入力してください</p>
+              <?php } ?>
             </div><!-- /form-group -->
             <input class="btn btn-primary" type="submit" value="送信">
           </form>

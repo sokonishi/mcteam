@@ -191,6 +191,7 @@ $my_sql = 'SELECT `feeds`.*, COUNT(`user_id`) AS total FROM `users` LEFT JOIN `f
   <link rel="stylesheet" type="text/css" href="assets/css/timeline.css"> 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script type="text/javascript">
+
     function view(view_id){
       $.ajax({
         type: "GET",
