@@ -6,9 +6,9 @@
 
 .cat a{
 	text-decoration: none;
-	color: black;
+	color: #00000085;
 	padding: 10px;
-	font-size: 20px;
+	font-size: 16px;
 	
 }
 .type{
@@ -29,6 +29,6 @@
 }
 
 .active{
-border-top: solid #000000;
+border-top: solid #00000085;
 	
 }
