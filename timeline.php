@@ -137,7 +137,12 @@ $ranking_sql = 'SELECT `feeds`.*, COUNT(`feed_id`) AS total FROM `likes` LEFT JO
           }
 $number=1;
 
-$my_sql = 'SELECT `feeds`.*, COUNT(`user_id`) AS total FROM `users` LEFT JOIN `feeds` ON `feeds`.`user_id` = `users`.`id` WHERE `feeds`.`user_id`=?';
+$my_sql = 'SELECT f.feed_img, f.title, l.total, f.id FROM users u 
+LEFT JOIN feeds f ON u.id = f.user_id
+LEFT JOIN (
+    SELECT feed_id, count(`feed_id`) as total FROM likes GROUP BY feed_id
+) AS l
+ON f.id = l.feed_id WHERE f.user_id =  ?';
 
   $my_data = array($user_id);
   $my_stmt = $dbh->prepare($my_sql);
@@ -150,6 +155,7 @@ $my_sql = 'SELECT `feeds`.*, COUNT(`user_id`) AS total FROM `users` LEFT JOIN `f
     }
     $my_feeds[] = $likes;
   }
+
 // echo "<pre>";
 // var_dump($my_feeds);
 // echo "<pre>";
