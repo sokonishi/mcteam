@@ -192,15 +192,15 @@ $my_sql = 'SELECT `feeds`.*, COUNT(`user_id`) AS total FROM `users` LEFT JOIN `f
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script type="text/javascript">
 
-    function view(view_id){
-      $.ajax({
-        type: "GET",
-        url: "click_count.php",
-        data: {
-          id: view_id
-        }
-      });
-    }
+  function view(view_id){
+    $.ajax({
+      type: "GET",
+      url: "click_count.php",
+      data: {
+        id: view_id
+      }
+    });
+  }
   </script>
 </head>
 
@@ -237,7 +237,6 @@ $my_sql = 'SELECT `feeds`.*, COUNT(`user_id`) AS total FROM `users` LEFT JOIN `f
       </div><!-- /row -->
     </div><!-- /container-fluid -->
     <div class="container">
-      <br><br>
       <ul class="cat">
         <li>
           <ol class="type">
