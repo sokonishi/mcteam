@@ -465,6 +465,15 @@ a.jpy {
     transform: translateY(4px);/*下に動く*/
     border-bottom: none;/*線を消す*/
 }
+.sns_share {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.heart:hover {
+  /*color: red;*/
+  font-size: 2em;
+}
 
 .profile_img {
   margin: 0;

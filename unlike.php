@@ -11,6 +11,17 @@
   $data = array($_SESSION['id'],$feed_id);
   $stmt = $dbh->prepare($sql);
   $stmt->execute($data);
-  // 一覧に戻る
-  header("Location: timeline.php");
+
+  //投稿へのlike数カウント
+  $like_sql = "SELECT COUNT(*) AS `like_cnt` FROM `likes` WHERE `feed_id` = ?";
+  $like_data = array($feed_id);
+  $like_stmt = $dbh->prepare($like_sql);
+  $like_stmt->execute($like_data);
+  $like = $like_stmt->fetch(PDO::FETCH_ASSOC);
+  $likes = $like["like_cnt"];
+
+  echo json_encode($likes);
+
+  header('Content-type:text/plain; charset=utf8');
+
 ?>

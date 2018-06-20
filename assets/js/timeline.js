@@ -30,8 +30,65 @@ $(document).ready( function() {
             });
             return false;
         });
+    });
+
+    $(".hoge").on('click', function() {
+        var post_id = $(this).siblings('.fuga').val();
+        action(post_id, $(this));
+
 
     });
 
+      function action(post_id, btn){
+        console.log(1);
+        $.ajax({
+          type: "GET",
+          url: "like.php",
+          data: {
+            id: post_id
+          },
+          success: function(data) {
+            // unlike ボタンを表示する
+            // $("p.likebox").html("<h1>gya</h1>");
+            console.log("success");
+            $("#feed_"+post_id).text(data + "件");
+            $("#ranking_"+post_id).text(data + "件");
+            $("#my_"+post_id).text(data + "件");
+            btn.siblings('.ika').show();
+            btn.hide();
+          }
+        });
+      }
+
+      // unlike
+    $(".ika").on('click', function() {
+        var post_id = $(this).siblings('.fuga').val();
+        unlike(post_id, $(this));
+
+
+    });
+
+      function unlike(post_id, btn){
+        console.log(1);
+        $.ajax({
+          type: "GET",
+          url: "unlike.php",
+          data: {
+            id: post_id
+          },
+          success: function(data) {
+            // unlike ボタンを表示する
+            // $("p.likebox").html("<h1>gya</h1>");
+            console.log("success");
+            $("#feed_"+post_id).text(data + "件");
+            $("#ranking_"+post_id).text(data + "件");
+            $("#my_"+post_id).text(data + "件");
+            btn.siblings('.hoge').show();
+            btn.hide();
+          }
+        });
+      }
+        });
+      }
   });
 });
