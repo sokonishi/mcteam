@@ -15,7 +15,9 @@
           <li><a href="mypage.php">マイページ</a></li> -->
           <li><a href="post.php">投稿</a></li>
 <!--           <li><a href="ranking.php">ランキング</a></li> -->
+
           <li><a href="promotion.php">サインアウト</a></li>
+
         </ul>
       </div><!-- /right-header -->
     </div><!-- /row -->
@@ -27,9 +29,9 @@
         <ul>
 <!--           <li><a href="timeline.php">ホーム</a></li>
           <li><a href="mypage.php">マイページ</a></li> -->
-          <li><a href="post.php" class="noline"><i class="fa fa-share-square-o fa-fw" aria-hidden="true"></i> 投稿</a></li>
+          <li><a href="post.php">投稿</a></li>
 <!--           <li><a href="ranking.php">ランキング</a></li> -->
-          <li><a href="signout.php" class="noline"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> サインアウト</a></li>
+          <li><a href="signout.php">サインアウト</a></li>
         </ul>
       </div><!-- /header-menu -->
     </div><!-- /row -->

@@ -207,13 +207,90 @@ img.user_profile_img {
 
 /*-------------------------*/
 
+
+div.container-fluid {
+  padding: 0px;
+}
+
+.right_col {
+  padding-top: 20px;
+}
+
+.right_col .user_profile {
+  padding: 0px 0px 10px 0px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #ddd;
+}
+
+.right_col .col-xs-12 .col-xs-4 {
+  padding-top: 15px;
+  text-align: center;
+}
+
+.right_col .col-xs-12 .col-xs-8 {
+  padding-top: 0px;
+}
+
+.right_col .col-xs-12,.comment_box .col-xs-12 {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.comment_box .col-xs-12 {
+  padding-top: 5px;
+}
+
+.comment_box .col-xs-12 .col-xs-8 h4 {
+  margin: 0px;
+  text-align: left;
+  float: left;
+}
+
+.profile_name h4, .comment_box .col-xs-12 .col-xs-8 h4 {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.profile_name p, .comment_box .col-xs-12 .col-xs-8 .text-muted {
+  font-size: 10px;
+}
+
+.comment_box .col-xs-12 .col-xs-8 .text-muted {
+  text-align: right;
+}
+
+.profile_row .col-xs-12 {
+  padding: 10px 0;
+}
+
+.comment_content .col-xs-12 {
+  padding: 0px;
+  font-size: 20px;
+}
+
+.share_like_comment {
+  padding-top: 5px;
+}
+
+.share_like .col-xs-12 {
+  padding: 0px;
+}
+
+.fa-facebook-official {
+  color: #326291;
+}
+
+.fa-twitter {
+  color: #4d84f5;
+}
+
 .modal-content {
   position:fixed;
   display:none;
   z-index:2;
   width:75%;
   margin:0;
-  padding:10px 20px;
+  padding:0px;
   border:2px solid #aaa;
   background:#fff;
 }
@@ -245,9 +322,11 @@ img.user_profile_img {
 }
 
 .modal-close {
-  color:#00f;
+  color:#808080;
   text-decoration:underline;
+  float: right;
 }
+
 
 .modal-close:hover {
   cursor:pointer;
@@ -287,11 +366,9 @@ img.user_profile_img {
 
 .timeline_card-items{
   padding-top: 0px !important;
-  
 }
- 
 
-h4 .cost {
+.cost {
   text-align: center;
   color: red;
   font-size: 20px;
@@ -307,9 +384,15 @@ h4 .cost {
   height: 120px;
 }
 
+.no_padding .comment_layer_col {
+  padding: 0px;
+  background-color: #fff;
+}
+
 @media (min-width: 768px){
 .comment_layer_col {
   margin: 0px;
+
 }}
 
 .profile_card {
@@ -431,16 +514,18 @@ a.jpy {
   right: 0;
 }
 
-.square h3, .square p {
+.square div h3 {
   color: #fff;
-  margin-bottom: 10%
 }
 
-.square p {
-  line-height: 1;
+.square div div p {
+  margin-bottom: 10%;
+  line-height: 2.5;
+  color: #ddd;
 }
 
-.square h2 {
+
+.square div h2 {
   color: red;
   text-align: center;
   margin-bottom: 10%;
@@ -458,6 +543,7 @@ a.jpy {
     color: #FFF;
     border-bottom: solid 4px #627295;
     border-radius: 3px;
+    margin-top: 5vh;
 }
 .purchase_btn:active {/*ボタンを押したとき*/
     -ms-transform: translateY(4px);
@@ -466,15 +552,23 @@ a.jpy {
     border-bottom: none;/*線を消す*/
 }
 
+.sns_share {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.heart:hover {
+  color: red;
+  font-size: 2em;
+}
+
 .profile_img {
   margin: 0;
   border-radius: 50px;
   height: 50px;
   width: 50px;
 }
-.comment_box {
-  border-bottom: 1px solid #8B8F9F;
-}
+
 
 /*purchase.php*/
 .purchase_card {

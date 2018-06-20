@@ -198,15 +198,15 @@ ON f.id = l.feed_id WHERE f.user_id =  ?';
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script type="text/javascript">
 
-    function view(view_id){
-      $.ajax({
-        type: "GET",
-        url: "click_count.php",
-        data: {
-          id: view_id
-        }
-      });
-    }
+  function view(view_id){
+    $.ajax({
+      type: "GET",
+      url: "click_count.php",
+      data: {
+        id: view_id
+      }
+    });
+  }
   </script>
 </head>
 
@@ -243,7 +243,6 @@ ON f.id = l.feed_id WHERE f.user_id =  ?';
       </div><!-- /row -->
     </div><!-- /container-fluid -->
     <div class="container">
-      <br><br>
       <ul class="cat">
         <li>
           <ol class="type">
@@ -274,8 +273,8 @@ ON f.id = l.feed_id WHERE f.user_id =  ?';
           }
         ?>
         <div id="con<?php echo $feed['id'] ?>" class="modal-content">
+          <!-- <p><a class="modal-close"><i class="fa fa-times fa-fw" aria-hidden="true"></i></a></p> -->
           <p><?php include("comment_layer.php") ?></p>
-          <p><a class="modal-close">閉じる</a></p>
         </div>
 
         <div class="col-md-4 col-xs-12 portfolio-items timeline_card-items isotope">
