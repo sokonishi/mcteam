@@ -176,101 +176,77 @@
     </div>
   </div> -->
 
-  <div class="container-fluid" id="#cardpotision<?php echo $feed['id'] ?>">
-    <div class="row no_padding">
-      <div class="col-xs-12 comment_layer_col" style="padding: 0px; background-color: #fff">
+<div class="container-fluid" id="#cardpotision<?php echo $feed['id'] ?>">
+    <div class="row">
+      <div class="col-xs-offset-1 col-xs-10 col-sm-12 comment_layer_col" style="padding: 0px; background-color: #fff">
         <div class="col-sm-7" style="padding: 0px;">
           <img src="user_profile_img/<?php echo $feed['feed_img'] ?>" id="comment_layer_img">
           <div class="col-sm-7 wrapper" style="padding: 0px;">
             <div class="square">
               <div class="col-xs-offset-1 col-xs-10">
                 <h3><?php echo $feed['title'] ?></h3>
-                <div style="width: 100%; height: 50vh; overflow: auto;">
-                  <p><?php echo $feed['feed'] ?></p>
-                  <h2 class="cost"><?php echo $feed['price'] ?>円</h2>
-                </div>
+                <p><?php echo $feed['feed'] ?></p>
+                <h2 class="cost"><?php echo $feed['price'] ?>円</h2>
                 <div class="purchase_btn_wrapper">
-                  <a href="purchase.php" class="purchase_btn"><i class="fa fa-shopping-cart fa-fw" aria-hidden="true"></i>カートに入れる</a>
-                </div><!-- /purchase_btn_wrapper -->
-                <div class="sns_share" style="">
-                  <a href=""><i class="fa fa-facebook-official fa-fw fa-2x" aria-hidden="true"></i></a>
-                  <a href=""><i class="fa fa-twitter fa-fw fa-2x" aria-hidden="true"></i></a>
-                </div><!-- /sns_share -->
-              </div><!-- /col-xs-10 -->
-            </div><!-- /square -->
-          </div><!-- /col-sm-7 -->
-        </div><!-- /col-sm-7 -->
-        <div class="row">
-          <div class="col-sm-5 right_col">
-            <div class="col-xs-12 user_profile">
-              <div class="col-xs-4">
-                <img src="user_profile_img/<?php echo $feed['feed_user']['img_name'] ?>" class="profile_img">
-              </div><!-- /col-xs-4 -->
-              <div class="col-xs-8 profile_name">
-                <h4><?php echo $feed['feed_user']['name'] ?></h4>
-                <p class="text-muted">投稿 : <?php echo $feed['feed_cnt']['cnt']; ?>件  フォロワー98人 フォロー中129件</p>
-              </div><!-- /col-xs-4 -->
-            <!-- <div class="row profile_row"> -->
-              <!-- <div class="col-xs-12"> -->
-                <!-- <p><?php /*echo $feed['feed_user']['introduction']*/ ?></p> -->
-              <!-- </div>/col-xs-12 -->
-            <!-- </div>/col-xs-12 -->
-            </div><!-- /row -->
-
-            <div style="width: 100%; height: 48vh; overflow: auto; border-bottom: 1px solid #ddd">
-              <?php foreach($comments as $comment) {?>
-              <div class="row comment_box">
-                <div class="col-xs-12">
-                  <div class="col-xs-4">
-                    <img src="user_profile_img/<?php echo $comment['img_name'] ?>"  class="profile_img" >
-                  </div><!-- /col-xs-4 -->
-                  <div class="col-xs-8">
-                    <h4><?php echo $comment['name'] ?></h4>
-                    <p class="text-muted"><?php echo $comment['created'] ?></p>
-                    <div class="row comment_content">
-                      <div class="col-xs-12">
-                        <p><?php echo $comment['comment'] ?></p>
-                      </div><!-- /col-xs-12 -->
-                    </div><!-- /row -->
-                  </div><!-- /col-xs-8 -->
-                </div><!-- /col-xs-12 -->
-              </div><!-- /row -->
-              <?php } ?>
+                  <a href="purchase.php" class="purchase_btn"><i class="fa fa-shopping-cart" aria-hidden="true"></i> カートに入れる</a>
+                </div>
+              </div>
             </div>
+          </div>
+        </div>
+        <div class="col-sm-5 right_col">
+          <div class="col-xs-4">
+            <img src="user_profile_img/<?php echo $feed['feed_user']['img_name'] ?>" class="profile_img">
+          </div>
+          <div class="col-xs-8">
+            <h4><?php echo $feed['feed_user']['name'] ?></h4>
+            <p>投稿 : <?php echo $feed['feed_cnt']['cnt']; ?>件  フォロワー98人 フォロー中129件</p>
+            <p><?php echo $feed['feed_user']['introduction'] ?></p>
+          </div>
+
           
-            <div class="row">
-              <div class="col-xs-12 share_like_comment">
-                <div class="row share_like">
-                  <div class="col-xs-12">
-                    <button type="button" class="btn btn-default btn-circle"><i class="fa fa-heart fa-fw fa-lg heart" aria-hidden="true"></i>:83</i></button>
-                    
-                    <i class="fa fa-eye fa-fw fa-lg eye" aria-hidden="true"></i>:100
-
-                  </div><!-- /col-xs-12 -->
-                </div><!-- /row -->
-              <div class="row comment_box">
-                <div class="col-xs-12">
-                  <form method="POST" action="timeline.php">
-                    <div class="form-group">
-                      <textarea name="comment" class="form-control" rows="3" id="comment">ツッコミを書く</textarea>
-                      <?php if(isset($errors['feed']) && $errors['feed'] == 'blank') { ?>
+          <div class="row comment_box">
+            <div class="col-xs-12">
+              <form method="POST" action="timeline.php">
+                <div class="form-group">
+                  <label for="comment">ツッコミを書く</label>
+                  <textarea name="comment" class="form-control" rows="2" id="comment"></textarea>
+                    <?php if(isset($errors['feed']) && $errors['feed'] == 'blank') { ?>
                       <p class="alert alert-danger">何か入力してください</p>
-                      <?php } ?>
-                      <input type="hidden" name="feed_id" value="<?php echo $feed["id"]; ?>">
-                      <input type="submit" value="ツッコむ" class="btn btn-primary btn-xs active" role="button" style="margin-top: 5px" aria-pressed="true">
-                      
-                    </div><!-- /form-group -->
-                  </form>
-                </div><!-- /col-xs-12 -->
-              </div><!-- /row -->
-            </div><!-- /col-xs-12 -->
-          </div><!-- /row -->
+                    <?php } ?>
+                  <input type="hidden" name="feed_id" value="<?php echo $feed["id"]; ?>">
+                  <input type="submit" value="ツッコミ" class="btn btn-primary btn-xs active" role="button" aria-pressed="true">
+                </div>
+              </form>
+            </div>
+          </div>
 
-        </div><!-- /col-sm-5 -->
-      </div><!-- /row -->
-    </div><!-- /col-xs-12 -->
-  </div><!-- /row -->
-</div><!-- /container-fluid -->
+          
+          <?php foreach($comments as $comment) {?>
+          <div class="row comment_box">
+            <div class="col-xs-12">
+              <div class="col-xs-4">
+                <img src="user_profile_img/<?php echo $comment['img_name'] ?>"  class="profile_img" >
+              </div>
+              <div class="col-xs-8">
+                <h4><?php echo $comment['name'] ?></h4>
+                <p><?php echo $comment['created'] ?></p>
+                <p><?php echo $comment['comment'] ?></p>
+              </div>
+            </div>
+          </div>
+          <?php } ?>
+          
+
+          <div class="row">
+            <div class="col-xs-12">
+              いいね数：8
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 

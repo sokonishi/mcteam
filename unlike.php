@@ -1,18 +1,16 @@
 <?php
+  // session変数を使えるようにする
   session_start();
-
-  $user_id = $_SESSION["id"];
-
-  //POST送信されたデータを受け取る
-  $feed_id = $_GET["id"];
-
-  require('dbconnect.php');
-
+  // DBに接続
+  require("dbconnect.php");
+  // feed_idを取得
+  $feed_id = $_GET["feed_id"];
+  //SQL文作成（DELETE文）
   $sql = "DELETE FROM `likes` WHERE  `user_id`=? AND `feed_id`=?;";
-
-  $data = array($user_id,$feed_id);
+  //SQL実行
+  $data = array($_SESSION['id'],$feed_id);
   $stmt = $dbh->prepare($sql);
   $stmt->execute($data);
-
-  header('Content-type:text/plain; charset=utf8');
+  // 一覧に戻る
+  header("Location: timeline.php");
 ?>
