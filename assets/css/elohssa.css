@@ -558,7 +558,7 @@ a.jpy {
 }
 
 .heart:hover {
-  color: red;
+  /*color: red;*/
   font-size: 2em;
 }
 

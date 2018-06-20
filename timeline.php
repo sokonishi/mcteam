@@ -283,7 +283,10 @@ $my_sql = 'SELECT `feeds`.*, COUNT(`user_id`) AS total FROM `users` LEFT JOIN `f
                 <img class="card_img" src="user_profile_img/<?php echo $feed['feed_img']; ?>" style="width: 100%">
                 <ul class="card_contents">
                   <li class="feed_title"><?php echo $feed["title"] ?></li>
-                  <li><i class="fa fa-heart fa-lg"></i>  <?php echo $feed["like_cnt"] ?>件</li>
+                  <li>
+                    <i class="fa fa-heart fa-lg"></i>
+                    <span id="feed_<?php echo $feed["id"]; ?>"><?php echo $feed["like_cnt"] ?>件</span>
+                  </li>
                   <li><i class="fa fa-eye fa-lg"></i>  <?php echo $feed["view_count"]["COUNT(*)"] ?>件</li>
                 </ul>
               </div><!-- /card_item -->
@@ -315,7 +318,10 @@ $my_sql = 'SELECT `feeds`.*, COUNT(`user_id`) AS total FROM `users` LEFT JOIN `f
                 <img class="card_img" src="user_profile_img/<?php echo $ranking["feed_img"]; ?>" style="width: 100%">
                 <ul class="card_contents">
                   <li class="feed_title"><?php echo $ranking["title"]; ?></li>
-                  <li><i class="fa fa-heart fa-lg"></i>  <?php echo $ranking["total"]; ?>件</li>
+                  <li>
+                    <i class="fa fa-heart fa-lg"></i>
+                    <span id="ranking_<?php echo $ranking["id"]; ?>"><?php echo $ranking["total"]; ?>件</span>
+                  </li>
                   <li><i class="fa fa-eye fa-lg"></i>  件</li>
                 </ul>
               </div><!-- /card_item -->
@@ -346,7 +352,9 @@ $my_sql = 'SELECT `feeds`.*, COUNT(`user_id`) AS total FROM `users` LEFT JOIN `f
                 <img class="card_img" src="user_profile_img/<?php echo $my_feed['feed_img']; ?>" style="width: 100%">
                 <ul class="card_contents">
                   <li class="feed_title"><?php echo $my_feed["title"] ?></li>
-                  <li><i class="fa fa-heart fa-lg"></i>  <?php echo $my_feed["total"] ?>件</li>
+                  <li><i class="fa fa-heart fa-lg"></i>
+                  <span id="my_<?php echo $my_feed["id"]; ?>"><?php echo $my_feed["total"] ?>件</span>
+                  </li>
                   <li><i class="fa fa-eye fa-lg"></i>  件</li>
                 </ul>
               </div><!-- /card_item -->
