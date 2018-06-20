@@ -272,23 +272,6 @@
   </div><!-- /row -->
 </div><!-- /container-fluid -->
 
-        <div style="width:300px;height:150px;overflow:auto;">
-          <?php foreach($comments as $comment) {?>
-          <div class="row comment_box">
-            <div class="col-xs-12">
-              <div class="col-xs-4">
-                <img src="user_profile_img/<?php echo $comment['img_name'] ?>"  class="profile_img" >
-              </div>
-              <div class="col-xs-8">
-                <h4><?php echo $comment['name'] ?></h4>
-                <p><?php echo $comment['created'] ?></p>
-                <p><?php echo $comment['comment'] ?></p>
-              </div>
-            </div>
-          </div>
-          <?php } ?>
-        </div>
-
 
 
 
