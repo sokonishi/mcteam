@@ -191,15 +191,16 @@ $my_sql = 'SELECT `feeds`.*, COUNT(`user_id`) AS total FROM `users` LEFT JOIN `f
   <link rel="stylesheet" type="text/css" href="assets/css/timeline.css"> 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script type="text/javascript">
-    function view(view_id){
-      $.ajax({
-        type: "GET",
-        url: "click_count.php",
-        data: {
-          id: view_id
-        }
-      });
-    }
+
+  function view(view_id){
+    $.ajax({
+      type: "GET",
+      url: "click_count.php",
+      data: {
+        id: view_id
+      }
+    });
+  }
   </script>
 </head>
 
@@ -236,7 +237,6 @@ $my_sql = 'SELECT `feeds`.*, COUNT(`user_id`) AS total FROM `users` LEFT JOIN `f
       </div><!-- /row -->
     </div><!-- /container-fluid -->
     <div class="container">
-      <br><br>
       <ul class="cat">
         <li>
           <ol class="type">
@@ -267,8 +267,8 @@ $my_sql = 'SELECT `feeds`.*, COUNT(`user_id`) AS total FROM `users` LEFT JOIN `f
           }
         ?>
         <div id="con<?php echo $feed['id'] ?>" class="modal-content">
+          <!-- <p><a class="modal-close"><i class="fa fa-times fa-fw" aria-hidden="true"></i></a></p> -->
           <p><?php include("comment_layer.php") ?></p>
-          <p><a class="modal-close">閉じる</a></p>
         </div>
 
         <div class="col-md-4 col-xs-12 portfolio-items timeline_card-items isotope">
