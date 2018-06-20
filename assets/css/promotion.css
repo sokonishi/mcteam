@@ -10,6 +10,14 @@
   background-color: transparent;
 }
 
+.fixed {
+  background-color: white;
+ 
+}
+.fixed a{
+  color: #009795 !important;
+}
+
 .section1{
   background: #fffbef;
 }
@@ -36,4 +44,8 @@
     background: #009795;
     color: white;
     text-decoration: none;
+}
+#header_img2{
+  display: none;
+
 }
