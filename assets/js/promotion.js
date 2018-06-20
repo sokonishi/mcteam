@@ -23,6 +23,20 @@ $(function(){
 		}
 	});
 
+	  $('.header_hover').hover(
+    function() {
+      $(this).addClass('header_active'); 
+	  $('#header_img').hide();
+	  $('#header_img2').show();
+    },
+    function() {
+      $(this).removeClass('header_active');
+	  $('#header_img2').hide();
+	  $('#header_img').show();
+    }
+  );
+
+
 	
 
 
