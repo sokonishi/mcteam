@@ -2,9 +2,7 @@
   session_start();
 
   $user_id = $_SESSION["id"];
-
-  //POST送信されたデータを受け取る
-  $feed_id = $_GET["id"];
+  $feed_id = $_GET["feed_id"];
 
   require('dbconnect.php');
 

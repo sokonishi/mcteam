@@ -176,20 +176,19 @@
     </div>
   </div> -->
 
-  <div class="container-fluid" id="#cardpotision<?php echo $feed['id'] ?>">
-    <div class="row no_padding">
-      <div class="col-xs-12 comment_layer_col" style="padding: 0px; background-color: #fff">
+<div class="container-fluid" id="#cardpotision<?php echo $feed['id'] ?>">
+    <div class="row">
+      <div class="col-xs-offset-1 col-xs-10 col-sm-12 comment_layer_col" style="padding: 0px; background-color: #fff">
         <div class="col-sm-7" style="padding: 0px;">
           <img src="user_profile_img/<?php echo $feed['feed_img'] ?>" id="comment_layer_img">
           <div class="col-sm-7 wrapper" style="padding: 0px;">
             <div class="square">
               <div class="col-xs-offset-1 col-xs-10">
                 <h3><?php echo $feed['title'] ?></h3>
-                <div style="width: 100%; height: 50vh; overflow: auto;">
-                  <p><?php echo $feed['feed'] ?></p>
-                  <h2 class="cost"><?php echo $feed['price'] ?>円</h2>
-                </div>
+                <p><?php echo $feed['feed'] ?></p>
+                <h2 class="cost"><?php echo $feed['price'] ?>円</h2>
                 <div class="purchase_btn_wrapper">
+
                   <a href="purchase.php" class="purchase_btn"><i class="fa fa-shopping-cart fa-fw" aria-hidden="true"></i>カートに入れる</a>
                 </div><!-- /purchase_btn_wrapper -->
                 <div class="sns_share" style="">
@@ -281,8 +280,32 @@
     </div><!-- /col-xs-12 -->
   </div><!-- /row -->
 </div><!-- /container-fluid -->
+          
+          <?php foreach($comments as $comment) {?>
+          <div class="row comment_box">
+            <div class="col-xs-12">
+              <div class="col-xs-4">
+                <img src="user_profile_img/<?php echo $comment['img_name'] ?>"  class="profile_img" >
+              </div>
+              <div class="col-xs-8">
+                <h4><?php echo $comment['name'] ?></h4>
+                <p><?php echo $comment['created'] ?></p>
+                <p><?php echo $comment['comment'] ?></p>
+              </div>
+            </div>
+          </div>
+          <?php } ?>
+          
 
-
+          <div class="row">
+            <div class="col-xs-12">
+              いいね数：8
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 

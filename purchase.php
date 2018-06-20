@@ -29,6 +29,5 @@
     <script src="assets/js/jquery-migrate-1.4.1.js"></script>
     <script src="assets/js/header.js"></script>
     <script src="assets/js/bootstrap.js"></script>
-    <script src="assets/js/header.js"></script>
   </body>
   </html>
