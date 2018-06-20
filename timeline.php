@@ -267,8 +267,8 @@ $my_sql = 'SELECT `feeds`.*, COUNT(`user_id`) AS total FROM `users` LEFT JOIN `f
           }
         ?>
         <div id="con<?php echo $feed['id'] ?>" class="modal-content">
+          <!-- <p><a class="modal-close"><i class="fa fa-times fa-fw" aria-hidden="true"></i></a></p> -->
           <p><?php include("comment_layer.php") ?></p>
-          <p><a class="modal-close">閉じる</a></p>
         </div>
 
         <div class="col-md-4 col-xs-12 portfolio-items timeline_card-items isotope">
