@@ -88,8 +88,10 @@
     <nav class="container navbar navbar-dark bg-dark" style="height: 30px;">
       <div class="row">
         <div class="col-xs-2" style="padding-top: 10px;">
+
           <img id="header_img"  src="img/missyou_logo2.png" style="height: 70px">
           <img id="header_img2"  src="img/missyou_logo.png" style="height: 70px">
+
         </div>
         <div class="col-xs-offset-9 col-xs-1">
           <div class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">

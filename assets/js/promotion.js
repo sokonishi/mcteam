@@ -8,7 +8,7 @@ $(function(){
       $(this).find('.signup-header').removeClass('effective');
     }
     )
-
+  
     $(window).on('scroll', function() {
 		var scroll = $(window).scrollTop();
 
@@ -35,9 +35,5 @@ $(function(){
 	  $('#header_img').show();
     }
   );
-
-
-	
-
 
 })
