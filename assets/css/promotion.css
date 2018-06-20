@@ -1,0 +1,39 @@
+.signup-header{
+  background-image: url(../../img/top_img_black.jpg);
+  background-size: cover;
+  text-align: center;
+  height: 750px;
+
+}
+
+.header_hover{
+  background-color: transparent;
+}
+
+.section1{
+  background: #fffbef;
+}
+
+.effective {
+  display: block;
+  background-color: rgba(0,0,0,0.3);
+  color: #fff;
+  height: 100%;
+  margin: auto;
+}
+
+.square_btn {
+    display: inline-block;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    color: #009795;
+    border: solid 2px #009795;
+    border-radius: 3px;
+    transition: .4s;
+}
+
+.square_btn:hover {
+    background: #009795;
+    color: white;
+    text-decoration: none;
+}
