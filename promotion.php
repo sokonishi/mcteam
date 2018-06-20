@@ -5,7 +5,7 @@
     require('dbconnect.php');
 
 
-    $sql = 'SELECT * FROM `feeds` ORDER BY `id` DESC';
+    $sql = 'SELECT * FROM `feeds` ORDER BY `id` DESC LIMIT 9';
             $data = array();
             $stmt = $dbh->prepare($sql);
             $stmt->execute($data);
@@ -78,28 +78,28 @@
   <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.css">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <link rel="stylesheet" type="text/css" href="assets/css/elohssa.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/promotion.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 
 <body>
 
-   <header>
+   <header class="header_hover">
     <nav class="container navbar navbar-dark bg-dark" style="height: 30px;">
       <div class="row">
         <div class="col-xs-2" style="padding-top: 10px;">
-          <img src="img/missyou_logo.png" style="height: 70px">
+          <img src="img/missyou_logo2.png" style="height: 70px">
         </div>
         <div class="col-xs-offset-9 col-xs-1">
           <div class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
           </div><!-- /navbar-toggler -->
         </div>
         <div style="text-align: right;">
-          <a href="register/signup.php" style="color: #009795; font-size: 15px; font-weight: bold; margin-right: 20px;">新規登録</a>
-          <a href="signin.php" style="color: #009795; font-size: 15px; font-weight: bold; margin-right: 15px;">ログイン</a>
+          <a href="register/signup.php" style="color: #fff; font-size: 15px; font-weight: bold; margin-right: 20px;">新規登録</a>
+          <a href="signin.php" style="color: #fff; font-size: 15px; font-weight: bold; margin-right: 15px;">ログイン</a>
         </div>
       </div><!-- /row -->
     </nav>
-
   </header>
 
   <div id="con1" class="modal-content">
@@ -107,28 +107,49 @@
     <p><a class="modal-close">閉じる</a></p>
   </div>
 
-  <div class="background_timeline">
-    <div class="container">
-      <div class="row col-xs-offset-10">
-        <div class="copy_img top">
-          <img src="img/copy.png" style="width: 50%">
-        </div><!-- /copy-img -->
-      </div><!-- /row -->
-    </div><!-- /container -->
+  <div class="signup-header">
 
     <div class="container">
       <div class="row">
-        <div class="col-md-12" style="font-size: 30px; text-align: center; font-weight: bold; margin-top: 5px; margin-bottom: 30px;">
-          <h2 style="font-size: 35px;">あなたも過去の恋愛の品を出品しよう！</h2>
-          <div style="margin-top: 35px;">
-            <a href="register/signup.php" style="text-decoration: none;">
-              <button type="button" style="background-color: #009795; color: white; border-radius: 15px; border: solid 1px white; opacity: 0.8; margin-right: 30px;">
-                新規登録
-              </button>
-            </a>
-            <a href="signin.php">
-              <button type="button" style="background-color: #009795; color: white; border-radius: 15px; border: solid 1px white; opacity: 0.8;">ログイン</button>
-            </a>
+        <div class="col-md-12" style="font-size: 30px; text-align: center; font-weight: bold; margin-top: 230px; margin-bottom: 200px;">
+          <h2 style="font-size: 36px;font-weight: bold; color:#fff;">あなたの未練とお別れをしよう！</h2>
+          <h2 style="font-size: 24px;color:#fff;">まだ捨てられない元カレ、カノからのプレゼントも、思い出も。<br>missyouはあなたの人生を「少しだけ」後押しします。</h2>
+          <div style="margin-top: 60px;color:#fff;">
+            <h5>騙されたと思って</h5>
+            <a href="register/signup.php" class="square_btn">試してみる</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section1">
+      <div class="container">
+        <div class="row">
+          <div style="margin-top: 66px; margin-bottom: 66px;">
+            <h2 style="font-size: 36px; font-family: 'Chalkduster', cursive; margin-bottom: 12px; color: #009795;">Welcom to missyou!</h2>
+          </div>
+        </div><!-- /row -->
+      </div><!-- /container -->
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7" style="text-align: left;">
+            <h2 style="font-size: 36px; font-family: 'Chalkduster', cursive; margin-bottom: 12px; color: #009795;">About missyou</h2>
+            <p style="font-size: 24px; text-align: left; font-weight: bold; margin-top: 5px; margin-bottom: 24px;">missyouとは過去の恋愛から吹っ切れるためのサービスです！<br>過去の恋愛の品を面白いストーリーにのせて投稿し、笑いとお金に変えよう！</p>
+          </div>
+          <div class="col-md-5 centered">
+            <img src="https://placehold.jp/400x260.png?text=NO IMAGE" width="350">
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5 centered">
+            <img src="https://placehold.jp/400x260.png?text=NO IMAGE" width="350">
+          </div>
+          <div class="col-md-7" style="text-align: left;">
+            <h2 style="font-size: 36px; font-family: 'Chalkduster', cursive; margin-bottom: 12px; color: #009795;">How to use</h2>
+            <p style="font-size: 24px; text-align: left; font-weight: bold; margin-top: 5px; margin-bottom: 24px;">missyouとは過去の恋愛から吹っ切れるためのサービスです！<br>過去の恋愛の品を面白いストーリーにのせて投稿して<br>笑いとお金に変えよう！</p>
           </div>
         </div>
       </div>
@@ -136,29 +157,10 @@
 
     <div class="container">
       <div class="row">
-        <div style="margin-top: 50px; margin-bottom: 80px;">
-        </div>
-      </div><!-- /row -->
-    </div><!-- /container -->
-
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12" style="text-align: left;">
-          <h2 style="font-size: 35px; font-family: 'Chalkduster', cursive; border-bottom: 2px solid; margin-bottom: 30px; color: #009795;">Welcome to missyou!</h2>
-          <p style="font-size: 30px; text-align: left; font-weight: bold; margin-top: 5px; margin-bottom: 30px;">missyouとは過去の恋愛から吹っ切れるためのサービスです！<br>過去の恋愛の品を面白いストーリーにのせて投稿して<br>笑いとお金に変えよう！</p>
+        <div class="col-md-12">
+          <h2 style="font-size: 36px; font-family: 'Chalkduster', cursive; margin-top: 20px; margin-bottom: 30px; color: #009795;">Timeline</h2>
         </div>
       </div>
-    </div>
-
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12" style="text-align: left;">
-          <h2 style="font-size: 35px; font-family: 'Chalkduster', cursive; border-bottom: 2px solid; margin-top: 20px; margin-bottom: 30px; color: #009795;">Timeline</h2>
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
 
       <div class="row post-card">
       <?php foreach($feeds as $feed){ ?>
@@ -174,7 +176,7 @@
               <div class="card_item card_hover card_click">                
                 <img class="card_img" src="user_profile_img/<?php echo $feed['feed_img']; ?>" style="width: 100%">
                 <ul class="card_contents">
-                  <li class="feed_title"><?php echo $feed["title"] ?></li>
+                  <li class="feed_title">『<?php echo $feed["title"] ?>』</li>
                   <li><i class="fa fa-heart fa-lg"></i>  <?php echo $feed["like_cnt"] ?>件</li>
                   <li><i class="fa fa-eye fa-lg"></i>  <?php echo $feed["view_count"]["COUNT(*)"] ?>件</li>
                 </ul>
@@ -184,13 +186,67 @@
         </div>
       <?php }?>
       </div><!-- /row -->
+
+        <div style="margin-top: 60px; margin-bottom: 60px;">
+          <a href="register/signup.php" class="square_btn">もっと見る</a>
+        </div>
+
     </div><!-- /container -->
-  </div><!-- /background -->
+
+  <div class="section1">
+    <div class="container">
+      <div class="row">
+        <div class = "centered">
+          <div style="margin-top: 66px; margin-bottom: 66px;">
+            <h2 style="font-size: 36px; font-family: 'Chalkduster', cursive; margin-bottom: 30px; color: #009795;">Contact me if you can</h2>
+          </div>
+          <form method="POST" action="check.php">
+
+          <div>
+            <p style="font-size: 24px; font-weight: bold; margin-top: 24px; margin-bottom: 12px;">お名前</p>
+            <input type="text" name="name" style="width: 450px">
+          </div>
+
+          <div>
+            <p style="font-size: 24px; font-weight: bold; margin-top: 24px; margin-bottom: 12px;">メールアドレス</p>
+            <input type="text" name="email" style="width: 450px">
+          </div>
+
+          <div>
+            <p style="font-size: 24px; font-weight: bold; margin-top: 24px; margin-bottom: 12px;">お問い合わせ内容</p>
+            <textarea name="content" cols="65" rows="3" style="width: 450px"></textarea>
+          </div>
+          <br>
+          <div style="margin-top: 12px; margin-bottom: 60px;">
+            <a href="#">
+              <input type="submit" value="submit" class="square_btn">
+            </a>
+          </div>
+
+        <div class="row centered" style="margine-bottom:30px;">
+          <div class="col-md-4">
+            <a href="#"><i class="fa fa-facebook fa-3x" style="color:#009795;"></i></a>
+          </div>
+          
+          <div class="col-md-4">
+            <a href="#"><i class="fa fa-twitter fa-3x" style="color:#009795;"></i></a>
+          </div>
+          <div class="col-md-4">
+            <a href="#"><i class="fa fa-envelope fa-3x" style="color:#009795;"></i></a>
+          </div>
+        </div>
+
+      </div><!-- /row -->
+    </div>
+  </div>
+
+  </div><!-- /signup-header -->
 
 
   <script src="assets/js/jquery-3.1.1.js"></script>
   <script src="assets/js/jquery-migrate-1.4.1.js"></script>
   <script src="assets/js/bootstrap.js"></script>
+  <script src="assets/js/promotion.js"></script>
   <script src="missyou.js"></script>
 </body>
 </html>

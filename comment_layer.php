@@ -221,7 +221,7 @@
             </div>
           </div>
 
-          
+        <div style="width:300px;height:150px;overflow:auto;">
           <?php foreach($comments as $comment) {?>
           <div class="row comment_box">
             <div class="col-xs-12">
@@ -236,6 +236,7 @@
             </div>
           </div>
           <?php } ?>
+        </div>
           
 
           <div class="row">
