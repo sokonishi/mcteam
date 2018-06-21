@@ -368,10 +368,14 @@ div.container-fluid {
   padding-top: 0px !important;
 }
 
+.post_cost {
+  background-color: rgba(250,250,250,0.6);
+}
+
 .cost {
   text-align: center;
   color: red;
-  font-size: 20px;
+  font-size: 36px;
 
 }
 
@@ -558,7 +562,6 @@ a.jpy {
 }
 
 .heart:hover {
-  color: red;
   font-size: 2em;
 }
 

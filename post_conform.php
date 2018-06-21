@@ -71,7 +71,7 @@
                 <div style="width: 100%; height: 250px; overflow: auto; background-color: rgba(250,250,250,0.3);">
                 <p class="lead"><?php echo htmlspecialchars($feed); ?></p>
               </div>
-                <h4 class="cost";"><?php echo htmlspecialchars($price); ?>円</h4>
+                <h4 class="cost post_cost";"><?php echo htmlspecialchars($price); ?>円</h4>
               </div>
             </div><!-- /row -->
           </div><!-- /container -->

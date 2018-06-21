@@ -6,44 +6,54 @@
 
 
     $sql = 'SELECT * FROM `feeds` ORDER BY `id` DESC LIMIT 9';
-            $data = array();
-            $stmt = $dbh->prepare($sql);
-            $stmt->execute($data);
+    $data = array();
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute($data);
 
-            while (true) {
-                $record = $stmt->fetch(PDO::FETCH_ASSOC);
+    while (true) {
+        $record = $stmt->fetch(PDO::FETCH_ASSOC);
 
-                if ($record == false) {
-                    break;
-                }
+      if ($record == false) {
+          break;
+      }
+      //投稿者情報
+      $feed_user_sql = 'SELECT `u`.`name`,`u`.`img_name`,`u`.`introduction` FROM `feeds` AS `f` LEFT JOIN `users` AS `u` ON `f`.`user_id` = `u`.`id` WHERE `f`.`id`=?';
+      $feed_user_data = array($record["id"]);
+      $feed_user_stmt = $dbh->prepare($feed_user_sql);
+      $feed_user_stmt->execute($feed_user_data);
+      $record['feed_user'] = $feed_user_stmt->fetch(PDO::FETCH_ASSOC);
 
-                $like_sql = "SELECT COUNT(*) AS `like_cnt` FROM `likes` WHERE `feed_id` = ?";
+      //投稿者の投稿数
+      $feed_cnt_sql = "SELECT COUNT(*) as `cnt` FROM `feeds` WHERE `user_id`=?";
+      $feed_cnt_data = array($record['user_id']);
+      $feed_cnt_stmt = $dbh->prepare($feed_cnt_sql);
+      $feed_cnt_stmt->execute($feed_cnt_data);
+      $record["feed_cnt"] = $feed_cnt_stmt->fetch(PDO::FETCH_ASSOC);
 
-                $like_data = array($record["id"]);
-                $like_stmt = $dbh->prepare($like_sql);
-                $like_stmt->execute($like_data);
+      //投稿へのlike数カウント
+      $like_sql = "SELECT COUNT(*) AS `like_cnt` FROM `likes` WHERE `feed_id` = ?";
+      $like_data = array($record["id"]);
+      $like_stmt = $dbh->prepare($like_sql);
+      $like_stmt->execute($like_data);
+      $like = $like_stmt->fetch(PDO::FETCH_ASSOC);
+      $record["like_cnt"] = $like["like_cnt"];
 
-                $like = $like_stmt->fetch(PDO::FETCH_ASSOC);
+      //閲覧数
+      $view_sql = "SELECT COUNT(*) FROM `views` WHERE `feed_id`=?";
+      $view_data = array($record["id"]);
+      $view_stmt = $dbh->prepare($view_sql);
+      $view_stmt->execute($view_data);
+        while (true) {
+         $view_record = $view_stmt->fetch(PDO::FETCH_ASSOC);
+          if ($view_record == false) {
+              break;
+          }
+          //var_dump($view_record);
+          $record["view_count"] = $view_record;
+        }
 
-                $record["like_cnt"] = $like["like_cnt"];
-
-                  $view_sql = "SELECT COUNT(*) FROM `views` WHERE `feed_id`=?";
-                  $view_data = array($record["id"]);
-                  $view_stmt = $dbh->prepare($view_sql);
-                  $view_stmt->execute($view_data);
-
-                  while (true) {
-                    $view_record = $view_stmt->fetch(PDO::FETCH_ASSOC);
-
-                    if ($view_record == false) {
-                        break;
-                    }
-                    //var_dump($view_record);
-                    $record["view_count"] = $view_record;
-                  }
-
-                $feeds[] = $record;
-            }
+        $feeds[] = $record;
+    }
 //            echo'<pre>';
 //            var_dump($feeds);
 //            echo'<pre>';
@@ -167,11 +177,34 @@
 
       <div class="row post-card">
       <?php foreach($feeds as $feed){ ?>
+        <?php
+          $post_sql = "SELECT `c`.*, `u`.`name` , `u`.`img_name` ,`u`.`introduction` FROM `comments` AS `c` LEFT JOIN `users` AS `u` ON `c`.`user_id` = `u`.`id` WHERE `feed_id` = ? ORDER BY `c`.`created` DESC";
+
+          $post_data = array($feed['id']);
+          $post_stmt = $dbh->prepare($post_sql);
+          $post_stmt->execute($post_data);
+
+          $comments = array();
+          while (true) {
+            $post_record = $post_stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($post_record == false){
+              break;
+            } 
+            $comments[] = $post_record;
+          }
+        ?>
+
+        <div id="con<?php echo $feed['id'] ?>" class="modal-content">
+          <!-- <p><a class="modal-close"><i class="fa fa-times fa-fw" aria-hidden="true"></i></a></p> -->
+          <p><?php include("comment_layer2.php") ?></p>
+        </div>
+
         <div class="col-md-4 col-xs-12">
           <div class="card">
 
             <!-- modalレイアウト表示 -->
-            <a data-target="con1" class="modal-open noline">
+            <a href="#cardpotision<?php echo $feed['id'] ?>" data-target="con<?php echo $feed['id'] ?>" class="modal-open noline" onclick="view(<?php echo $feed['id']; ?>);">
 
             <!-- comment_timeline.phpに遷移 -->
             <!-- <a href="comment_layer.php?feed_id=?php echo $feed["id"] ?>" class="noline"> -->

@@ -217,7 +217,7 @@
             <!-- </div>/col-xs-12 -->
             </div><!-- /row -->
 
-            <div style="width: 100%; height: 48vh; overflow: auto; border-bottom: 1px solid #ddd" class="masumi">
+            <div style="width: 100%; height: 48vh; overflow: auto; border-bottom: 1px solid #ddd">
               <?php foreach($comments as $comment) {?>
               <div class="row comment_box">
                 <div class="col-xs-12">
@@ -237,25 +237,12 @@
               </div><!-- /row -->
               <?php } ?>
             </div>
-
+          
             <div class="row">
               <div class="col-xs-12 share_like_comment">
                 <div class="row share_like">
                   <div class="col-xs-12">
-
-                    <?php if($feed["like_flag"] == 0){ ?>
-                        <button type="button" class="btn btn-default btn-circle hoge"><i class="fa fa-heart fa-fw fa-lg heart" aria-hidden="true"></i>:83</i></button>
-
-                        <button type="button" class="btn btn-default btn-circle ika" style="display: none"><i class="fa fa-heart fa-fw fa-lg heart" aria-hidden="true" style="color: red;"></i>:83</i></button>
-                        <input class="fuga" type="hidden" value="<?php echo $feed["id"]; ?>">
-                    <?php }else{ ?>
-                    <!-- いいねを取り消すボタンを表示 -->
-                        <button type="button" class="btn btn-default btn-circle hoge" style="display: none"><i class="fa fa-heart fa-fw fa-lg heart" aria-hidden="true"></i>:83</i></button>
-
-                        <button type="button" class="btn btn-default btn-circle ika"><i class="fa fa-heart fa-fw fa-lg heart" aria-hidden="true" style="color: red;"></i>:83</i></button>
-                        <input class="fuga" type="hidden" value="<?php echo $feed["id"]; ?>">
-                      <?php echo $feed['id'] ?>
-                    <?php } ?>
+                    <button type="button" class="btn btn-default btn-circle"><i class="fa fa-heart fa-fw fa-lg heart" aria-hidden="true"></i>:83</i></button>
                     
                     <i class="fa fa-eye fa-fw fa-lg eye" aria-hidden="true"></i>:100
 
@@ -263,16 +250,19 @@
                 </div><!-- /row -->
               <div class="row comment_box">
                 <div class="col-xs-12">
+                  <!-- <form method="POST" action="timeline.php"> -->
+                  <a href="register/signup.php">
                     <div class="form-group">
-                      <textarea name="comment" class="form-control comment" rows="3" place="ツッコミを書く" id="comment"></textarea>
+                      <textarea name="comment" class="form-control" rows="3" placeholder="ツッコミを書く" id="comment"></textarea>
                       <?php if(isset($errors['feed']) && $errors['feed'] == 'blank') { ?>
                       <p class="alert alert-danger">何か入力してください</p>
                       <?php } ?>
-                      <input class="dare" type="hidden" name="feed_id" value="<?php echo $users_record["name"]; ?>">
-                      <input class="takutoimg" type="hidden" name="feed_id" value="<?php echo $users_record["img_name"]; ?>">
-                      <input class="boke" type="hidden" name="feed_id" value="<?php echo $feed["id"]; ?>">
-                      <input type="button" value="ツッコむ" class="btn btn-primary btn-xs active tukkomi" role="button" style="margin-top: 5px" aria-pressed="true">
+                      <input type="hidden" name="feed_id" value="<?php echo $feed["id"]; ?>">
+                      <input type="submit" value="ツッコむ" class="btn btn-primary btn-xs active" role="button" style="margin-top: 5px" aria-pressed="true">
+                      
                     </div><!-- /form-group -->
+                  </a>
+                  <!-- </form> -->
                 </div><!-- /col-xs-12 -->
               </div><!-- /row -->
             </div><!-- /col-xs-12 -->
@@ -283,8 +273,6 @@
     </div><!-- /col-xs-12 -->
   </div><!-- /row -->
 </div><!-- /container-fluid -->
-
-
 
 
 

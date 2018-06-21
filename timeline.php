@@ -289,7 +289,11 @@ ON f.id = l.feed_id WHERE f.user_id =  ?';
                 <img class="card_img" src="user_profile_img/<?php echo $feed['feed_img']; ?>" style="width: 100%">
                 <ul class="card_contents">
                   <li class="feed_title"><?php echo $feed["title"] ?></li>
-                  <li><i class="fa fa-heart fa-lg"></i>  <?php echo $feed["like_cnt"] ?>件</li>
+                  <li>
+                    <i class="fa fa-heart fa-lg"></i>
+                    <span id="feed_<?php echo $feed["id"]; ?>">
+                    <?php echo $feed["like_cnt"] ?>件</span>
+                  </li>
                   <li><i class="fa fa-eye fa-lg"></i>  <?php echo $feed["view_count"]["COUNT(*)"] ?>件</li>
                 </ul>
               </div><!-- /card_item -->
@@ -315,13 +319,14 @@ ON f.id = l.feed_id WHERE f.user_id =  ?';
 
             <!-- comment_timeline.phpに遷移 -->
             <!-- <a href="comment_layer.php?feed_id=?php echo $feed["id"] ?>" class="noline"> -->
-
-              <div class="card_item card_hover card_click portfolio-item ">
               <h4>第<?php echo $number; ?>位</h4>                
+              <div class="card_item card_hover card_click portfolio-item ">
                 <img class="card_img" src="user_profile_img/<?php echo $ranking["feed_img"]; ?>" style="width: 100%">
                 <ul class="card_contents">
                   <li class="feed_title"><?php echo $ranking["title"]; ?></li>
-                  <li><i class="fa fa-heart fa-lg"></i>  <?php echo $ranking["total"]; ?>件</li>
+                  <li><i class="fa fa-heart fa-lg"></i>
+                    <span id="ranking_<?php echo $ranking["id"]; ?>"><?php echo $ranking["total"]; ?>件</span>
+                  </li>
                   <li><i class="fa fa-eye fa-lg"></i>  件</li>
                 </ul>
               </div><!-- /card_item -->
@@ -333,8 +338,8 @@ ON f.id = l.feed_id WHERE f.user_id =  ?';
 
 
       <div class="row post-card ">
+      <?php if(isset($my_feed)){ ?>
       <?php foreach($my_feeds as $my_feed){ ?>
-
         <div id="con<?php echo $my_feed['id'] ?>" class="modal-content">
           <p><?php include("comment_layer.php") ?></p>
           <p><a class="modal-close">閉じる</a></p>
@@ -352,14 +357,17 @@ ON f.id = l.feed_id WHERE f.user_id =  ?';
                 <img class="card_img" src="user_profile_img/<?php echo $my_feed['feed_img']; ?>" style="width: 100%">
                 <ul class="card_contents">
                   <li class="feed_title"><?php echo $my_feed["title"] ?></li>
-                  <li><i class="fa fa-heart fa-lg"></i>  <?php echo $my_feed["total"] ?>件</li>
+                  <li><i class="fa fa-heart fa-lg"></i>   
+                    <span id="my_<?php echo $my_feed["id"]; ?>"><?php echo $my_feed["total"] ?>件</span>
+                  </li>
                   <li><i class="fa fa-eye fa-lg"></i>  件</li>
                 </ul>
               </div><!-- /card_item -->
             </a>
           </div><!-- /card -->
         </div>
-      <?php }?>
+      <?php } ?>
+      <?php } ?>
       </div><!-- /row -->
 
 
