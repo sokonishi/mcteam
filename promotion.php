@@ -140,7 +140,7 @@
             <p style="font-size: 24px; text-align: left; font-weight: bold; margin-top: 5px; margin-bottom: 24px;">missyouとは過去の恋愛から吹っ切れるためのサービスです！<br>過去の恋愛の品を面白いストーリーにのせて投稿し、笑いとお金に変えよう！</p>
           </div>
           <div class="col-md-5 centered">
-            <img src="https://placehold.jp/400x260.png?text=NO IMAGE" width="350">
+            <img src="img/sample_img2.png" width="350" style="padding-top: 24px;">
           </div>
         </div>
       </div>
@@ -148,7 +148,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-5 centered">
-            <img src="https://placehold.jp/400x260.png?text=NO IMAGE" width="350">
+            <img src="img/sample_img.png" width="350" style="padding-top: 24px;">
           </div>
           <div class="col-md-7" style="text-align: left;">
             <h2 style="font-size: 36px; font-family: 'Chalkduster', cursive; margin-bottom: 12px; color: #009795;">How to use</h2>

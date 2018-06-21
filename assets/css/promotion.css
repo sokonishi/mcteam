@@ -8,6 +8,17 @@
 
 .header_hover{
   background-color: transparent;
+  display: block;
+}
+
+.header_active{
+  background-color: white !important;
+  color: #009795 !important;
+  transition-duration: 0.4s;
+}
+
+.header_active a{
+  color: #009795 !important;
 }
 
 .fixed {
