@@ -264,7 +264,7 @@
               <div class="row comment_box">
                 <div class="col-xs-12">
                     <div class="form-group">
-                      <textarea name="comment" class="form-control comment" rows="3" place="ツッコミを書く" id="comment"></textarea>
+                      <textarea name="comment" class="form-control comment" rows="3" placeholder="ツッコミを書く" id="comment"></textarea>
                       <?php if(isset($errors['feed']) && $errors['feed'] == 'blank') { ?>
                       <p class="alert alert-danger">何か入力してください</p>
                       <?php } ?>
