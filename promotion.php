@@ -195,7 +195,7 @@
           }
         ?>
 
-        <div id="con<?php echo $feed['id'] ?>" class="modal-content">
+        <div id="con<?php echo $feed['id'] ?>" class="modal-content" style="text-align: left;">
           <!-- <p><a class="modal-close"><i class="fa fa-times fa-fw" aria-hidden="true"></i></a></p> -->
           <p><?php include("comment_layer2.php") ?></p>
         </div>
@@ -209,7 +209,7 @@
             <!-- comment_timeline.phpに遷移 -->
             <!-- <a href="comment_layer.php?feed_id=?php echo $feed["id"] ?>" class="noline"> -->
 
-              <div class="card_item card_hover card_click">                
+              <div class="card_item card_hover card_click" style="text-align: left;">                
                 <img class="card_img" src="user_profile_img/<?php echo $feed['feed_img']; ?>" style="width: 100%">
                 <ul class="card_contents">
                   <li class="feed_title">『<?php echo $feed["title"] ?>』</li>

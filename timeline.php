@@ -338,35 +338,35 @@ ON f.id = l.feed_id WHERE f.user_id =  ?';
 
 
       <div class="row post-card ">
-      <?php if(isset($my_feed)){ ?>
-      <?php foreach($my_feeds as $my_feed){ ?>
-        <div id="con<?php echo $my_feed['id'] ?>" class="modal-content">
-          <p><?php include("comment_layer.php") ?></p>
-          <p><a class="modal-close">閉じる</a></p>
-        </div>
+      <?php if(isset($my_feeds)){ ?>
+        <?php foreach($my_feeds as $my_feed){ ?>
+          <div id="con<?php echo $my_feed['id'] ?>" class="modal-content">
+            <p><?php include("comment_layer.php") ?></p>
+            <p><a class="modal-close">閉じる</a></p>
+          </div>
 
-        <div class="col-md-4 col-xs-12 portfolio-items timeline_card-items">
-          <div class="card mypost active_item">
-            <!-- modalレイアウト表示 -->
-            <a data-target="con<?php echo $my_feed['id'] ?>" class="modal-open noline" onclick="view(<?php echo $my_feed['id']; ?>);">
+          <div class="col-md-4 col-xs-12 portfolio-items timeline_card-items">
+            <div class="card mypost active_item">
+              <!-- modalレイアウト表示 -->
+              <a data-target="con<?php echo $my_feed['id'] ?>" class="modal-open noline" onclick="view(<?php echo $my_feed['id']; ?>);">
 
-            <!-- comment_timeline.phpに遷移 -->
-            <!-- <a href="comment_layer.php?feed_id=?php echo $feed["id"] ?>" class="noline"> -->
+              <!-- comment_timeline.phpに遷移 -->
+              <!-- <a href="comment_layer.php?feed_id=?php echo $feed["id"] ?>" class="noline"> -->
 
-              <div class="card_item card_hover card_click portfolio-item ">                
-                <img class="card_img" src="user_profile_img/<?php echo $my_feed['feed_img']; ?>" style="width: 100%">
-                <ul class="card_contents">
-                  <li class="feed_title"><?php echo $my_feed["title"] ?></li>
-                  <li><i class="fa fa-heart fa-lg"></i>   
-                    <span id="my_<?php echo $my_feed["id"]; ?>"><?php echo $my_feed["total"] ?>件</span>
-                  </li>
-                  <li><i class="fa fa-eye fa-lg"></i>  件</li>
-                </ul>
-              </div><!-- /card_item -->
-            </a>
-          </div><!-- /card -->
-        </div>
-      <?php } ?>
+                <div class="card_item card_hover card_click portfolio-item ">                
+                  <img class="card_img" src="user_profile_img/<?php echo $my_feed['feed_img']; ?>" style="width: 100%">
+                  <ul class="card_contents">
+                    <li class="feed_title"><?php echo $my_feed["title"] ?></li>
+                    <li><i class="fa fa-heart fa-lg"></i>   
+                      <span id="my_<?php echo $my_feed["id"]; ?>"><?php echo $my_feed["total"] ?>件</span>
+                    </li>
+                    <li><i class="fa fa-eye fa-lg"></i>  件</li>
+                  </ul>
+                </div><!-- /card_item -->
+              </a>
+            </div><!-- /card -->
+          </div>
+        <?php } ?>
       <?php } ?>
       </div><!-- /row -->
 
