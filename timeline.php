@@ -288,7 +288,7 @@ ON f.id = l.feed_id WHERE f.user_id =  ?';
               <div class="card_item card_hover card_click portfolio-item ">                
                 <img class="card_img" src="user_profile_img/<?php echo $feed['feed_img']; ?>" style="width: 100%">
                 <ul class="card_contents">
-                  <li class="feed_title"><?php echo $feed["title"] ?></li>
+                  <li class="feed_title">『<?php echo $feed["title"] ?>』</li>
                   <li>
                     <i class="fa fa-heart fa-lg"></i>
                     <span id="feed_<?php echo $feed["id"]; ?>">
